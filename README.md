@@ -1,6 +1,7 @@
-# modul-318-Student
+# M318 - Projekt "ÖV-App" installieren
 
-Students!
-Fork this repository to your own Github account. Work there with this repository. The intructor will clone your repo for inspection and evaluation.
+## Einleitung
 
-Have Fun!
+Im Modul 318 werden wir eine Öv-App programmieren.
+Dabei ist es wichtig, dass dies als Installation-Datei ausführbar ist.
+Dieses Projekt wurde von Adrian Cerdeira erstellt.
