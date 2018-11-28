@@ -20,17 +20,19 @@ namespace ov_project
             InitializeComponent();
         }
 
+        // TODO: Filterung & Alle Stationen bekommen
         private void getStations(object sender, EventArgs e)
         {
-            Stations allStations =  transport.GetStations(1.ToString());
+            Stations allStations = transport.GetStations(1.ToString());
             // Stationen zu ComboBoxen stationForm & stationTo integrieren
-           foreach (var station in allStations.StationList)
+            foreach (var station in allStations.StationList)
             {
                 stationFrom.Items.Add(station.Name);
                 stationTo.Items.Add(station.Name);
             }
         }
 
+        // TODO: Rows-Add-String beenden
         private void btnSearch_Click(object sender, EventArgs e)
         {
             var allConnections = transport.GetConnections(stationFrom.SelectedItem.ToString(), stationTo.SelectedItem.ToString());
@@ -38,7 +40,7 @@ namespace ov_project
             foreach (var connection in allConnections.ConnectionList)
             {
                 var createConnectionText = stationFrom.SelectedItem.ToString() + "->" + stationTo.SelectedItem.ToString();
-               connectionsTable.Rows.Add("", createConnectionText, "", DateTime.Now.ToString(connection.Duration));
+                connectionsTable.Rows.Add("", createConnectionText, "", DateTime.Now.ToString(connection.Duration));
             }
         }
     }
