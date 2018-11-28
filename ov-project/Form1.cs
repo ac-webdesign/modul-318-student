@@ -21,6 +21,13 @@ namespace ov_project
         private void getStations(object sender, EventArgs e)
         {
             Transport transport = new Transport();
+            Stations allStations =  transport.GetStations(1.ToString());
+            // Stationen zu ComboBoxen stationForm & stationTo integrieren
+           foreach (var station in allStations.StationList)
+            {
+                stationFrom.Items.Add(station.Name);
+                stationTo.Items.Add(station.Name);
+            }
         }
     }
 }
