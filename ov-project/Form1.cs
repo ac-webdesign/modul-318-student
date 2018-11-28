@@ -25,7 +25,6 @@ namespace ov_project
             // Abfahrtmonitor Zeit und Datum eintragen
             labelTime.Text = DateTime.Now.ToShortTimeString(); // TODO: Refresh every Time
             labelDate.Text = DateTime.Now.ToShortDateString();
-
         }
 
         private void getAllStations(object sender, EventArgs e)
@@ -35,8 +34,29 @@ namespace ov_project
 
             foreach (var station in allStations.StationList)
             {
-                listAllStationsFrom.Items.Add(station.Name);
-                listAllStationsTo.Items.Add(station.Name);
+                if (searchStation.Name == "txtStationTo")  // TODO: Bessere Bedienungen
+                {
+                    listAllStationsTo.Items.Add(station.Name);
+                   
+                }
+                else
+                {
+                    listAllStationsFrom.Items.Add(station.Name);
+                }
+            }
+        }
+
+        private void putToStation(object sender, EventArgs e)
+        {
+            ListBox selectedStation = (ListBox)sender;
+            // Falls txtStationForm leer, wird der angebene Text integriert
+            if (selectedStation.Name == "listAllStationsTo")  // TODO: Bessere Bedienungen
+            {
+                txtStationTo.Text = selectedStation.SelectedItem.ToString();
+            }
+            else
+            {
+                txtStationFrom.Text = selectedStation.SelectedItem.ToString();
             }
         }
 

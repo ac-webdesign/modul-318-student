@@ -35,7 +35,6 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtStationTo = new System.Windows.Forms.ComboBox();
             this.connectionsTable = new System.Windows.Forms.DataGridView();
             this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.connection = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,6 +50,7 @@
             this.fromTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.depature = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
+            this.txtStationTo = new System.Windows.Forms.TextBox();
             this.searchBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.connectionsTable)).BeginInit();
             this.depatureMonitor.SuspendLayout();
@@ -59,13 +59,13 @@
             // 
             // searchBox
             // 
+            this.searchBox.Controls.Add(this.txtStationTo);
             this.searchBox.Controls.Add(this.listAllStationsTo);
             this.searchBox.Controls.Add(this.listAllStationsFrom);
             this.searchBox.Controls.Add(this.txtStationFrom);
             this.searchBox.Controls.Add(this.btnSearch);
             this.searchBox.Controls.Add(this.label2);
             this.searchBox.Controls.Add(this.label1);
-            this.searchBox.Controls.Add(this.txtStationTo);
             this.searchBox.Location = new System.Drawing.Point(12, 68);
             this.searchBox.Name = "searchBox";
             this.searchBox.Size = new System.Drawing.Size(415, 112);
@@ -78,8 +78,9 @@
             this.listAllStationsTo.FormattingEnabled = true;
             this.listAllStationsTo.Location = new System.Drawing.Point(166, 74);
             this.listAllStationsTo.Name = "listAllStationsTo";
-            this.listAllStationsTo.Size = new System.Drawing.Size(143, 17);
+            this.listAllStationsTo.Size = new System.Drawing.Size(151, 17);
             this.listAllStationsTo.TabIndex = 6;
+            this.listAllStationsTo.DoubleClick += new System.EventHandler(this.putToStation);
             // 
             // listAllStationsFrom
             // 
@@ -88,6 +89,7 @@
             this.listAllStationsFrom.Name = "listAllStationsFrom";
             this.listAllStationsFrom.Size = new System.Drawing.Size(151, 17);
             this.listAllStationsFrom.TabIndex = 5;
+            this.listAllStationsFrom.DoubleClick += new System.EventHandler(this.putToStation);
             // 
             // txtStationFrom
             // 
@@ -124,15 +126,6 @@
             this.label1.Size = new System.Drawing.Size(26, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Von";
-            // 
-            // txtStationTo
-            // 
-            this.txtStationTo.FormattingEnabled = true;
-            this.txtStationTo.Location = new System.Drawing.Point(166, 57);
-            this.txtStationTo.Name = "txtStationTo";
-            this.txtStationTo.Size = new System.Drawing.Size(143, 21);
-            this.txtStationTo.TabIndex = 1;
-            this.txtStationTo.TextChanged += new System.EventHandler(this.getAllStations);
             // 
             // connectionsTable
             // 
@@ -257,6 +250,14 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Öv-App";
             // 
+            // txtStationTo
+            // 
+            this.txtStationTo.Location = new System.Drawing.Point(166, 57);
+            this.txtStationTo.Name = "txtStationTo";
+            this.txtStationTo.Size = new System.Drawing.Size(151, 20);
+            this.txtStationTo.TabIndex = 7;
+            this.txtStationTo.TextChanged += new System.EventHandler(this.getAllStations);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -284,7 +285,6 @@
         #endregion
 
         private System.Windows.Forms.GroupBox searchBox;
-        private System.Windows.Forms.ComboBox txtStationTo;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnSearch;
@@ -306,6 +306,7 @@
         private System.Windows.Forms.ListBox listAllStationsFrom;
         private System.Windows.Forms.TextBox txtStationFrom;
         private System.Windows.Forms.ListBox listAllStationsTo;
+        private System.Windows.Forms.TextBox txtStationTo;
     }
 }
 
