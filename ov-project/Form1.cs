@@ -13,6 +13,8 @@ namespace ov_project
 {
     public partial class Form1 : Form
     {
+        Transport transport = new Transport();
+
         public Form1()
         {
             InitializeComponent();
@@ -20,13 +22,23 @@ namespace ov_project
 
         private void getStations(object sender, EventArgs e)
         {
-            Transport transport = new Transport();
             Stations allStations =  transport.GetStations(1.ToString());
             // Stationen zu ComboBoxen stationForm & stationTo integrieren
            foreach (var station in allStations.StationList)
             {
                 stationFrom.Items.Add(station.Name);
                 stationTo.Items.Add(station.Name);
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            var allConnections = transport.GetConnections(stationFrom.SelectedItem.ToString(), stationTo.SelectedItem.ToString());
+            // Verbindungen zu connectionTable integrieren
+            foreach (var connection in allConnections.ConnectionList)
+            {
+                var createConnectionText = stationFrom.SelectedItem.ToString() + "->" + stationTo.SelectedItem.ToString();
+               connectionsTable.Rows.Add("", createConnectionText, "", DateTime.Now.ToString(connection.Duration));
             }
         }
     }
