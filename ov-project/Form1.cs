@@ -16,12 +16,11 @@ namespace ov_project
         public Form1()
         {
             InitializeComponent();
-            getStations();
         }
 
-        private void getStations()
+        private void getStations(object sender, EventArgs e)
         {
-        
+            Transport transport = new Transport();
         }
     }
 }
