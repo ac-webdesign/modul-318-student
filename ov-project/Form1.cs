@@ -22,34 +22,33 @@ namespace ov_project
 
         private void getData(object sender, EventArgs e)
         {
-            // Abfahrtmonitor Daten eintragen
+            // Abfahrtmonitor Zeit und Datum eintragen
             labelTime.Text = DateTime.Now.ToShortTimeString(); // TODO: Refresh every Time
             labelDate.Text = DateTime.Now.ToShortDateString();
 
-            // Alle Stationen zu ComboBoxen stationForm & stationTo integrieren
-            getStations();
         }
 
-        // TODO: Filterung & Alle Stationen bekommen
-        private void getStations()
+        private void getAllStations(object sender, EventArgs e)
         {
-            Stations allStations = transport.GetStations(1.ToString());
+            TextBox searchStation = (TextBox)sender;
+            Stations allStations = transport.GetStations(searchStation.Text);
+
             foreach (var station in allStations.StationList)
             {
-                stationFrom.Items.Add(station.Name);
-                stationTo.Items.Add(station.Name);
+                listAllStationsFrom.Items.Add(station.Name);
+                listAllStationsTo.Items.Add(station.Name);
             }
         }
 
         // TODO: Rows-Add-String beenden
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            var allConnections = transport.GetConnections(stationFrom.SelectedItem.ToString(), stationTo.SelectedItem.ToString());
+            var allConnections = transport.GetConnections(txtStationFrom.Text, txtStationFrom.Text);
 
             // Verbindungen zu connectionTable integrieren
             foreach (var connection in allConnections.ConnectionList)
             {
-                var createConnectionText = stationFrom.SelectedItem.ToString() + "->" + stationTo.SelectedItem.ToString();
+                var createConnectionText = txtStationFrom.Text + "->" + txtStationFrom.Text;
                 connectionsTable.Rows.Add("", createConnectionText, "", DateTime.Now.ToString(connection.Duration));
             }
         }
