@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SwissTransport;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,12 @@ namespace ov_project
         public Form1()
         {
             InitializeComponent();
+            getStations();
+        }
+
+        private void getStations()
+        {
+        
         }
     }
 }
