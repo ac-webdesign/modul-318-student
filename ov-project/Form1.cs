@@ -23,7 +23,7 @@ namespace ov_project
         private void getData(object sender, EventArgs e)
         {
             // Abfahrtmonitor Daten eintragen
-            labelTime.Text = DateTime.Now.ToShortTimeString();
+            labelTime.Text = DateTime.Now.ToShortTimeString(); // TODO: Refresh every Time
             labelDate.Text = DateTime.Now.ToShortDateString();
 
             // Alle Stationen zu ComboBoxen stationForm & stationTo integrieren
@@ -45,6 +45,7 @@ namespace ov_project
         private void btnSearch_Click(object sender, EventArgs e)
         {
             var allConnections = transport.GetConnections(stationFrom.SelectedItem.ToString(), stationTo.SelectedItem.ToString());
+
             // Verbindungen zu connectionTable integrieren
             foreach (var connection in allConnections.ConnectionList)
             {
