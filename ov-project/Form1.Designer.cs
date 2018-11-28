@@ -248,7 +248,7 @@
             this.Controls.Add(this.searchBox);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.getStations);
+            this.Load += new System.EventHandler(this.getData);
             this.searchBox.ResumeLayout(false);
             this.searchBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.connectionsTable)).EndInit();

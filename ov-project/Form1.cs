@@ -20,11 +20,20 @@ namespace ov_project
             InitializeComponent();
         }
 
+        private void getData(object sender, EventArgs e)
+        {
+            // Abfahrtmonitor Daten eintragen
+            labelTime.Text = DateTime.Now.ToShortTimeString();
+            labelDate.Text = DateTime.Now.ToShortDateString();
+
+            // Alle Stationen zu ComboBoxen stationForm & stationTo integrieren
+            getStations();
+        }
+
         // TODO: Filterung & Alle Stationen bekommen
-        private void getStations(object sender, EventArgs e)
+        private void getStations()
         {
             Stations allStations = transport.GetStations(1.ToString());
-            // Stationen zu ComboBoxen stationForm & stationTo integrieren
             foreach (var station in allStations.StationList)
             {
                 stationFrom.Items.Add(station.Name);
