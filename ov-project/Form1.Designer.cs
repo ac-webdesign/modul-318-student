@@ -144,6 +144,8 @@
             // 
             // connectionsTable
             // 
+            this.connectionsTable.AllowUserToAddRows = false;
+            this.connectionsTable.AllowUserToDeleteRows = false;
             this.connectionsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.connectionsTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.time,
@@ -153,6 +155,7 @@
             this.duration});
             this.connectionsTable.Location = new System.Drawing.Point(3, 203);
             this.connectionsTable.Name = "connectionsTable";
+            this.connectionsTable.ReadOnly = true;
             this.connectionsTable.Size = new System.Drawing.Size(948, 299);
             this.connectionsTable.TabIndex = 1;
             // 
@@ -203,6 +206,8 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.line,
@@ -211,6 +216,7 @@
             this.depature});
             this.dataGridView1.Location = new System.Drawing.Point(0, 112);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(947, 703);
             this.dataGridView1.TabIndex = 5;
             // 
