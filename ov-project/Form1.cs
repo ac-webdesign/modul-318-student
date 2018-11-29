@@ -31,6 +31,7 @@ namespace ov_project
             connectionsTable.Columns[2].Width = 302;
         }
 
+        // TODO: Catch-Errors
         private void getDepatureMonitorData(object sender, EventArgs e)
         {
             TabControl page = (TabControl)sender;
@@ -67,6 +68,7 @@ namespace ov_project
         }
 
         // BUG renew Station every keydown change
+        // TODO: Catch-Errors
         private void getAllStations(object sender, EventArgs e)
         {
             TextBox searchStation = (TextBox)sender;
