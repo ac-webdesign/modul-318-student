@@ -36,7 +36,7 @@ namespace ov_project
         {
             TabControl page = (TabControl)sender;
 
-            // Abfrage ob richtige Page aushewählt worden ist
+            // Abfrage, ob richtige Page ausgewählt worden ist
             if (page.SelectedTab.Name != "Start")
             {
                 setDefaultDepatureMonitorSettings();
