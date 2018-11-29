@@ -22,13 +22,20 @@ namespace ov_project
 
         private void getData(object sender, EventArgs e)
         {
-            // Abfahrtmonitor Zeit und Datum eintragen
-            labelTime.Text = DateTime.Now.ToShortTimeString(); // TODO: Refresh every Time
-            labelDate.Text = DateTime.Now.ToShortDateString();
-
             // Listen deaktivieren
             listAllStationsFrom.Visible = false;
             listAllStationsTo.Visible = false;
+
+            // Standardbreite für Spalten setzen
+            connectionsTable.Columns[1].Width = 300;
+            connectionsTable.Columns[2].Width = 300;
+            depatureMonitorTable.Columns[0].Width = 300;
+            depatureMonitorTable.Columns[2].Width = 300;
+            depatureMonitorTable.Columns[3].Width = 204;
+
+            // Abfahrtmonitor Zeit und Datum eintragen
+            labelTime.Text = DateTime.Now.ToShortTimeString(); // TODO: Refresh every Time
+            labelDate.Text = DateTime.Now.ToShortDateString();
         }
 
         // BUG renew Station every keydown change

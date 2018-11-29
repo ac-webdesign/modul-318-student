@@ -37,31 +37,31 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.connectionsTable = new System.Windows.Forms.DataGridView();
-            this.Start = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.label3 = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.line = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gleis = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fromTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.depature = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.depatureMonitor = new System.Windows.Forms.GroupBox();
-            this.labelDate = new System.Windows.Forms.Label();
-            this.labelTime = new System.Windows.Forms.Label();
-            this.labelStationname = new System.Windows.Forms.Label();
             this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.connection = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.endStation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.station = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.duration = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Start = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.depatureMonitorTable = new System.Windows.Forms.DataGridView();
+            this.line = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gleis = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fromTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.depature = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.depatureMonitorBox = new System.Windows.Forms.GroupBox();
+            this.labelDate = new System.Windows.Forms.Label();
+            this.labelTime = new System.Windows.Forms.Label();
+            this.labelStationname = new System.Windows.Forms.Label();
             this.searchBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.connectionsTable)).BeginInit();
             this.Start.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.depatureMonitor.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.depatureMonitorTable)).BeginInit();
+            this.depatureMonitorBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // searchBox
@@ -159,6 +159,36 @@
             this.connectionsTable.Size = new System.Drawing.Size(948, 299);
             this.connectionsTable.TabIndex = 1;
             // 
+            // date
+            // 
+            this.date.HeaderText = "Datum";
+            this.date.Name = "date";
+            this.date.ReadOnly = true;
+            // 
+            // connection
+            // 
+            this.connection.HeaderText = "Start";
+            this.connection.Name = "connection";
+            this.connection.ReadOnly = true;
+            // 
+            // endStation
+            // 
+            this.endStation.HeaderText = "Ziel";
+            this.endStation.Name = "endStation";
+            this.endStation.ReadOnly = true;
+            // 
+            // station
+            // 
+            this.station.HeaderText = "Gleis";
+            this.station.Name = "station";
+            this.station.ReadOnly = true;
+            // 
+            // duration
+            // 
+            this.duration.HeaderText = "Dauer";
+            this.duration.Name = "duration";
+            this.duration.ReadOnly = true;
+            // 
             // Start
             // 
             this.Start.Controls.Add(this.tabPage1);
@@ -194,8 +224,8 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.dataGridView1);
-            this.tabPage2.Controls.Add(this.depatureMonitor);
+            this.tabPage2.Controls.Add(this.depatureMonitorTable);
+            this.tabPage2.Controls.Add(this.depatureMonitorBox);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -204,21 +234,21 @@
             this.tabPage2.Text = "Abfahrtmonitor";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // depatureMonitorTable
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.depatureMonitorTable.AllowUserToAddRows = false;
+            this.depatureMonitorTable.AllowUserToDeleteRows = false;
+            this.depatureMonitorTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.depatureMonitorTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.line,
             this.gleis,
             this.fromTo,
             this.depature});
-            this.dataGridView1.Location = new System.Drawing.Point(0, 112);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(947, 703);
-            this.dataGridView1.TabIndex = 5;
+            this.depatureMonitorTable.Location = new System.Drawing.Point(0, 115);
+            this.depatureMonitorTable.Name = "depatureMonitorTable";
+            this.depatureMonitorTable.ReadOnly = true;
+            this.depatureMonitorTable.Size = new System.Drawing.Size(947, 404);
+            this.depatureMonitorTable.TabIndex = 5;
             // 
             // line
             // 
@@ -244,17 +274,17 @@
             this.depature.Name = "depature";
             this.depature.ReadOnly = true;
             // 
-            // depatureMonitor
+            // depatureMonitorBox
             // 
-            this.depatureMonitor.Controls.Add(this.labelDate);
-            this.depatureMonitor.Controls.Add(this.labelTime);
-            this.depatureMonitor.Controls.Add(this.labelStationname);
-            this.depatureMonitor.Location = new System.Drawing.Point(0, 25);
-            this.depatureMonitor.Name = "depatureMonitor";
-            this.depatureMonitor.Size = new System.Drawing.Size(947, 90);
-            this.depatureMonitor.TabIndex = 4;
-            this.depatureMonitor.TabStop = false;
-            this.depatureMonitor.Text = "Abfahrtmonitor";
+            this.depatureMonitorBox.Controls.Add(this.labelDate);
+            this.depatureMonitorBox.Controls.Add(this.labelTime);
+            this.depatureMonitorBox.Controls.Add(this.labelStationname);
+            this.depatureMonitorBox.Location = new System.Drawing.Point(0, 25);
+            this.depatureMonitorBox.Name = "depatureMonitorBox";
+            this.depatureMonitorBox.Size = new System.Drawing.Size(947, 90);
+            this.depatureMonitorBox.TabIndex = 4;
+            this.depatureMonitorBox.TabStop = false;
+            this.depatureMonitorBox.Text = "Abfahrtmonitor";
             // 
             // labelDate
             // 
@@ -286,36 +316,6 @@
             this.labelStationname.TabIndex = 0;
             this.labelStationname.Text = "Stationsname";
             // 
-            // date
-            // 
-            this.date.HeaderText = "Datum";
-            this.date.Name = "date";
-            this.date.ReadOnly = true;
-            // 
-            // connection
-            // 
-            this.connection.HeaderText = "Start";
-            this.connection.Name = "connection";
-            this.connection.ReadOnly = true;
-            // 
-            // endStation
-            // 
-            this.endStation.HeaderText = "Ziel";
-            this.endStation.Name = "endStation";
-            this.endStation.ReadOnly = true;
-            // 
-            // station
-            // 
-            this.station.HeaderText = "Gleis";
-            this.station.Name = "station";
-            this.station.ReadOnly = true;
-            // 
-            // duration
-            // 
-            this.duration.HeaderText = "Dauer";
-            this.duration.Name = "duration";
-            this.duration.ReadOnly = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -332,9 +332,9 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.depatureMonitor.ResumeLayout(false);
-            this.depatureMonitor.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.depatureMonitorTable)).EndInit();
+            this.depatureMonitorBox.ResumeLayout(false);
+            this.depatureMonitorBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -354,12 +354,12 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView depatureMonitorTable;
         private System.Windows.Forms.DataGridViewTextBoxColumn line;
         private System.Windows.Forms.DataGridViewTextBoxColumn gleis;
         private System.Windows.Forms.DataGridViewTextBoxColumn fromTo;
         private System.Windows.Forms.DataGridViewTextBoxColumn depature;
-        private System.Windows.Forms.GroupBox depatureMonitor;
+        private System.Windows.Forms.GroupBox depatureMonitorBox;
         private System.Windows.Forms.Label labelDate;
         private System.Windows.Forms.Label labelTime;
         private System.Windows.Forms.Label labelStationname;
