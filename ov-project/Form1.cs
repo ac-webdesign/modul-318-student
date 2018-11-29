@@ -22,6 +22,11 @@ namespace ov_project
 
         private void getData(object sender, EventArgs e)
         {
+            // Standardbreite von Formular setzen
+            ovForm form = (ovForm)sender;
+            form.Width = 1000;
+            form.Height = 600;
+
             // Listen deaktivieren
             listAllStationsFrom.Visible = false;
             listAllStationsTo.Visible = false;
