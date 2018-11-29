@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace ov_project
 {
-    public partial class Form1 : Form
+    public partial class ovForm : Form
     {
         Transport transport = new Transport();
 
-        public Form1()
+        public ovForm()
         {
             InitializeComponent();
         }

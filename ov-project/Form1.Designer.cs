@@ -1,6 +1,6 @@
 ﻿namespace ov_project
 {
-    partial class Form1
+    partial class ovForm
     {
         /// <summary>
         /// Erforderliche Designervariable.
@@ -309,14 +309,14 @@
             this.depature.Name = "depature";
             this.depature.ReadOnly = true;
             // 
-            // Form1
+            // ovForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(975, 575);
             this.Controls.Add(this.Start);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "ovForm";
+            this.Text = "OV-App";
             this.Load += new System.EventHandler(this.getData);
             this.searchBox.ResumeLayout(false);
             this.searchBox.PerformLayout();
