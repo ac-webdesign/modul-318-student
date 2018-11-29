@@ -22,12 +22,6 @@ namespace ov_project
 
         private void getData(object sender, EventArgs e)
         {
-            setDefaultStartSettings();
-            //loadDepatureConnections();
-        }
-
-        private void setDefaultStartSettings()
-        {
             // Listen deaktivieren
             listAllStationsFrom.Visible = false;
             listAllStationsTo.Visible = false;
@@ -37,19 +31,25 @@ namespace ov_project
             connectionsTable.Columns[2].Width = 302;
         }
 
-        private void loadDepatureConnections()
+        private void getDepatureMonitorData(object sender, EventArgs e)
         {
-            setDefaultDepatureMonitorSettings();
+            TabControl page = (TabControl)sender;
 
-            var allConnections = transport.GetConnections(listAllStationsFrom.SelectedItem.ToString(), listAllStationsTo.SelectedItem.ToString());
-
-            // Verbindungen zu connectionTable integrieren
-            foreach (var connection in allConnections.ConnectionList)
+            // Abfrage ob richtige Page aushewählt worden ist
+            if (page.SelectedTab.Name != "Start")
             {
-               var stationFormName = connection.From.Station.Name;
-               var stationToName = connection.To.Station.Name;
-               var depatureTime = Convert.ToDateTime(connection.From.Departure).ToShortTimeString();
-               depatureMonitorTable.Rows.Add(stationFormName, connection.From.Platform, stationToName, depatureTime);
+                setDefaultDepatureMonitorSettings();
+
+                var allConnections = transport.GetConnections(listAllStationsFrom.SelectedItem.ToString(), listAllStationsTo.SelectedItem.ToString());
+
+                // Verbindungen zu connectionTable integrieren
+                foreach (var connection in allConnections.ConnectionList)
+                {
+                    var stationFormName = connection.From.Station.Name;
+                    var stationToName = connection.To.Station.Name;
+                    var depatureTime = Convert.ToDateTime(connection.From.Departure).ToShortTimeString();
+                    depatureMonitorTable.Rows.Add(stationFormName, connection.From.Platform, stationToName, depatureTime);
+                }
             }
         }
 

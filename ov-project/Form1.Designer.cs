@@ -43,7 +43,7 @@
             this.station = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.duration = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Start = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.startPage = new System.Windows.Forms.TabPage();
             this.label3 = new System.Windows.Forms.Label();
             this.depatureMonitorPage = new System.Windows.Forms.TabPage();
             this.depatureMonitorTable = new System.Windows.Forms.DataGridView();
@@ -58,7 +58,7 @@
             this.searchBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.connectionsTable)).BeginInit();
             this.Start.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.startPage.SuspendLayout();
             this.depatureMonitorPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.depatureMonitorTable)).BeginInit();
             this.depatureMonitorBox.SuspendLayout();
@@ -191,26 +191,27 @@
             // 
             // Start
             // 
-            this.Start.Controls.Add(this.tabPage1);
+            this.Start.Controls.Add(this.startPage);
             this.Start.Controls.Add(this.depatureMonitorPage);
             this.Start.Location = new System.Drawing.Point(8, 12);
             this.Start.Name = "Start";
             this.Start.SelectedIndex = 0;
             this.Start.Size = new System.Drawing.Size(955, 551);
             this.Start.TabIndex = 5;
+            this.Start.SelectedIndexChanged += new System.EventHandler(this.getDepatureMonitorData);
             // 
-            // tabPage1
+            // startPage
             // 
-            this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Controls.Add(this.searchBox);
-            this.tabPage1.Controls.Add(this.connectionsTable);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(947, 525);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Start";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.startPage.Controls.Add(this.label3);
+            this.startPage.Controls.Add(this.searchBox);
+            this.startPage.Controls.Add(this.connectionsTable);
+            this.startPage.Location = new System.Drawing.Point(4, 22);
+            this.startPage.Name = "startPage";
+            this.startPage.Padding = new System.Windows.Forms.Padding(3);
+            this.startPage.Size = new System.Drawing.Size(947, 525);
+            this.startPage.TabIndex = 0;
+            this.startPage.Text = "Start";
+            this.startPage.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
@@ -329,8 +330,8 @@
             this.searchBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.connectionsTable)).EndInit();
             this.Start.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            this.startPage.ResumeLayout(false);
+            this.startPage.PerformLayout();
             this.depatureMonitorPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.depatureMonitorTable)).EndInit();
             this.depatureMonitorBox.ResumeLayout(false);
@@ -351,7 +352,7 @@
         private System.Windows.Forms.ListBox listAllStationsTo;
         private System.Windows.Forms.TextBox txtStationTo;
         private System.Windows.Forms.TabControl Start;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage startPage;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TabPage depatureMonitorPage;
         private System.Windows.Forms.DataGridView depatureMonitorTable;
