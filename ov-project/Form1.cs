@@ -22,6 +22,12 @@ namespace ov_project
 
         private void getData(object sender, EventArgs e)
         {
+            setDefaultStartSettings();
+            setDefaultDepatureMonitorSettings();   
+        }
+
+        private void setDefaultStartSettings()
+        {
             // Listen deaktivieren
             listAllStationsFrom.Visible = false;
             listAllStationsTo.Visible = false;
@@ -29,6 +35,11 @@ namespace ov_project
             // Standardbreite für Spalten setzen
             connectionsTable.Columns[1].Width = 300;
             connectionsTable.Columns[2].Width = 300;
+        }
+
+        private void setDefaultDepatureMonitorSettings()
+        {
+            // Standardbreite für Spalten setzen
             depatureMonitorTable.Columns[0].Width = 300;
             depatureMonitorTable.Columns[2].Width = 300;
             depatureMonitorTable.Columns[3].Width = 204;
