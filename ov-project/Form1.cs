@@ -23,7 +23,7 @@ namespace ov_project
         private void getData(object sender, EventArgs e)
         {
             setDefaultStartSettings();
-            setDefaultDepatureMonitorSettings();   
+            //loadDepatureConnections();
         }
 
         private void setDefaultStartSettings()
@@ -37,6 +37,22 @@ namespace ov_project
             connectionsTable.Columns[2].Width = 302;
         }
 
+        private void loadDepatureConnections()
+        {
+            setDefaultDepatureMonitorSettings();
+
+            var allConnections = transport.GetConnections(listAllStationsFrom.SelectedItem.ToString(), listAllStationsTo.SelectedItem.ToString());
+
+            // Verbindungen zu connectionTable integrieren
+            foreach (var connection in allConnections.ConnectionList)
+            {
+               var stationFormName = connection.From.Station.Name;
+               var stationToName = connection.To.Station.Name;
+               var depatureTime = Convert.ToDateTime(connection.From.Departure).ToShortTimeString();
+               depatureMonitorTable.Rows.Add(stationFormName, connection.From.Platform, stationToName, depatureTime);
+            }
+        }
+
         private void setDefaultDepatureMonitorSettings()
         {
             // Standardbreite für Spalten setzen
@@ -44,7 +60,8 @@ namespace ov_project
             depatureMonitorTable.Columns[2].Width = 300;
             depatureMonitorTable.Columns[3].Width = 204;
 
-            // Abfahrtmonitor Zeit und Datum eintragen
+            // Abfahrtmonitor Stationsname, Zeit und Datum eintragen
+            labelStationName.Text = listAllStationsFrom.SelectedItem.ToString();
             labelTime.Text = DateTime.Now.ToShortTimeString(); // TODO: Refresh every Time
             labelDate.Text = DateTime.Now.ToShortDateString();
         }
@@ -105,9 +122,9 @@ namespace ov_project
             {
                 var stationFormName = connection.From.Station.Name;
                 var stationToName = connection.To.Station.Name;
-                var depatureTime = Convert.ToDateTime(connection.From.Departure).ToShortDateString();
+                var depatureDate = Convert.ToDateTime(connection.From.Departure).ToShortDateString();
                 var durationTime = connection.Duration.Replace('d', ' '); // Zeit noch formatieren
-                connectionsTable.Rows.Add(depatureTime, stationFormName, stationToName, connection.From.Platform, durationTime);
+                connectionsTable.Rows.Add(depatureDate, stationFormName, stationToName, connection.From.Platform, durationTime);
             }
         }
     }

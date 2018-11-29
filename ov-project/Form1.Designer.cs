@@ -45,7 +45,7 @@
             this.Start = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label3 = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.depatureMonitorPage = new System.Windows.Forms.TabPage();
             this.depatureMonitorTable = new System.Windows.Forms.DataGridView();
             this.line = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gleis = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,12 +54,12 @@
             this.depatureMonitorBox = new System.Windows.Forms.GroupBox();
             this.labelDate = new System.Windows.Forms.Label();
             this.labelTime = new System.Windows.Forms.Label();
-            this.labelStationname = new System.Windows.Forms.Label();
+            this.labelStationName = new System.Windows.Forms.Label();
             this.searchBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.connectionsTable)).BeginInit();
             this.Start.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            this.depatureMonitorPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.depatureMonitorTable)).BeginInit();
             this.depatureMonitorBox.SuspendLayout();
             this.SuspendLayout();
@@ -192,7 +192,7 @@
             // Start
             // 
             this.Start.Controls.Add(this.tabPage1);
-            this.Start.Controls.Add(this.tabPage2);
+            this.Start.Controls.Add(this.depatureMonitorPage);
             this.Start.Location = new System.Drawing.Point(8, 12);
             this.Start.Name = "Start";
             this.Start.SelectedIndex = 0;
@@ -222,17 +222,17 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Öv-App";
             // 
-            // tabPage2
+            // depatureMonitorPage
             // 
-            this.tabPage2.Controls.Add(this.depatureMonitorTable);
-            this.tabPage2.Controls.Add(this.depatureMonitorBox);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(947, 525);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Abfahrtmonitor";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.depatureMonitorPage.Controls.Add(this.depatureMonitorTable);
+            this.depatureMonitorPage.Controls.Add(this.depatureMonitorBox);
+            this.depatureMonitorPage.Location = new System.Drawing.Point(4, 22);
+            this.depatureMonitorPage.Name = "depatureMonitorPage";
+            this.depatureMonitorPage.Padding = new System.Windows.Forms.Padding(3);
+            this.depatureMonitorPage.Size = new System.Drawing.Size(947, 525);
+            this.depatureMonitorPage.TabIndex = 1;
+            this.depatureMonitorPage.Text = "Abfahrtmonitor";
+            this.depatureMonitorPage.UseVisualStyleBackColor = true;
             // 
             // depatureMonitorTable
             // 
@@ -278,7 +278,7 @@
             // 
             this.depatureMonitorBox.Controls.Add(this.labelDate);
             this.depatureMonitorBox.Controls.Add(this.labelTime);
-            this.depatureMonitorBox.Controls.Add(this.labelStationname);
+            this.depatureMonitorBox.Controls.Add(this.labelStationName);
             this.depatureMonitorBox.Location = new System.Drawing.Point(0, 6);
             this.depatureMonitorBox.Name = "depatureMonitorBox";
             this.depatureMonitorBox.Size = new System.Drawing.Size(947, 109);
@@ -306,15 +306,15 @@
             this.labelTime.TabIndex = 1;
             this.labelTime.Text = "00:01";
             // 
-            // labelStationname
+            // labelStationName
             // 
-            this.labelStationname.AutoSize = true;
-            this.labelStationname.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelStationname.Location = new System.Drawing.Point(6, 42);
-            this.labelStationname.Name = "labelStationname";
-            this.labelStationname.Size = new System.Drawing.Size(135, 24);
-            this.labelStationname.TabIndex = 0;
-            this.labelStationname.Text = "Stationsname";
+            this.labelStationName.AutoSize = true;
+            this.labelStationName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelStationName.Location = new System.Drawing.Point(6, 42);
+            this.labelStationName.Name = "labelStationName";
+            this.labelStationName.Size = new System.Drawing.Size(135, 24);
+            this.labelStationName.TabIndex = 0;
+            this.labelStationName.Text = "Stationsname";
             // 
             // Form1
             // 
@@ -331,7 +331,7 @@
             this.Start.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
+            this.depatureMonitorPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.depatureMonitorTable)).EndInit();
             this.depatureMonitorBox.ResumeLayout(false);
             this.depatureMonitorBox.PerformLayout();
@@ -353,7 +353,7 @@
         private System.Windows.Forms.TabControl Start;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage depatureMonitorPage;
         private System.Windows.Forms.DataGridView depatureMonitorTable;
         private System.Windows.Forms.DataGridViewTextBoxColumn line;
         private System.Windows.Forms.DataGridViewTextBoxColumn gleis;
@@ -362,7 +362,7 @@
         private System.Windows.Forms.GroupBox depatureMonitorBox;
         private System.Windows.Forms.Label labelDate;
         private System.Windows.Forms.Label labelTime;
-        private System.Windows.Forms.Label labelStationname;
+        private System.Windows.Forms.Label labelStationName;
         private System.Windows.Forms.DataGridViewTextBoxColumn date;
         private System.Windows.Forms.DataGridViewTextBoxColumn connection;
         private System.Windows.Forms.DataGridViewTextBoxColumn endStation;
