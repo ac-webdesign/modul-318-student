@@ -67,16 +67,16 @@ namespace ov_project
             }
         }
 
-        // TODO: Rows-Add-String beenden
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            var allConnections = transport.GetConnections(txtStationFrom.Text, txtStationFrom.Text);
+            var allConnections = transport.GetConnections(listAllStationsFrom.SelectedItem.ToString(), listAllStationsTo.SelectedItem.ToString());
 
             // Verbindungen zu connectionTable integrieren
             foreach (var connection in allConnections.ConnectionList)
             {
-                var createConnectionText = txtStationFrom.Text + "->" + txtStationFrom.Text;
-                connectionsTable.Rows.Add("", createConnectionText, "", DateTime.Now.ToString(connection.Duration));
+                var stationFormName = connection.From.Station.Name;
+                var stationToName = connection.To.Station.Name;
+                connectionsTable.Rows.Add(connection.From.Departure, stationFormName, stationToName, connection.From.Platform, connection.Duration);
             }
         }
     }
