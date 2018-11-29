@@ -31,8 +31,7 @@ namespace ov_project
             listAllStationsTo.Visible = false;
         }
 
-        // TODO renew Station every keydown change
-        // TODO if exist rows replace that
+        // BUG renew Station every keydown change
         private void getAllStations(object sender, EventArgs e)
         {
             TextBox searchStation = (TextBox)sender;
