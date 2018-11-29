@@ -37,7 +37,6 @@ namespace ov_project
                 if (searchStation.Name == "txtStationTo")  // TODO: Bessere Bedienungen
                 {
                     listAllStationsTo.Items.Add(station.Name);
-                   
                 }
                 else
                 {
