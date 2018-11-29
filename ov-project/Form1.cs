@@ -34,7 +34,7 @@ namespace ov_project
 
             // Standardbreite für Spalten setzen
             connectionsTable.Columns[1].Width = 300;
-            connectionsTable.Columns[2].Width = 300;
+            connectionsTable.Columns[2].Width = 302;
         }
 
         private void setDefaultDepatureMonitorSettings()
