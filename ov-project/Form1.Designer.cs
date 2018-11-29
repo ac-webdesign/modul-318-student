@@ -47,13 +47,16 @@
             this.label3 = new System.Windows.Forms.Label();
             this.depatureMonitorPage = new System.Windows.Forms.TabPage();
             this.depatureMonitorTable = new System.Windows.Forms.DataGridView();
+            this.line = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fromTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.depature = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.depatureMonitorBox = new System.Windows.Forms.GroupBox();
             this.labelDate = new System.Windows.Forms.Label();
             this.labelTime = new System.Windows.Forms.Label();
             this.labelStationName = new System.Windows.Forms.Label();
-            this.line = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fromTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.depature = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtDepature = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.listDepature = new System.Windows.Forms.ListBox();
             this.searchBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.connectionsTable)).BeginInit();
             this.Start.SuspendLayout();
@@ -252,48 +255,6 @@
             this.depatureMonitorTable.Size = new System.Drawing.Size(947, 398);
             this.depatureMonitorTable.TabIndex = 5;
             // 
-            // depatureMonitorBox
-            // 
-            this.depatureMonitorBox.Controls.Add(this.labelDate);
-            this.depatureMonitorBox.Controls.Add(this.labelTime);
-            this.depatureMonitorBox.Controls.Add(this.labelStationName);
-            this.depatureMonitorBox.Location = new System.Drawing.Point(0, 6);
-            this.depatureMonitorBox.Name = "depatureMonitorBox";
-            this.depatureMonitorBox.Size = new System.Drawing.Size(947, 109);
-            this.depatureMonitorBox.TabIndex = 4;
-            this.depatureMonitorBox.TabStop = false;
-            this.depatureMonitorBox.Text = "Abfahrtmonitor";
-            // 
-            // labelDate
-            // 
-            this.labelDate.AutoSize = true;
-            this.labelDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDate.Location = new System.Drawing.Point(821, 48);
-            this.labelDate.Name = "labelDate";
-            this.labelDate.Size = new System.Drawing.Size(80, 16);
-            this.labelDate.TabIndex = 2;
-            this.labelDate.Text = "20.08.2018";
-            // 
-            // labelTime
-            // 
-            this.labelTime.AutoSize = true;
-            this.labelTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTime.Location = new System.Drawing.Point(451, 48);
-            this.labelTime.Name = "labelTime";
-            this.labelTime.Size = new System.Drawing.Size(44, 16);
-            this.labelTime.TabIndex = 1;
-            this.labelTime.Text = "00:01";
-            // 
-            // labelStationName
-            // 
-            this.labelStationName.AutoSize = true;
-            this.labelStationName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelStationName.Location = new System.Drawing.Point(6, 42);
-            this.labelStationName.Name = "labelStationName";
-            this.labelStationName.Size = new System.Drawing.Size(135, 24);
-            this.labelStationName.TabIndex = 0;
-            this.labelStationName.Text = "Stationsname";
-            // 
             // line
             // 
             this.line.HeaderText = "Linie";
@@ -311,6 +272,77 @@
             this.depature.HeaderText = "Abfahrt";
             this.depature.Name = "depature";
             this.depature.ReadOnly = true;
+            // 
+            // depatureMonitorBox
+            // 
+            this.depatureMonitorBox.Controls.Add(this.listDepature);
+            this.depatureMonitorBox.Controls.Add(this.label4);
+            this.depatureMonitorBox.Controls.Add(this.txtDepature);
+            this.depatureMonitorBox.Controls.Add(this.labelDate);
+            this.depatureMonitorBox.Controls.Add(this.labelTime);
+            this.depatureMonitorBox.Controls.Add(this.labelStationName);
+            this.depatureMonitorBox.Location = new System.Drawing.Point(0, 6);
+            this.depatureMonitorBox.Name = "depatureMonitorBox";
+            this.depatureMonitorBox.Size = new System.Drawing.Size(947, 109);
+            this.depatureMonitorBox.TabIndex = 4;
+            this.depatureMonitorBox.TabStop = false;
+            this.depatureMonitorBox.Text = "Abfahrtmonitor";
+            // 
+            // labelDate
+            // 
+            this.labelDate.AutoSize = true;
+            this.labelDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDate.Location = new System.Drawing.Point(823, 59);
+            this.labelDate.Name = "labelDate";
+            this.labelDate.Size = new System.Drawing.Size(80, 16);
+            this.labelDate.TabIndex = 2;
+            this.labelDate.Text = "20.08.2018";
+            // 
+            // labelTime
+            // 
+            this.labelTime.AutoSize = true;
+            this.labelTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTime.Location = new System.Drawing.Point(570, 59);
+            this.labelTime.Name = "labelTime";
+            this.labelTime.Size = new System.Drawing.Size(44, 16);
+            this.labelTime.TabIndex = 1;
+            this.labelTime.Text = "00:01";
+            // 
+            // labelStationName
+            // 
+            this.labelStationName.AutoSize = true;
+            this.labelStationName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelStationName.Location = new System.Drawing.Point(230, 53);
+            this.labelStationName.Name = "labelStationName";
+            this.labelStationName.Size = new System.Drawing.Size(135, 24);
+            this.labelStationName.TabIndex = 0;
+            this.labelStationName.Text = "Stationsname";
+            // 
+            // txtDepature
+            // 
+            this.txtDepature.Location = new System.Drawing.Point(21, 57);
+            this.txtDepature.Name = "txtDepature";
+            this.txtDepature.Size = new System.Drawing.Size(135, 20);
+            this.txtDepature.TabIndex = 3;
+            this.txtDepature.TextChanged += new System.EventHandler(this.getAllStations);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(18, 41);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(41, 13);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Abfahrt";
+            // 
+            // listDepature
+            // 
+            this.listDepature.FormattingEnabled = true;
+            this.listDepature.Location = new System.Drawing.Point(21, 73);
+            this.listDepature.Name = "listDepature";
+            this.listDepature.Size = new System.Drawing.Size(135, 30);
+            this.listDepature.TabIndex = 6;
+            this.listDepature.DoubleClick += new System.EventHandler(this.putToStation);
             // 
             // ovForm
             // 
@@ -364,6 +396,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn line;
         private System.Windows.Forms.DataGridViewTextBoxColumn fromTo;
         private System.Windows.Forms.DataGridViewTextBoxColumn depature;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtDepature;
+        private System.Windows.Forms.ListBox listDepature;
     }
 }
 

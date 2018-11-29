@@ -45,27 +45,21 @@ namespace ov_project
             if (page.SelectedTab.Name != "Start")
             {
                 setDefaultDepatureMonitorSettings();
-
-                var allDepatureConnections = transport.GetStationBoard(listAllStationsFrom.SelectedItem.ToString(), 1.ToString());
-
-                // Verbindungen zu connectionTable integrieren
-                foreach (var station in allDepatureConnections.Entries)
-                {
-                    var depatureTime = station.Stop.Departure.ToShortTimeString();
-                    depatureMonitorTable.Rows.Add(station.Name, station.To, depatureTime);
-                }
             }
         }
 
         private void setDefaultDepatureMonitorSettings()
         {
+            // Liste und Stationsname deaktivieren
+            labelStationName.Visible = false;
+            listDepature.Visible = false;
+
             // Standardbreite für Spalten setzen
             depatureMonitorTable.Columns[0].Width = 300;
             depatureMonitorTable.Columns[1].Width = 300;
             depatureMonitorTable.Columns[2].Width = 300;
 
-            // Abfahrtmonitor Stationsname, Zeit und Datum eintragen
-            labelStationName.Text = listAllStationsFrom.SelectedItem.ToString();
+            // Abfahrtmonitor Zeit und Datum eintragen
             labelTime.Text = DateTime.Now.ToShortTimeString(); // TODO: Refresh every Time
             labelDate.Text = DateTime.Now.ToShortDateString();
         }
@@ -84,10 +78,14 @@ namespace ov_project
                     listAllStationsTo.Items.Add(station.Name);
                     listAllStationsTo.Visible = true;
                 }
-                else
+                else if(searchStation.Name == "txtStationFrom")
                 {
                     listAllStationsFrom.Items.Add(station.Name);
                     listAllStationsFrom.Visible = true;
+                } else
+                {
+                    listDepature.Items.Add(station.Name);
+                    listDepature.Visible = true;
                 }
             }
         }
@@ -101,10 +99,25 @@ namespace ov_project
                 txtStationTo.Text = selectedStation.SelectedItem.ToString();
                 listAllStationsTo.Visible = false;
             }
-            else
+            else if (selectedStation.Name == "listAllStationsFrom")
             {
                 txtStationFrom.Text = selectedStation.SelectedItem.ToString();
                 listAllStationsFrom.Visible = false;
+            }
+            else
+            {
+                txtDepature.Text = selectedStation.SelectedItem.ToString();
+                labelStationName.Text = txtDepature.Text;
+                labelStationName.Visible = true;
+                listDepature.Visible = false;
+
+                // Verbindungen zu depatureMonitorTable integrieren
+                var allDepatureConnections = transport.GetStationBoard(listDepature.SelectedItem.ToString(), 1.ToString());
+                foreach (var station in allDepatureConnections.Entries)
+                {
+                    var depatureTime = station.Stop.Departure.ToShortTimeString();
+                    depatureMonitorTable.Rows.Add(station.Name, station.To, depatureTime);
+                }
             }
         }
 
