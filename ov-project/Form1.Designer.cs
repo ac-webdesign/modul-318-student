@@ -47,14 +47,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.depatureMonitorPage = new System.Windows.Forms.TabPage();
             this.depatureMonitorTable = new System.Windows.Forms.DataGridView();
-            this.line = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gleis = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fromTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.depature = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.depatureMonitorBox = new System.Windows.Forms.GroupBox();
             this.labelDate = new System.Windows.Forms.Label();
             this.labelTime = new System.Windows.Forms.Label();
             this.labelStationName = new System.Windows.Forms.Label();
+            this.line = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fromTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.depature = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.searchBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.connectionsTable)).BeginInit();
             this.Start.SuspendLayout();
@@ -242,7 +241,6 @@
             this.depatureMonitorTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.depatureMonitorTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.line,
-            this.gleis,
             this.fromTo,
             this.depature});
             this.depatureMonitorTable.Location = new System.Drawing.Point(0, 121);
@@ -250,30 +248,6 @@
             this.depatureMonitorTable.ReadOnly = true;
             this.depatureMonitorTable.Size = new System.Drawing.Size(947, 398);
             this.depatureMonitorTable.TabIndex = 5;
-            // 
-            // line
-            // 
-            this.line.HeaderText = "Linie";
-            this.line.Name = "line";
-            this.line.ReadOnly = true;
-            // 
-            // gleis
-            // 
-            this.gleis.HeaderText = "Gleis";
-            this.gleis.Name = "gleis";
-            this.gleis.ReadOnly = true;
-            // 
-            // fromTo
-            // 
-            this.fromTo.HeaderText = "Ziel";
-            this.fromTo.Name = "fromTo";
-            this.fromTo.ReadOnly = true;
-            // 
-            // depature
-            // 
-            this.depature.HeaderText = "Abfahrt";
-            this.depature.Name = "depature";
-            this.depature.ReadOnly = true;
             // 
             // depatureMonitorBox
             // 
@@ -317,6 +291,24 @@
             this.labelStationName.TabIndex = 0;
             this.labelStationName.Text = "Stationsname";
             // 
+            // line
+            // 
+            this.line.HeaderText = "Linie";
+            this.line.Name = "line";
+            this.line.ReadOnly = true;
+            // 
+            // fromTo
+            // 
+            this.fromTo.HeaderText = "Ziel";
+            this.fromTo.Name = "fromTo";
+            this.fromTo.ReadOnly = true;
+            // 
+            // depature
+            // 
+            this.depature.HeaderText = "Abfahrt";
+            this.depature.Name = "depature";
+            this.depature.ReadOnly = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -356,10 +348,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TabPage depatureMonitorPage;
         private System.Windows.Forms.DataGridView depatureMonitorTable;
-        private System.Windows.Forms.DataGridViewTextBoxColumn line;
-        private System.Windows.Forms.DataGridViewTextBoxColumn gleis;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fromTo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn depature;
         private System.Windows.Forms.GroupBox depatureMonitorBox;
         private System.Windows.Forms.Label labelDate;
         private System.Windows.Forms.Label labelTime;
@@ -369,6 +357,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn endStation;
         private System.Windows.Forms.DataGridViewTextBoxColumn station;
         private System.Windows.Forms.DataGridViewTextBoxColumn duration;
+        private System.Windows.Forms.DataGridViewTextBoxColumn line;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fromTo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn depature;
     }
 }
 

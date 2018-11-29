@@ -41,15 +41,13 @@ namespace ov_project
             {
                 setDefaultDepatureMonitorSettings();
 
-                var allConnections = transport.GetConnections(listAllStationsFrom.SelectedItem.ToString(), listAllStationsTo.SelectedItem.ToString());
+                var allDepatureConnections = transport.GetStationBoard(listAllStationsFrom.SelectedItem.ToString(), 1.ToString());
 
                 // Verbindungen zu connectionTable integrieren
-                foreach (var connection in allConnections.ConnectionList)
+                foreach (var station in allDepatureConnections.Entries)
                 {
-                    var stationFormName = connection.From.Station.Name;
-                    var stationToName = connection.To.Station.Name;
-                    var depatureTime = Convert.ToDateTime(connection.From.Departure).ToShortTimeString();
-                    depatureMonitorTable.Rows.Add(stationFormName, connection.From.Platform, stationToName, depatureTime);
+                    var depatureTime = station.Stop.Departure.ToShortTimeString();
+                    depatureMonitorTable.Rows.Add(station.Name, station.To, depatureTime);
                 }
             }
         }
@@ -58,8 +56,8 @@ namespace ov_project
         {
             // Standardbreite für Spalten setzen
             depatureMonitorTable.Columns[0].Width = 300;
+            depatureMonitorTable.Columns[1].Width = 300;
             depatureMonitorTable.Columns[2].Width = 300;
-            depatureMonitorTable.Columns[3].Width = 204;
 
             // Abfahrtmonitor Stationsname, Zeit und Datum eintragen
             labelStationName.Text = listAllStationsFrom.SelectedItem.ToString();
