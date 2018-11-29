@@ -25,6 +25,10 @@ namespace ov_project
             // Abfahrtmonitor Zeit und Datum eintragen
             labelTime.Text = DateTime.Now.ToShortTimeString(); // TODO: Refresh every Time
             labelDate.Text = DateTime.Now.ToShortDateString();
+
+            // Listen deaktivieren
+            listAllStationsFrom.Visible = false;
+            listAllStationsTo.Visible = false;
         }
 
         private void getAllStations(object sender, EventArgs e)
@@ -37,10 +41,12 @@ namespace ov_project
                 if (searchStation.Name == "txtStationTo")  // TODO: Bessere Bedienungen
                 {
                     listAllStationsTo.Items.Add(station.Name);
+                    listAllStationsTo.Visible = true;
                 }
                 else
                 {
                     listAllStationsFrom.Items.Add(station.Name);
+                    listAllStationsFrom.Visible = true;
                 }
             }
         }
@@ -52,10 +58,12 @@ namespace ov_project
             if (selectedStation.Name == "listAllStationsTo")  // TODO: Bessere Bedienungen
             {
                 txtStationTo.Text = selectedStation.SelectedItem.ToString();
+                listAllStationsTo.Visible = false;
             }
             else
             {
                 txtStationFrom.Text = selectedStation.SelectedItem.ToString();
+                listAllStationsFrom.Visible = false;
             }
         }
 
