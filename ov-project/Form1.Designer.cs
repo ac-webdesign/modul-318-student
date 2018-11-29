@@ -50,7 +50,7 @@
             this.labelDate = new System.Windows.Forms.Label();
             this.labelTime = new System.Windows.Forms.Label();
             this.labelStationname = new System.Windows.Forms.Label();
-            this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.connection = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.endStation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.station = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -148,7 +148,7 @@
             this.connectionsTable.AllowUserToDeleteRows = false;
             this.connectionsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.connectionsTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.time,
+            this.date,
             this.connection,
             this.endStation,
             this.station,
@@ -242,6 +242,7 @@
             // 
             this.depature.HeaderText = "Abfahrt";
             this.depature.Name = "depature";
+            this.depature.ReadOnly = true;
             // 
             // depatureMonitor
             // 
@@ -285,11 +286,11 @@
             this.labelStationname.TabIndex = 0;
             this.labelStationname.Text = "Stationsname";
             // 
-            // time
+            // date
             // 
-            this.time.HeaderText = "Zeit";
-            this.time.Name = "time";
-            this.time.ReadOnly = true;
+            this.date.HeaderText = "Datum";
+            this.date.Name = "date";
+            this.date.ReadOnly = true;
             // 
             // connection
             // 
@@ -301,16 +302,19 @@
             // 
             this.endStation.HeaderText = "Ziel";
             this.endStation.Name = "endStation";
+            this.endStation.ReadOnly = true;
             // 
             // station
             // 
             this.station.HeaderText = "Gleis";
             this.station.Name = "station";
+            this.station.ReadOnly = true;
             // 
             // duration
             // 
             this.duration.HeaderText = "Dauer";
             this.duration.Name = "duration";
+            this.duration.ReadOnly = true;
             // 
             // Form1
             // 
@@ -359,7 +363,7 @@
         private System.Windows.Forms.Label labelDate;
         private System.Windows.Forms.Label labelTime;
         private System.Windows.Forms.Label labelStationname;
-        private System.Windows.Forms.DataGridViewTextBoxColumn time;
+        private System.Windows.Forms.DataGridViewTextBoxColumn date;
         private System.Windows.Forms.DataGridViewTextBoxColumn connection;
         private System.Windows.Forms.DataGridViewTextBoxColumn endStation;
         private System.Windows.Forms.DataGridViewTextBoxColumn station;

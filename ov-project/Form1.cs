@@ -77,7 +77,7 @@ namespace ov_project
                 var stationFormName = connection.From.Station.Name;
                 var stationToName = connection.To.Station.Name;
                 var depatureTime = Convert.ToDateTime(connection.From.Departure).ToShortDateString();
-                var durationTime = connection.Duration; // Zeit noch formatieren
+                var durationTime = connection.Duration.Replace('d',' '); // Zeit noch formatieren
                 connectionsTable.Rows.Add(depatureTime, stationFormName, stationToName, connection.From.Platform, durationTime);
             }
         }
