@@ -82,7 +82,7 @@
             // 
             // txtStationTo
             // 
-            this.txtStationTo.Location = new System.Drawing.Point(251, 58);
+            this.txtStationTo.Location = new System.Drawing.Point(222, 58);
             this.txtStationTo.Name = "txtStationTo";
             this.txtStationTo.Size = new System.Drawing.Size(151, 20);
             this.txtStationTo.TabIndex = 7;
@@ -91,7 +91,7 @@
             // listAllStationsTo
             // 
             this.listAllStationsTo.FormattingEnabled = true;
-            this.listAllStationsTo.Location = new System.Drawing.Point(251, 74);
+            this.listAllStationsTo.Location = new System.Drawing.Point(222, 74);
             this.listAllStationsTo.Name = "listAllStationsTo";
             this.listAllStationsTo.Size = new System.Drawing.Size(151, 43);
             this.listAllStationsTo.TabIndex = 6;
@@ -116,7 +116,7 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(548, 57);
+            this.btnSearch.Location = new System.Drawing.Point(416, 74);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(76, 20);
             this.btnSearch.TabIndex = 3;
@@ -127,7 +127,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(248, 42);
+            this.label2.Location = new System.Drawing.Point(219, 42);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(33, 13);
             this.label2.TabIndex = 2;
@@ -153,10 +153,10 @@
             this.endStation,
             this.station,
             this.duration});
-            this.connectionsTable.Location = new System.Drawing.Point(3, 203);
+            this.connectionsTable.Location = new System.Drawing.Point(3, 185);
             this.connectionsTable.Name = "connectionsTable";
             this.connectionsTable.ReadOnly = true;
-            this.connectionsTable.Size = new System.Drawing.Size(948, 299);
+            this.connectionsTable.Size = new System.Drawing.Size(948, 317);
             this.connectionsTable.TabIndex = 1;
             // 
             // date
@@ -244,10 +244,10 @@
             this.gleis,
             this.fromTo,
             this.depature});
-            this.depatureMonitorTable.Location = new System.Drawing.Point(0, 115);
+            this.depatureMonitorTable.Location = new System.Drawing.Point(0, 121);
             this.depatureMonitorTable.Name = "depatureMonitorTable";
             this.depatureMonitorTable.ReadOnly = true;
-            this.depatureMonitorTable.Size = new System.Drawing.Size(947, 404);
+            this.depatureMonitorTable.Size = new System.Drawing.Size(947, 398);
             this.depatureMonitorTable.TabIndex = 5;
             // 
             // line
@@ -279,9 +279,9 @@
             this.depatureMonitorBox.Controls.Add(this.labelDate);
             this.depatureMonitorBox.Controls.Add(this.labelTime);
             this.depatureMonitorBox.Controls.Add(this.labelStationname);
-            this.depatureMonitorBox.Location = new System.Drawing.Point(0, 25);
+            this.depatureMonitorBox.Location = new System.Drawing.Point(0, 6);
             this.depatureMonitorBox.Name = "depatureMonitorBox";
-            this.depatureMonitorBox.Size = new System.Drawing.Size(947, 90);
+            this.depatureMonitorBox.Size = new System.Drawing.Size(947, 109);
             this.depatureMonitorBox.TabIndex = 4;
             this.depatureMonitorBox.TabStop = false;
             this.depatureMonitorBox.Text = "Abfahrtmonitor";
