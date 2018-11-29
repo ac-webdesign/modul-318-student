@@ -75,7 +75,13 @@ namespace ov_project
         private void btnSearch_Click(object sender, EventArgs e)
         {
             var allConnections = transport.GetConnections(listAllStationsFrom.SelectedItem.ToString(), listAllStationsTo.SelectedItem.ToString());
-            btnSearchClickCounter++; 
+            btnSearchClickCounter++;
+
+            // Verbindungen von connectionTable beim zweiten Click clearen
+            if (btnSearchClickCounter >= 2)
+            {
+                connectionsTable.Rows.Clear();
+            }
 
             // Verbindungen zu connectionTable integrieren
             foreach (var connection in allConnections.ConnectionList)
@@ -84,10 +90,6 @@ namespace ov_project
                 var stationToName = connection.To.Station.Name;
                 var depatureTime = Convert.ToDateTime(connection.From.Departure).ToShortDateString();
                 var durationTime = connection.Duration.Replace('d', ' '); // Zeit noch formatieren
-                if (btnSearchClickCounter >= 2)
-                {
-                    connectionsTable.Rows.Clear();
-                }
                 connectionsTable.Rows.Add(depatureTime, stationFormName, stationToName, connection.From.Platform, durationTime);
             }
         }
