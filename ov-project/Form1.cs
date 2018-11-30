@@ -87,11 +87,13 @@ namespace ov_project
             {
                 txtStationTo.Text = selectedStation.SelectedItem.ToString();
                 listAllStationsTo.Visible = false;
+                showDepatureDateAndTimeOption();
             }
             else if (selectedStation.Name == "listAllStationsFrom")
             {
                 txtStationFrom.Text = selectedStation.SelectedItem.ToString();
                 listAllStationsFrom.Visible = false;
+                showDepatureDateAndTimeOption();
             }
             else
             {
@@ -117,6 +119,15 @@ namespace ov_project
                     depatureMonitorTable.Rows.Add(station.Name, station.To, depatureTime);
                 }
             }
+        }
+
+        private void showDepatureDateAndTimeOption()
+        {
+            labelDepatureDate.Visible = true;
+            dpDepatureDate.Visible = true;
+            labelDepatureTime.Visible = true;
+            txtDepatureTime.Text = DateTime.Now.ToShortTimeString();
+            txtDepatureTime.Visible = true;
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
