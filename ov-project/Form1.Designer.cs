@@ -51,12 +51,12 @@
             this.fromTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.depature = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.depatureMonitorBox = new System.Windows.Forms.GroupBox();
+            this.listDepature = new System.Windows.Forms.ListBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtDepature = new System.Windows.Forms.TextBox();
             this.labelDate = new System.Windows.Forms.Label();
             this.labelTime = new System.Windows.Forms.Label();
             this.labelStationName = new System.Windows.Forms.Label();
-            this.txtDepature = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.listDepature = new System.Windows.Forms.ListBox();
             this.searchBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.connectionsTable)).BeginInit();
             this.Start.SuspendLayout();
@@ -97,6 +97,7 @@
             this.listAllStationsTo.Name = "listAllStationsTo";
             this.listAllStationsTo.Size = new System.Drawing.Size(151, 43);
             this.listAllStationsTo.TabIndex = 6;
+            this.listAllStationsTo.Visible = false;
             this.listAllStationsTo.DoubleClick += new System.EventHandler(this.putToStation);
             // 
             // listAllStationsFrom
@@ -106,6 +107,7 @@
             this.listAllStationsFrom.Name = "listAllStationsFrom";
             this.listAllStationsFrom.Size = new System.Drawing.Size(151, 43);
             this.listAllStationsFrom.TabIndex = 5;
+            this.listAllStationsFrom.Visible = false;
             this.listAllStationsFrom.DoubleClick += new System.EventHandler(this.putToStation);
             // 
             // txtStationFrom
@@ -288,6 +290,33 @@
             this.depatureMonitorBox.TabStop = false;
             this.depatureMonitorBox.Text = "Abfahrtmonitor";
             // 
+            // listDepature
+            // 
+            this.listDepature.FormattingEnabled = true;
+            this.listDepature.Location = new System.Drawing.Point(21, 73);
+            this.listDepature.Name = "listDepature";
+            this.listDepature.Size = new System.Drawing.Size(135, 30);
+            this.listDepature.TabIndex = 6;
+            this.listDepature.Visible = false;
+            this.listDepature.DoubleClick += new System.EventHandler(this.putToStation);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(18, 41);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(41, 13);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Abfahrt";
+            // 
+            // txtDepature
+            // 
+            this.txtDepature.Location = new System.Drawing.Point(21, 57);
+            this.txtDepature.Name = "txtDepature";
+            this.txtDepature.Size = new System.Drawing.Size(135, 20);
+            this.txtDepature.TabIndex = 3;
+            this.txtDepature.TextChanged += new System.EventHandler(this.getAllStations);
+            // 
             // labelDate
             // 
             this.labelDate.AutoSize = true;
@@ -317,32 +346,7 @@
             this.labelStationName.Size = new System.Drawing.Size(135, 24);
             this.labelStationName.TabIndex = 0;
             this.labelStationName.Text = "Stationsname";
-            // 
-            // txtDepature
-            // 
-            this.txtDepature.Location = new System.Drawing.Point(21, 57);
-            this.txtDepature.Name = "txtDepature";
-            this.txtDepature.Size = new System.Drawing.Size(135, 20);
-            this.txtDepature.TabIndex = 3;
-            this.txtDepature.TextChanged += new System.EventHandler(this.getAllStations);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(18, 41);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(41, 13);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Abfahrt";
-            // 
-            // listDepature
-            // 
-            this.listDepature.FormattingEnabled = true;
-            this.listDepature.Location = new System.Drawing.Point(21, 73);
-            this.listDepature.Name = "listDepature";
-            this.listDepature.Size = new System.Drawing.Size(135, 30);
-            this.listDepature.TabIndex = 6;
-            this.listDepature.DoubleClick += new System.EventHandler(this.putToStation);
+            this.labelStationName.Visible = false;
             // 
             // ovForm
             // 

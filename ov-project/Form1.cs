@@ -8,6 +8,10 @@ namespace ov_project
     {
         Transport transport = new Transport();
 
+        // Zähler damit Rows beim zweiten Mal gecleart werden
+        int counter = 0;
+
+
         public ovForm()
         {
             InitializeComponent();
@@ -19,10 +23,6 @@ namespace ov_project
             ovForm form = (ovForm)sender;
             form.Width = 1000;
             form.Height = 600;
-
-            // Listen deaktivieren
-            listAllStationsFrom.Visible = false;
-            listAllStationsTo.Visible = false;
 
             // Standardbreite für Spalten setzen
             connectionsTable.Columns[1].Width = 300;
@@ -43,10 +43,6 @@ namespace ov_project
 
         private void setDefaultDepatureMonitorSettings()
         {
-            // Liste und Stationsname deaktivieren
-            labelStationName.Visible = false;
-            listDepature.Visible = false;
-
             // Standardbreite für Spalten setzen
             depatureMonitorTable.Columns[0].Width = 300;
             depatureMonitorTable.Columns[1].Width = 300;
@@ -104,6 +100,15 @@ namespace ov_project
                 labelStationName.Visible = true;
                 listDepature.Visible = false;
 
+                counter++;
+
+                // Verbindungen von depatureMonitor beim zweiten Click clearen
+                if (counter >= 2)
+                {
+                    depatureMonitorTable.Rows.Clear();
+                }
+
+
                 // Verbindungen zu depatureMonitorTable integrieren
                 var allDepatureConnections = transport.GetStationBoard(listDepature.SelectedItem.ToString(), 1.ToString());
                 foreach (var station in allDepatureConnections.Entries)
@@ -114,16 +119,13 @@ namespace ov_project
             }
         }
 
-        // Klick-Zähler des Button damit Rows beim zweiten Mal gecleart werden
-        int btnSearchClickCounter = 0;
-
         private void btnSearch_Click(object sender, EventArgs e)
         {
             var allConnections = transport.GetConnections(listAllStationsFrom.SelectedItem.ToString(), listAllStationsTo.SelectedItem.ToString());
-            btnSearchClickCounter++;
+            counter++;
 
             // Verbindungen von connectionTable beim zweiten Click clearen
-            if (btnSearchClickCounter >= 2)
+            if (counter >= 2)
             {
                 connectionsTable.Rows.Clear();
             }
