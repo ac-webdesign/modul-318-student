@@ -150,6 +150,8 @@
             // 
             this.connectionsTable.AllowUserToAddRows = false;
             this.connectionsTable.AllowUserToDeleteRows = false;
+            this.connectionsTable.AllowUserToResizeColumns = false;
+            this.connectionsTable.AllowUserToResizeRows = false;
             this.connectionsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.connectionsTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.date,
@@ -157,9 +159,11 @@
             this.endStation,
             this.station,
             this.duration});
+            this.connectionsTable.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.connectionsTable.Location = new System.Drawing.Point(3, 185);
             this.connectionsTable.Name = "connectionsTable";
             this.connectionsTable.ReadOnly = true;
+            this.connectionsTable.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.connectionsTable.Size = new System.Drawing.Size(948, 317);
             this.connectionsTable.TabIndex = 1;
             // 
@@ -246,6 +250,8 @@
             // 
             this.depatureMonitorTable.AllowUserToAddRows = false;
             this.depatureMonitorTable.AllowUserToDeleteRows = false;
+            this.depatureMonitorTable.AllowUserToResizeColumns = false;
+            this.depatureMonitorTable.AllowUserToResizeRows = false;
             this.depatureMonitorTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.depatureMonitorTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.line,
