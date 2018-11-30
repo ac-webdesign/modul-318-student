@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.searchBox = new System.Windows.Forms.GroupBox();
+            this.txtDepatureTime = new System.Windows.Forms.TextBox();
+            this.labelDepatureTime = new System.Windows.Forms.Label();
+            this.labelDepatureDate = new System.Windows.Forms.Label();
+            this.dpDepatureDate = new System.Windows.Forms.DateTimePicker();
             this.txtStationTo = new System.Windows.Forms.TextBox();
             this.listAllStationsTo = new System.Windows.Forms.ListBox();
             this.listAllStationsFrom = new System.Windows.Forms.ListBox();
@@ -57,10 +61,6 @@
             this.labelDate = new System.Windows.Forms.Label();
             this.labelTime = new System.Windows.Forms.Label();
             this.labelStationName = new System.Windows.Forms.Label();
-            this.dpDepatureDate = new System.Windows.Forms.DateTimePicker();
-            this.labelDepatureDate = new System.Windows.Forms.Label();
-            this.labelDepatureTime = new System.Windows.Forms.Label();
-            this.txtDepatureTime = new System.Windows.Forms.TextBox();
             this.searchBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.connectionsTable)).BeginInit();
             this.Start.SuspendLayout();
@@ -89,6 +89,42 @@
             this.searchBox.TabIndex = 0;
             this.searchBox.TabStop = false;
             this.searchBox.Text = "Verbindungen suchen";
+            // 
+            // txtDepatureTime
+            // 
+            this.txtDepatureTime.Location = new System.Drawing.Point(508, 95);
+            this.txtDepatureTime.Name = "txtDepatureTime";
+            this.txtDepatureTime.Size = new System.Drawing.Size(41, 20);
+            this.txtDepatureTime.TabIndex = 11;
+            this.txtDepatureTime.Visible = false;
+            // 
+            // labelDepatureTime
+            // 
+            this.labelDepatureTime.AutoSize = true;
+            this.labelDepatureTime.Location = new System.Drawing.Point(505, 81);
+            this.labelDepatureTime.Name = "labelDepatureTime";
+            this.labelDepatureTime.Size = new System.Drawing.Size(25, 13);
+            this.labelDepatureTime.TabIndex = 10;
+            this.labelDepatureTime.Text = "Zeit";
+            this.labelDepatureTime.Visible = false;
+            // 
+            // labelDepatureDate
+            // 
+            this.labelDepatureDate.AutoSize = true;
+            this.labelDepatureDate.Location = new System.Drawing.Point(386, 42);
+            this.labelDepatureDate.Name = "labelDepatureDate";
+            this.labelDepatureDate.Size = new System.Drawing.Size(38, 13);
+            this.labelDepatureDate.TabIndex = 9;
+            this.labelDepatureDate.Text = "Datum";
+            this.labelDepatureDate.Visible = false;
+            // 
+            // dpDepatureDate
+            // 
+            this.dpDepatureDate.Location = new System.Drawing.Point(389, 58);
+            this.dpDepatureDate.Name = "dpDepatureDate";
+            this.dpDepatureDate.Size = new System.Drawing.Size(207, 20);
+            this.dpDepatureDate.TabIndex = 8;
+            this.dpDepatureDate.Visible = false;
             // 
             // txtStationTo
             // 
@@ -361,42 +397,6 @@
             this.labelStationName.TabIndex = 0;
             this.labelStationName.Text = "Stationsname";
             this.labelStationName.Visible = false;
-            // 
-            // dpDepatureDate
-            // 
-            this.dpDepatureDate.Location = new System.Drawing.Point(389, 58);
-            this.dpDepatureDate.Name = "dpDepatureDate";
-            this.dpDepatureDate.Size = new System.Drawing.Size(207, 20);
-            this.dpDepatureDate.TabIndex = 8;
-            this.dpDepatureDate.Visible = false;
-            // 
-            // labelDepatureDate
-            // 
-            this.labelDepatureDate.AutoSize = true;
-            this.labelDepatureDate.Location = new System.Drawing.Point(386, 42);
-            this.labelDepatureDate.Name = "labelDepatureDate";
-            this.labelDepatureDate.Size = new System.Drawing.Size(38, 13);
-            this.labelDepatureDate.TabIndex = 9;
-            this.labelDepatureDate.Text = "Datum";
-            this.labelDepatureDate.Visible = false;
-            // 
-            // labelDepatureTime
-            // 
-            this.labelDepatureTime.AutoSize = true;
-            this.labelDepatureTime.Location = new System.Drawing.Point(445, 81);
-            this.labelDepatureTime.Name = "labelDepatureTime";
-            this.labelDepatureTime.Size = new System.Drawing.Size(25, 13);
-            this.labelDepatureTime.TabIndex = 10;
-            this.labelDepatureTime.Text = "Zeit";
-            this.labelDepatureTime.Visible = false;
-            // 
-            // txtDepatureTime
-            // 
-            this.txtDepatureTime.Location = new System.Drawing.Point(445, 95);
-            this.txtDepatureTime.Name = "txtDepatureTime";
-            this.txtDepatureTime.Size = new System.Drawing.Size(151, 20);
-            this.txtDepatureTime.TabIndex = 11;
-            this.txtDepatureTime.Visible = false;
             // 
             // ovForm
             // 
