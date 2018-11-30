@@ -132,7 +132,8 @@ namespace ov_project
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            var allConnections = transport.GetConnections(listAllStationsFrom.SelectedItem.ToString(), listAllStationsTo.SelectedItem.ToString());
+            var allConnections = transport.GetConnections(listAllStationsFrom.SelectedItem.ToString(), listAllStationsTo.SelectedItem.ToString()).ConnectionList;
+
             counter++;
 
             // Verbindungen von connectionTable beim zweiten Click clearen
@@ -142,7 +143,7 @@ namespace ov_project
             }
 
             // Verbindungen zu connectionTable integrieren
-            foreach (var connection in allConnections.ConnectionList)
+            foreach (var connection in allConnections)
             {
                 var stationFormName = connection.From.Station.Name;
                 var stationToName = connection.To.Station.Name;
