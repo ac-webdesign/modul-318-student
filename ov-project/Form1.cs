@@ -153,5 +153,24 @@ namespace ov_project
                 connectionsTable.Rows.Add(depatureDate, depatureTime, stationFormName, stationToName, connection.From.Platform, durationTime);
             }
         }
+
+        private void showConnectionDetails(object sender, DataGridViewCellEventArgs e)
+        {
+            viewConnectionDetails detailForm = new viewConnectionDetails();
+
+            // Daten von Column zu ConnectionDetailForm hinzugefügt
+            detailForm.labelStationFrom.Text = connectionsTable.CurrentRow.Cells[2].Value.ToString();
+            detailForm.labelStationTo.Text = connectionsTable.CurrentRow.Cells[3].Value.ToString();
+            detailForm.txtDepatureDate.Text = connectionsTable.CurrentRow.Cells[0].Value.ToString();
+            detailForm.txtDepatureTime.Text = connectionsTable.CurrentRow.Cells[1].Value.ToString();
+            detailForm.txtDepatureDuration.Text = connectionsTable.CurrentRow.Cells[5].Value.ToString();
+            detailForm.txtDepaturePlattform.Text = connectionsTable.CurrentRow.Cells[4].Value.ToString();
+
+            // Google-Mpas von stationForm zu stationTo erstellt
+            var googleMapsLink = "https://www.google.ch/maps/dir/" + connectionsTable.CurrentRow.Cells[2].Value.ToString() + '/' + connectionsTable.CurrentRow.Cells[3].Value.ToString();
+            detailForm.wbGoogleMaps.Navigate(googleMapsLink);
+
+            detailForm.ShowDialog();
+        }
     }
 }

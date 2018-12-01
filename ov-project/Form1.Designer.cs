@@ -41,6 +41,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.connectionsTable = new System.Windows.Forms.DataGridView();
+            this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.connection = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.endStation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.station = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.duration = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Start = new System.Windows.Forms.TabControl();
             this.startPage = new System.Windows.Forms.TabPage();
             this.label3 = new System.Windows.Forms.Label();
@@ -56,12 +62,6 @@
             this.labelDate = new System.Windows.Forms.Label();
             this.labelTime = new System.Windows.Forms.Label();
             this.labelStationName = new System.Windows.Forms.Label();
-            this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.connection = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.endStation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.station = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.duration = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.searchBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.connectionsTable)).BeginInit();
             this.Start.SuspendLayout();
@@ -213,6 +213,43 @@
             this.connectionsTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.connectionsTable.Size = new System.Drawing.Size(948, 317);
             this.connectionsTable.TabIndex = 1;
+            this.connectionsTable.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.showConnectionDetails);
+            // 
+            // date
+            // 
+            this.date.HeaderText = "Datum";
+            this.date.Name = "date";
+            this.date.ReadOnly = true;
+            // 
+            // time
+            // 
+            this.time.HeaderText = "Uhrzeit";
+            this.time.Name = "time";
+            this.time.ReadOnly = true;
+            // 
+            // connection
+            // 
+            this.connection.HeaderText = "Start";
+            this.connection.Name = "connection";
+            this.connection.ReadOnly = true;
+            // 
+            // endStation
+            // 
+            this.endStation.HeaderText = "Ziel";
+            this.endStation.Name = "endStation";
+            this.endStation.ReadOnly = true;
+            // 
+            // station
+            // 
+            this.station.HeaderText = "Gleis";
+            this.station.Name = "station";
+            this.station.ReadOnly = true;
+            // 
+            // duration
+            // 
+            this.duration.HeaderText = "Dauer";
+            this.duration.Name = "duration";
+            this.duration.ReadOnly = true;
             // 
             // Start
             // 
@@ -370,42 +407,6 @@
             this.labelStationName.TabIndex = 0;
             this.labelStationName.Text = "Stationsname";
             this.labelStationName.Visible = false;
-            // 
-            // date
-            // 
-            this.date.HeaderText = "Datum";
-            this.date.Name = "date";
-            this.date.ReadOnly = true;
-            // 
-            // time
-            // 
-            this.time.HeaderText = "Uhrzeit";
-            this.time.Name = "time";
-            this.time.ReadOnly = true;
-            // 
-            // connection
-            // 
-            this.connection.HeaderText = "Start";
-            this.connection.Name = "connection";
-            this.connection.ReadOnly = true;
-            // 
-            // endStation
-            // 
-            this.endStation.HeaderText = "Ziel";
-            this.endStation.Name = "endStation";
-            this.endStation.ReadOnly = true;
-            // 
-            // station
-            // 
-            this.station.HeaderText = "Gleis";
-            this.station.Name = "station";
-            this.station.ReadOnly = true;
-            // 
-            // duration
-            // 
-            this.duration.HeaderText = "Dauer";
-            this.duration.Name = "duration";
-            this.duration.ReadOnly = true;
             // 
             // ovForm
             // 
