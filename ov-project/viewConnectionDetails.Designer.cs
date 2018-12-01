@@ -42,6 +42,8 @@
             this.gbTitel = new System.Windows.Forms.GroupBox();
             this.gbConnectionData = new System.Windows.Forms.GroupBox();
             this.panelGoogleMap = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtDepaturePlattform = new System.Windows.Forms.TextBox();
             this.gbTitel.SuspendLayout();
             this.gbConnectionData.SuspendLayout();
             this.SuspendLayout();
@@ -143,6 +145,8 @@
             // 
             // gbConnectionData
             // 
+            this.gbConnectionData.Controls.Add(this.txtDepaturePlattform);
+            this.gbConnectionData.Controls.Add(this.label5);
             this.gbConnectionData.Controls.Add(this.txtDepatureDuration);
             this.gbConnectionData.Controls.Add(this.txtDepatureTime);
             this.gbConnectionData.Controls.Add(this.txtDepatureDate);
@@ -162,6 +166,22 @@
             this.panelGoogleMap.Name = "panelGoogleMap";
             this.panelGoogleMap.Size = new System.Drawing.Size(470, 284);
             this.panelGoogleMap.TabIndex = 11;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(43, 152);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(33, 13);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Gleis:";
+            // 
+            // txtDepaturePlattform
+            // 
+            this.txtDepaturePlattform.Location = new System.Drawing.Point(95, 149);
+            this.txtDepaturePlattform.Name = "txtDepaturePlattform";
+            this.txtDepaturePlattform.Size = new System.Drawing.Size(100, 20);
+            this.txtDepaturePlattform.TabIndex = 9;
             // 
             // viewConnectionDetails
             // 
@@ -183,19 +203,20 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label labelStationFrom;
-        private System.Windows.Forms.Label labelStationTo;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtDepatureDate;
-        private System.Windows.Forms.TextBox txtDepatureTime;
-        private System.Windows.Forms.TextBox txtDepatureDuration;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox gbTitel;
         private System.Windows.Forms.GroupBox gbConnectionData;
-        private System.Windows.Forms.Panel panelGoogleMap;
+        public System.Windows.Forms.Label labelStationFrom;
+        public System.Windows.Forms.Label labelStationTo;
+        public System.Windows.Forms.TextBox txtDepatureDate;
+        public System.Windows.Forms.TextBox txtDepatureTime;
+        public System.Windows.Forms.TextBox txtDepatureDuration;
+        public System.Windows.Forms.Panel panelGoogleMap;
+        private System.Windows.Forms.Label label5;
+        public System.Windows.Forms.TextBox txtDepaturePlattform;
     }
 }

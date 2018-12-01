@@ -28,6 +28,7 @@ namespace ov_project
             txtDepatureDate.ReadOnly = true;
             txtDepatureTime.ReadOnly = true;
             txtDepatureDuration.ReadOnly = true;
+            txtDepaturePlattform.ReadOnly = true;
         }
     }
 }
