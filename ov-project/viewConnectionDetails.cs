@@ -21,7 +21,7 @@ namespace ov_project
         {
             // Standardbreite von Formular setzen
             viewConnectionDetails form = (viewConnectionDetails)sender;
-            form.Width = 1000;
+            form.Width = 850;
             form.Height = 600;
 
             // Textboxen Readonly gemacht

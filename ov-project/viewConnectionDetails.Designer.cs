@@ -162,9 +162,9 @@
             // 
             // panelGoogleMap
             // 
-            this.panelGoogleMap.Location = new System.Drawing.Point(318, 101);
+            this.panelGoogleMap.Location = new System.Drawing.Point(329, 101);
             this.panelGoogleMap.Name = "panelGoogleMap";
-            this.panelGoogleMap.Size = new System.Drawing.Size(470, 284);
+            this.panelGoogleMap.Size = new System.Drawing.Size(459, 284);
             this.panelGoogleMap.TabIndex = 11;
             // 
             // label5
@@ -191,6 +191,7 @@
             this.Controls.Add(this.panelGoogleMap);
             this.Controls.Add(this.gbConnectionData);
             this.Controls.Add(this.gbTitel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "viewConnectionDetails";
             this.Text = "viewConnectionDetails";
             this.Load += new System.EventHandler(this.setFormSettings);
