@@ -28,10 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.labelStationFrom = new System.Windows.Forms.Label();
             this.labelStationTo = new System.Windows.Forms.Label();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -41,9 +39,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.gbTitel = new System.Windows.Forms.GroupBox();
             this.gbConnectionData = new System.Windows.Forms.GroupBox();
-            this.panelGoogleMap = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
             this.txtDepaturePlattform = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.wbGoogleMaps = new System.Windows.Forms.WebBrowser();
             this.gbTitel.SuspendLayout();
             this.gbConnectionData.SuspendLayout();
             this.SuspendLayout();
@@ -68,16 +66,10 @@
             this.labelStationTo.TabIndex = 1;
             this.labelStationTo.Text = "labelStationTo";
             // 
-            // imageList1
-            // 
-            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(38, 56);
+            this.label1.Location = new System.Drawing.Point(98, 44);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 13);
             this.label1.TabIndex = 2;
@@ -86,7 +78,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(38, 85);
+            this.label2.Location = new System.Drawing.Point(290, 45);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 13);
             this.label2.TabIndex = 3;
@@ -95,7 +87,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(38, 119);
+            this.label3.Location = new System.Drawing.Point(498, 48);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(39, 13);
             this.label3.TabIndex = 4;
@@ -103,21 +95,21 @@
             // 
             // txtDepatureDate
             // 
-            this.txtDepatureDate.Location = new System.Drawing.Point(95, 57);
+            this.txtDepatureDate.Location = new System.Drawing.Point(155, 45);
             this.txtDepatureDate.Name = "txtDepatureDate";
             this.txtDepatureDate.Size = new System.Drawing.Size(100, 20);
             this.txtDepatureDate.TabIndex = 5;
             // 
             // txtDepatureTime
             // 
-            this.txtDepatureTime.Location = new System.Drawing.Point(95, 85);
+            this.txtDepatureTime.Location = new System.Drawing.Point(347, 45);
             this.txtDepatureTime.Name = "txtDepatureTime";
             this.txtDepatureTime.Size = new System.Drawing.Size(100, 20);
             this.txtDepatureTime.TabIndex = 6;
             // 
             // txtDepatureDuration
             // 
-            this.txtDepatureDuration.Location = new System.Drawing.Point(95, 116);
+            this.txtDepatureDuration.Location = new System.Drawing.Point(555, 45);
             this.txtDepatureDuration.Name = "txtDepatureDuration";
             this.txtDepatureDuration.Size = new System.Drawing.Size(100, 20);
             this.txtDepatureDuration.TabIndex = 7;
@@ -155,45 +147,46 @@
             this.gbConnectionData.Controls.Add(this.label1);
             this.gbConnectionData.Location = new System.Drawing.Point(12, 101);
             this.gbConnectionData.Name = "gbConnectionData";
-            this.gbConnectionData.Size = new System.Drawing.Size(311, 285);
+            this.gbConnectionData.Size = new System.Drawing.Size(776, 106);
             this.gbConnectionData.TabIndex = 10;
             this.gbConnectionData.TabStop = false;
             this.gbConnectionData.Text = "Verbindungsdaten";
             // 
-            // panelGoogleMap
+            // txtDepaturePlattform
             // 
-            this.panelGoogleMap.Location = new System.Drawing.Point(329, 101);
-            this.panelGoogleMap.Name = "panelGoogleMap";
-            this.panelGoogleMap.Size = new System.Drawing.Size(459, 284);
-            this.panelGoogleMap.TabIndex = 11;
+            this.txtDepaturePlattform.Location = new System.Drawing.Point(347, 71);
+            this.txtDepaturePlattform.Name = "txtDepaturePlattform";
+            this.txtDepaturePlattform.Size = new System.Drawing.Size(100, 20);
+            this.txtDepaturePlattform.TabIndex = 9;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(43, 152);
+            this.label5.Location = new System.Drawing.Point(295, 74);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(33, 13);
             this.label5.TabIndex = 8;
             this.label5.Text = "Gleis:";
             // 
-            // txtDepaturePlattform
+            // wbGoogleMaps
             // 
-            this.txtDepaturePlattform.Location = new System.Drawing.Point(95, 149);
-            this.txtDepaturePlattform.Name = "txtDepaturePlattform";
-            this.txtDepaturePlattform.Size = new System.Drawing.Size(100, 20);
-            this.txtDepaturePlattform.TabIndex = 9;
+            this.wbGoogleMaps.Location = new System.Drawing.Point(12, 213);
+            this.wbGoogleMaps.MinimumSize = new System.Drawing.Size(20, 20);
+            this.wbGoogleMaps.Name = "wbGoogleMaps";
+            this.wbGoogleMaps.Size = new System.Drawing.Size(776, 372);
+            this.wbGoogleMaps.TabIndex = 11;
             // 
             // viewConnectionDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.panelGoogleMap);
+            this.ClientSize = new System.Drawing.Size(812, 597);
+            this.Controls.Add(this.wbGoogleMaps);
             this.Controls.Add(this.gbConnectionData);
             this.Controls.Add(this.gbTitel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "viewConnectionDetails";
-            this.Text = "viewConnectionDetails";
+            this.Text = "Verbindung Details";
             this.Load += new System.EventHandler(this.setFormSettings);
             this.gbTitel.ResumeLayout(false);
             this.gbTitel.PerformLayout();
@@ -204,7 +197,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -216,8 +208,8 @@
         public System.Windows.Forms.TextBox txtDepatureDate;
         public System.Windows.Forms.TextBox txtDepatureTime;
         public System.Windows.Forms.TextBox txtDepatureDuration;
-        public System.Windows.Forms.Panel panelGoogleMap;
         private System.Windows.Forms.Label label5;
         public System.Windows.Forms.TextBox txtDepaturePlattform;
+        public System.Windows.Forms.WebBrowser wbGoogleMaps;
     }
 }

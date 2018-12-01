@@ -19,11 +19,6 @@ namespace ov_project
 
         private void setFormSettings(object sender, EventArgs e)
         {
-            // Standardbreite von Formular setzen
-            viewConnectionDetails form = (viewConnectionDetails)sender;
-            form.Width = 850;
-            form.Height = 600;
-
             // Textboxen Readonly gemacht
             txtDepatureDate.ReadOnly = true;
             txtDepatureTime.ReadOnly = true;
