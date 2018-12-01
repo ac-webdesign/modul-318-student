@@ -36,9 +36,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.labelTransportLine = new System.Windows.Forms.Label();
             this.gbTitel = new System.Windows.Forms.GroupBox();
-            this.labelDepatureTo = new System.Windows.Forms.Label();
-            this.labelDepatureFrom = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.labelDepatureFrom = new System.Windows.Forms.Label();
+            this.labelDepatureTo = new System.Windows.Forms.Label();
             this.gbDepatureData.SuspendLayout();
             this.gbTitel.SuspendLayout();
             this.SuspendLayout();
@@ -126,16 +126,16 @@
             this.gbTitel.TabIndex = 12;
             this.gbTitel.TabStop = false;
             // 
-            // labelDepatureTo
+            // label3
             // 
-            this.labelDepatureTo.AutoSize = true;
-            this.labelDepatureTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDepatureTo.Location = new System.Drawing.Point(992, 21);
-            this.labelDepatureTo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelDepatureTo.Name = "labelDepatureTo";
-            this.labelDepatureTo.Size = new System.Drawing.Size(268, 37);
-            this.labelDepatureTo.TabIndex = 1;
-            this.labelDepatureTo.Text = "labelDepatureTo";
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(890, 21);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(48, 37);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "->";
             // 
             // labelDepatureFrom
             // 
@@ -148,16 +148,16 @@
             this.labelDepatureFrom.TabIndex = 3;
             this.labelDepatureFrom.Text = "labelDepatureFrom";
             // 
-            // label3
+            // labelDepatureTo
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(890, 21);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(48, 37);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "->";
+            this.labelDepatureTo.AutoSize = true;
+            this.labelDepatureTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDepatureTo.Location = new System.Drawing.Point(992, 21);
+            this.labelDepatureTo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelDepatureTo.Name = "labelDepatureTo";
+            this.labelDepatureTo.Size = new System.Drawing.Size(268, 37);
+            this.labelDepatureTo.TabIndex = 1;
+            this.labelDepatureTo.Text = "labelDepatureTo";
             // 
             // viewDepatureDetails
             // 
@@ -167,6 +167,7 @@
             this.Controls.Add(this.wbGoogleMaps);
             this.Controls.Add(this.gbDepatureData);
             this.Controls.Add(this.gbTitel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "viewDepatureDetails";
             this.Text = "Abfahrt-Details";
             this.Load += new System.EventHandler(this.setDepatureDetailsSettings);

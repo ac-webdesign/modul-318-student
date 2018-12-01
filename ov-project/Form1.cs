@@ -43,8 +43,8 @@ namespace ov_project
                 depatureMonitorTable.Columns[2].Width = 300;
 
                 // Abfahrtmonitor Zeit und Datum eintragen
-                labelTime.Text = DateTime.Now.ToShortTimeString(); // TODO: Refresh every Time
-                labelDate.Text = DateTime.Now.ToShortDateString();
+                labelDepatureTime.Text = DateTime.Now.ToShortTimeString(); // TODO: Refresh every Time
+                labelDepatureDate.Text = DateTime.Now.ToShortDateString();
             }
         }
 
@@ -119,11 +119,11 @@ namespace ov_project
 
         private void showDepatureDateAndTimeOption()
         {
-            labelDepatureDate.Visible = true;
-            dpDepatureDate.Visible = true;
-            labelDepatureTime.Visible = true;
-            txtDepatureTime.Text = DateTime.Now.ToShortTimeString();
-            txtDepatureTime.Visible = true;
+            labelConnectionDate.Visible = true;
+            dpConnectionDate.Visible = true;
+            labelConnectionTime.Visible = true;
+            txtConnectionTime.Text = DateTime.Now.ToShortTimeString();
+            txtConnectionTime.Visible = true;
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -161,6 +161,20 @@ namespace ov_project
             detailForm.txtDepatureTime.Text = connectionsTable.CurrentRow.Cells[1].Value.ToString();
             detailForm.txtDepatureDuration.Text = connectionsTable.CurrentRow.Cells[5].Value.ToString();
             detailForm.txtDepaturePlattform.Text = connectionsTable.CurrentRow.Cells[4].Value.ToString();
+
+            detailForm.ShowDialog();
+        }
+
+        private void showDepatureDetails(object sender, DataGridViewCellEventArgs e)
+        {
+            viewDepatureDetails detailForm = new viewDepatureDetails();
+
+            // Daten von Column zu DepatureDetailsForm hinzugefügt
+            detailForm.labelTransportLine.Text = depatureMonitorTable.CurrentRow.Cells[0].Value.ToString();
+            detailForm.labelDepatureFrom.Text = labelStationName.Text;
+            detailForm.labelDepatureTo.Text = depatureMonitorTable.CurrentRow.Cells[1].Value.ToString();
+            detailForm.txtDepatureDate.Text = labelDepatureDate.Text;
+            detailForm.txtDepatureTime.Text = depatureMonitorTable.CurrentRow.Cells[2].Value.ToString();
 
             detailForm.ShowDialog();
         }
