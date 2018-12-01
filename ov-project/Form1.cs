@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using SwissTransport;
 
@@ -48,7 +50,7 @@ namespace ov_project
             }
         }
 
-        // BUG renew Station every keydown change
+        // BUG Reset List after every keydown
         // TODO: Catch-Errors
         private void getAllStations(object sender, EventArgs e)
         {
@@ -74,6 +76,7 @@ namespace ov_project
             }
         }
 
+        // Code optimieren = Textbox anhängen
         private void putToStation(object sender, EventArgs e)
         {
             ListBox selectedStation = (ListBox)sender;
@@ -111,9 +114,18 @@ namespace ov_project
             txtConnectionTime.Visible = true;
         }
 
+        // TODO: Try catch und Fehlerhandling
         private void btnSearchConnections_Click(object sender, EventArgs e)
         {
             var allConnections = transport.GetConnections(listAllStationsFrom.SelectedItem.ToString(), listAllStationsTo.SelectedItem.ToString()).ConnectionList;
+            var connectionDepatureDate = Convert.ToDateTime(Convert.ToDateTime(dpConnectionDate.Text).ToShortDateString());
+            var connectionDepatureTime = Convert.ToDateTime(Convert.ToDateTime(txtConnectionTime.Text).ToShortTimeString());
+
+            var filteredConnectionsByDateAndTime = allConnections
+            .Where(connection =>
+                Convert.ToDateTime(Convert.ToDateTime(connection.From.Departure).ToShortDateString()) >= connectionDepatureDate &&
+                Convert.ToDateTime(Convert.ToDateTime(connection.From.Departure).ToShortTimeString()) >= connectionDepatureTime
+             );
 
             counter++;
 
@@ -124,7 +136,7 @@ namespace ov_project
             }
 
             // Verbindungen zu connectionTable integrieren
-            foreach (var connection in allConnections)
+            foreach (var connection in filteredConnectionsByDateAndTime)
             {
                 var stationFormName = connection.From.Station.Name;
                 var stationToName = connection.To.Station.Name;
@@ -135,6 +147,7 @@ namespace ov_project
             }
         }
 
+        // TODO: Try catch und Fehlerhandling
         private void getDepatureConnections()
         {
             // Verbindungen zu depatureMonitorTable integrieren
