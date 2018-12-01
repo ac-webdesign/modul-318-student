@@ -92,28 +92,13 @@ namespace ov_project
             }
             else
             {
+                // Abfahrt-Monitor-Settings
                 txtDepature.Text = selectedStation.SelectedItem.ToString();
                 labelStationName.Text = txtDepature.Text;
                 labelStationName.Visible = true;
                 listDepature.Visible = false;
 
-                counter++;
-
-                // Verbindungen von depatureMonitor beim zweiten Click clearen
-                if (counter >= 2)
-                {
-                    depatureMonitorTable.Rows.Clear();
-                }
-
-
-                // Verbindungen zu depatureMonitorTable integrieren
-                var allDepatureConnections = transport.GetStationBoard(listDepature.SelectedItem.ToString()).Entries;
-
-                foreach (var station in allDepatureConnections)
-                {
-                    var depatureTime = station.Stop.Departure.ToShortTimeString();
-                    depatureMonitorTable.Rows.Add(station.Name, station.To, depatureTime);
-                }
+                getDepatureConnections();
             }
         }
 
@@ -126,7 +111,7 @@ namespace ov_project
             txtConnectionTime.Visible = true;
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
+        private void btnSearchConnections_Click(object sender, EventArgs e)
         {
             var allConnections = transport.GetConnections(listAllStationsFrom.SelectedItem.ToString(), listAllStationsTo.SelectedItem.ToString()).ConnectionList;
 
@@ -147,6 +132,26 @@ namespace ov_project
                 var depatureTime = Convert.ToDateTime(connection.From.Departure).ToShortTimeString();
                 var durationTime = connection.Duration.Replace('d', ' '); // Zeit noch formatieren
                 connectionsTable.Rows.Add(depatureDate, depatureTime, stationFormName, stationToName, connection.From.Platform, durationTime);
+            }
+        }
+
+        private void getDepatureConnections()
+        {
+            // Verbindungen zu depatureMonitorTable integrieren
+            var allDepatureConnections = transport.GetStationBoard(listDepature.SelectedItem.ToString()).Entries;
+
+            counter++;
+
+            // Verbindungen von depatureMonitor beim zweiten Click clearen
+            if (counter >= 2)
+            {
+                depatureMonitorTable.Rows.Clear();
+            }
+
+            foreach (var station in allDepatureConnections)
+            {
+                var depatureTime = station.Stop.Departure.ToShortTimeString();
+                depatureMonitorTable.Rows.Add(station.Name, station.To, depatureTime);
             }
         }
 
