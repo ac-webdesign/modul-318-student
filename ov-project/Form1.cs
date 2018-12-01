@@ -166,10 +166,6 @@ namespace ov_project
             detailForm.txtDepatureDuration.Text = connectionsTable.CurrentRow.Cells[5].Value.ToString();
             detailForm.txtDepaturePlattform.Text = connectionsTable.CurrentRow.Cells[4].Value.ToString();
 
-            // Google-Mpas von stationForm zu stationTo erstellt
-            var googleMapsLink = "https://www.google.ch/maps/dir/" + connectionsTable.CurrentRow.Cells[2].Value.ToString() + '/' + connectionsTable.CurrentRow.Cells[3].Value.ToString();
-            detailForm.wbGoogleMaps.Navigate(googleMapsLink);
-
             detailForm.ShowDialog();
         }
     }

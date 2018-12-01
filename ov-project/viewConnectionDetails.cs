@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using CefSharp;
+using CefSharp.WinForms;
 using System.Windows.Forms;
 
 namespace ov_project
 {
     public partial class viewConnectionDetails : Form
     {
+
         public viewConnectionDetails()
         {
             InitializeComponent();
@@ -24,6 +20,15 @@ namespace ov_project
             txtDepatureTime.ReadOnly = true;
             txtDepatureDuration.ReadOnly = true;
             txtDepaturePlattform.ReadOnly = true;
+
+            // CefSharp Chrome Browser integrieren
+            var googleMapsChrome = new ChromiumWebBrowser("www.google.com");
+
+            // Google-Maps erstellen
+            var googleMapsLink = "https://www.google.ch/maps/dir/Mein%20Standort/" + labelStationTo.Text;
+            googleMapsChrome.Load(googleMapsLink);
+
+            wbGoogleMaps.Controls.Add(googleMapsChrome);
         }
     }
 }
