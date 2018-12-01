@@ -30,27 +30,22 @@ namespace ov_project
         }
 
         // TODO: Catch-Errors
-        private void getDepatureMonitorData(object sender, EventArgs e)
+        private void setDepatureMonitorSettings(object sender, EventArgs e)
         {
             TabControl page = (TabControl)sender;
 
             // Abfrage, ob richtige Page ausgewählt worden ist
             if (page.SelectedTab.Name != "Start")
             {
-                setDefaultDepatureMonitorSettings();
+                // Standardbreite für Spalten setzen
+                depatureMonitorTable.Columns[0].Width = 300;
+                depatureMonitorTable.Columns[1].Width = 300;
+                depatureMonitorTable.Columns[2].Width = 300;
+
+                // Abfahrtmonitor Zeit und Datum eintragen
+                labelTime.Text = DateTime.Now.ToShortTimeString(); // TODO: Refresh every Time
+                labelDate.Text = DateTime.Now.ToShortDateString();
             }
-        }
-
-        private void setDefaultDepatureMonitorSettings()
-        {
-            // Standardbreite für Spalten setzen
-            depatureMonitorTable.Columns[0].Width = 300;
-            depatureMonitorTable.Columns[1].Width = 300;
-            depatureMonitorTable.Columns[2].Width = 300;
-
-            // Abfahrtmonitor Zeit und Datum eintragen
-            labelTime.Text = DateTime.Now.ToShortTimeString(); // TODO: Refresh every Time
-            labelDate.Text = DateTime.Now.ToShortDateString();
         }
 
         // BUG renew Station every keydown change

@@ -263,7 +263,7 @@
             this.Start.SelectedIndex = 0;
             this.Start.Size = new System.Drawing.Size(955, 551);
             this.Start.TabIndex = 5;
-            this.Start.SelectedIndexChanged += new System.EventHandler(this.getDepatureMonitorData);
+            this.Start.SelectedIndexChanged += new System.EventHandler(this.setDepatureMonitorSettings);
             // 
             // startPage
             // 
