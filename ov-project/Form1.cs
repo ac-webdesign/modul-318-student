@@ -17,7 +17,7 @@ namespace ov_project
             InitializeComponent();
         }
 
-        private void getData(object sender, EventArgs e)
+        private void setFormSettings(object sender, EventArgs e)
         {
             // Standardbreite von Formular setzen
             ovForm form = (ovForm)sender;

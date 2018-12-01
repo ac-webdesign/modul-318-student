@@ -416,7 +416,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "ovForm";
             this.Text = "OV-App";
-            this.Load += new System.EventHandler(this.getData);
+            this.Load += new System.EventHandler(this.setFormSettings);
             this.searchBox.ResumeLayout(false);
             this.searchBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.connectionsTable)).EndInit();
