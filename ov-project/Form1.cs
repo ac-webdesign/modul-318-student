@@ -107,8 +107,8 @@ namespace ov_project
 
 
                 // Verbindungen zu depatureMonitorTable integrieren
-                var allDepatureConnections = transport.GetStationBoard(listDepature.SelectedItem.ToString());
-                foreach (var station in allDepatureConnections.Entries)
+                var allDepatureConnections = transport.GetStationBoard(listDepature.SelectedItem.ToString()).Entries;
+                foreach (var station in allDepatureConnections)
                 {
                     var depatureTime = station.Stop.Departure.ToShortTimeString();
                     depatureMonitorTable.Rows.Add(station.Name, station.To, depatureTime);
