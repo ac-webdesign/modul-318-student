@@ -41,11 +41,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.connectionsTable = new System.Windows.Forms.DataGridView();
-            this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.connection = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.endStation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.station = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.duration = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Start = new System.Windows.Forms.TabControl();
             this.startPage = new System.Windows.Forms.TabPage();
             this.label3 = new System.Windows.Forms.Label();
@@ -61,6 +56,12 @@
             this.labelDate = new System.Windows.Forms.Label();
             this.labelTime = new System.Windows.Forms.Label();
             this.labelStationName = new System.Windows.Forms.Label();
+            this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.connection = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.endStation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.station = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.duration = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.searchBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.connectionsTable)).BeginInit();
             this.Start.SuspendLayout();
@@ -199,6 +200,7 @@
             this.connectionsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.connectionsTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.date,
+            this.time,
             this.connection,
             this.endStation,
             this.station,
@@ -210,36 +212,6 @@
             this.connectionsTable.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.connectionsTable.Size = new System.Drawing.Size(948, 317);
             this.connectionsTable.TabIndex = 1;
-            // 
-            // date
-            // 
-            this.date.HeaderText = "Datum";
-            this.date.Name = "date";
-            this.date.ReadOnly = true;
-            // 
-            // connection
-            // 
-            this.connection.HeaderText = "Start";
-            this.connection.Name = "connection";
-            this.connection.ReadOnly = true;
-            // 
-            // endStation
-            // 
-            this.endStation.HeaderText = "Ziel";
-            this.endStation.Name = "endStation";
-            this.endStation.ReadOnly = true;
-            // 
-            // station
-            // 
-            this.station.HeaderText = "Gleis";
-            this.station.Name = "station";
-            this.station.ReadOnly = true;
-            // 
-            // duration
-            // 
-            this.duration.HeaderText = "Dauer";
-            this.duration.Name = "duration";
-            this.duration.ReadOnly = true;
             // 
             // Start
             // 
@@ -398,6 +370,42 @@
             this.labelStationName.Text = "Stationsname";
             this.labelStationName.Visible = false;
             // 
+            // date
+            // 
+            this.date.HeaderText = "Datum";
+            this.date.Name = "date";
+            this.date.ReadOnly = true;
+            // 
+            // time
+            // 
+            this.time.HeaderText = "Uhrzeit";
+            this.time.Name = "time";
+            this.time.ReadOnly = true;
+            // 
+            // connection
+            // 
+            this.connection.HeaderText = "Start";
+            this.connection.Name = "connection";
+            this.connection.ReadOnly = true;
+            // 
+            // endStation
+            // 
+            this.endStation.HeaderText = "Ziel";
+            this.endStation.Name = "endStation";
+            this.endStation.ReadOnly = true;
+            // 
+            // station
+            // 
+            this.station.HeaderText = "Gleis";
+            this.station.Name = "station";
+            this.station.ReadOnly = true;
+            // 
+            // duration
+            // 
+            this.duration.HeaderText = "Dauer";
+            this.duration.Name = "duration";
+            this.duration.ReadOnly = true;
+            // 
             // ovForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -442,11 +450,6 @@
         private System.Windows.Forms.Label labelDate;
         private System.Windows.Forms.Label labelTime;
         private System.Windows.Forms.Label labelStationName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn date;
-        private System.Windows.Forms.DataGridViewTextBoxColumn connection;
-        private System.Windows.Forms.DataGridViewTextBoxColumn endStation;
-        private System.Windows.Forms.DataGridViewTextBoxColumn station;
-        private System.Windows.Forms.DataGridViewTextBoxColumn duration;
         private System.Windows.Forms.DataGridViewTextBoxColumn line;
         private System.Windows.Forms.DataGridViewTextBoxColumn fromTo;
         private System.Windows.Forms.DataGridViewTextBoxColumn depature;
@@ -457,6 +460,12 @@
         private System.Windows.Forms.DateTimePicker dpDepatureDate;
         private System.Windows.Forms.TextBox txtDepatureTime;
         private System.Windows.Forms.Label labelDepatureTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn time;
+        private System.Windows.Forms.DataGridViewTextBoxColumn connection;
+        private System.Windows.Forms.DataGridViewTextBoxColumn endStation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn station;
+        private System.Windows.Forms.DataGridViewTextBoxColumn duration;
     }
 }
 

@@ -25,8 +25,8 @@ namespace ov_project
             form.Height = 600;
 
             // Standardbreite für Spalten setzen
-            connectionsTable.Columns[1].Width = 300;
-            connectionsTable.Columns[2].Width = 302;
+            connectionsTable.Columns[2].Width = 300;
+            connectionsTable.Columns[3].Width = 302;
         }
 
         // TODO: Catch-Errors
@@ -148,8 +148,9 @@ namespace ov_project
                 var stationFormName = connection.From.Station.Name;
                 var stationToName = connection.To.Station.Name;
                 var depatureDate = Convert.ToDateTime(connection.From.Departure).ToShortDateString();
+                var depatureTime = Convert.ToDateTime(connection.From.Departure).ToShortTimeString();
                 var durationTime = connection.Duration.Replace('d', ' '); // Zeit noch formatieren
-                connectionsTable.Rows.Add(depatureDate, stationFormName, stationToName, connection.From.Platform, durationTime);
+                connectionsTable.Rows.Add(depatureDate, depatureTime, stationFormName, stationToName, connection.From.Platform, durationTime);
             }
         }
     }
