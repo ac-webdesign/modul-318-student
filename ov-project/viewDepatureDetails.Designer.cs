@@ -45,9 +45,9 @@
             // 
             // wbGoogleMaps
             // 
-            this.wbGoogleMaps.Location = new System.Drawing.Point(50, 188);
+            this.wbGoogleMaps.Location = new System.Drawing.Point(291, 93);
             this.wbGoogleMaps.Name = "wbGoogleMaps";
-            this.wbGoogleMaps.Size = new System.Drawing.Size(1164, 575);
+            this.wbGoogleMaps.Size = new System.Drawing.Size(1259, 670);
             this.wbGoogleMaps.TabIndex = 14;
             // 
             // gbDepatureData
@@ -56,18 +56,18 @@
             this.gbDepatureData.Controls.Add(this.txtDepatureDate);
             this.gbDepatureData.Controls.Add(this.label2);
             this.gbDepatureData.Controls.Add(this.label1);
-            this.gbDepatureData.Location = new System.Drawing.Point(50, 93);
+            this.gbDepatureData.Location = new System.Drawing.Point(13, 93);
             this.gbDepatureData.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbDepatureData.Name = "gbDepatureData";
             this.gbDepatureData.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.gbDepatureData.Size = new System.Drawing.Size(1164, 87);
+            this.gbDepatureData.Size = new System.Drawing.Size(271, 670);
             this.gbDepatureData.TabIndex = 13;
             this.gbDepatureData.TabStop = false;
             this.gbDepatureData.Text = "Abfahrtdaten";
             // 
             // txtDepatureTime
             // 
-            this.txtDepatureTime.Location = new System.Drawing.Point(683, 44);
+            this.txtDepatureTime.Location = new System.Drawing.Point(92, 95);
             this.txtDepatureTime.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtDepatureTime.Name = "txtDepatureTime";
             this.txtDepatureTime.Size = new System.Drawing.Size(148, 26);
@@ -75,7 +75,7 @@
             // 
             // txtDepatureDate
             // 
-            this.txtDepatureDate.Location = new System.Drawing.Point(349, 44);
+            this.txtDepatureDate.Location = new System.Drawing.Point(92, 41);
             this.txtDepatureDate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtDepatureDate.Name = "txtDepatureDate";
             this.txtDepatureDate.Size = new System.Drawing.Size(148, 26);
@@ -84,7 +84,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(598, 44);
+            this.label2.Location = new System.Drawing.Point(7, 95);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(66, 20);
@@ -94,7 +94,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(264, 43);
+            this.label1.Location = new System.Drawing.Point(7, 40);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(61, 20);
@@ -118,11 +118,11 @@
             this.gbTitel.Controls.Add(this.labelDepatureFrom);
             this.gbTitel.Controls.Add(this.labelDepatureTo);
             this.gbTitel.Controls.Add(this.labelTransportLine);
-            this.gbTitel.Location = new System.Drawing.Point(50, 14);
+            this.gbTitel.Location = new System.Drawing.Point(13, 14);
             this.gbTitel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbTitel.Name = "gbTitel";
             this.gbTitel.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.gbTitel.Size = new System.Drawing.Size(1164, 64);
+            this.gbTitel.Size = new System.Drawing.Size(1537, 64);
             this.gbTitel.TabIndex = 12;
             this.gbTitel.TabStop = false;
             // 
@@ -130,7 +130,7 @@
             // 
             this.labelDepatureTo.AutoSize = true;
             this.labelDepatureTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDepatureTo.Location = new System.Drawing.Point(896, 21);
+            this.labelDepatureTo.Location = new System.Drawing.Point(992, 21);
             this.labelDepatureTo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelDepatureTo.Name = "labelDepatureTo";
             this.labelDepatureTo.Size = new System.Drawing.Size(268, 37);
@@ -141,7 +141,7 @@
             // 
             this.labelDepatureFrom.AutoSize = true;
             this.labelDepatureFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDepatureFrom.Location = new System.Drawing.Point(435, 21);
+            this.labelDepatureFrom.Location = new System.Drawing.Point(531, 21);
             this.labelDepatureFrom.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelDepatureFrom.Name = "labelDepatureFrom";
             this.labelDepatureFrom.Size = new System.Drawing.Size(308, 37);
@@ -152,7 +152,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(794, 21);
+            this.label3.Location = new System.Drawing.Point(890, 21);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(48, 37);
@@ -163,7 +163,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1265, 787);
+            this.ClientSize = new System.Drawing.Size(1563, 787);
             this.Controls.Add(this.wbGoogleMaps);
             this.Controls.Add(this.gbDepatureData);
             this.Controls.Add(this.gbTitel);

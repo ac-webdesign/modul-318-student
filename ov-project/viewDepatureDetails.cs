@@ -21,7 +21,7 @@ namespace ov_project
             var googleMapsChrome = new ChromiumWebBrowser("www.google.com");
 
             // Google-Maps erstellen
-            var googleMapsLink = "https://www.google.ch/maps/dir/" + labelDepatureFrom.Text + labelDepatureTo.Text;
+            var googleMapsLink = "https://www.google.ch/maps/dir/" + labelDepatureFrom.Text + "/" + labelDepatureTo.Text;
             googleMapsChrome.Load(googleMapsLink);
 
             wbGoogleMaps.Controls.Add(googleMapsChrome);
