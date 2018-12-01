@@ -93,6 +93,12 @@
     <Compile Include="viewConnectionDetails.Designer.cs">
       <DependentUpon>viewConnectionDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="viewDepatureDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="viewDepatureDetails.Designer.cs">
+      <DependentUpon>viewDepatureDetails.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -107,6 +113,9 @@
     </Compile>
     <EmbeddedResource Include="viewConnectionDetails.resx">
       <DependentUpon>viewConnectionDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="viewDepatureDetails.resx">
+      <DependentUpon>viewDepatureDetails.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
