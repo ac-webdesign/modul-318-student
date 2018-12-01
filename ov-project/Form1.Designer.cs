@@ -210,6 +210,7 @@
             this.connectionsTable.Name = "connectionsTable";
             this.connectionsTable.ReadOnly = true;
             this.connectionsTable.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.connectionsTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.connectionsTable.Size = new System.Drawing.Size(948, 317);
             this.connectionsTable.TabIndex = 1;
             // 
