@@ -29,14 +29,12 @@
         private void InitializeComponent()
         {
             this.searchBox = new System.Windows.Forms.GroupBox();
+            this.txtStationTo = new System.Windows.Forms.TextBox();
+            this.txtStationFrom = new System.Windows.Forms.TextBox();
             this.txtConnectionTime = new System.Windows.Forms.TextBox();
             this.labelConnectionTime = new System.Windows.Forms.Label();
             this.labelConnectionDate = new System.Windows.Forms.Label();
             this.dpConnectionDate = new System.Windows.Forms.DateTimePicker();
-            this.txtStationTo = new System.Windows.Forms.TextBox();
-            this.listAllStationsTo = new System.Windows.Forms.ListBox();
-            this.listAllStationsFrom = new System.Windows.Forms.ListBox();
-            this.txtStationFrom = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -56,9 +54,8 @@
             this.fromTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.depature = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.depatureMonitorBox = new System.Windows.Forms.GroupBox();
-            this.listDepature = new System.Windows.Forms.ListBox();
+            this.txtDepatureFrom = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtDepature = new System.Windows.Forms.TextBox();
             this.labelDepatureDate = new System.Windows.Forms.Label();
             this.labelDepatureTime = new System.Windows.Forms.Label();
             this.labelStationName = new System.Windows.Forms.Label();
@@ -73,14 +70,12 @@
             // 
             // searchBox
             // 
+            this.searchBox.Controls.Add(this.txtStationTo);
+            this.searchBox.Controls.Add(this.txtStationFrom);
             this.searchBox.Controls.Add(this.txtConnectionTime);
             this.searchBox.Controls.Add(this.labelConnectionTime);
             this.searchBox.Controls.Add(this.labelConnectionDate);
             this.searchBox.Controls.Add(this.dpConnectionDate);
-            this.searchBox.Controls.Add(this.txtStationTo);
-            this.searchBox.Controls.Add(this.listAllStationsTo);
-            this.searchBox.Controls.Add(this.listAllStationsFrom);
-            this.searchBox.Controls.Add(this.txtStationFrom);
             this.searchBox.Controls.Add(this.btnSearch);
             this.searchBox.Controls.Add(this.label2);
             this.searchBox.Controls.Add(this.label1);
@@ -92,6 +87,28 @@
             this.searchBox.TabIndex = 0;
             this.searchBox.TabStop = false;
             this.searchBox.Text = "Verbindungen suchen";
+            // 
+            // txtStationTo
+            // 
+            this.txtStationTo.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtStationTo.Location = new System.Drawing.Point(296, 85);
+            this.txtStationTo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtStationTo.Name = "txtStationTo";
+            this.txtStationTo.Size = new System.Drawing.Size(224, 26);
+            this.txtStationTo.TabIndex = 13;
+            this.txtStationTo.TextChanged += new System.EventHandler(this.getAllStations);
+            this.txtStationTo.Leave += new System.EventHandler(this.showDateAndTimeOption);
+            // 
+            // txtStationFrom
+            // 
+            this.txtStationFrom.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtStationFrom.Location = new System.Drawing.Point(13, 85);
+            this.txtStationFrom.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtStationFrom.Name = "txtStationFrom";
+            this.txtStationFrom.Size = new System.Drawing.Size(224, 26);
+            this.txtStationFrom.TabIndex = 12;
+            this.txtStationFrom.TextChanged += new System.EventHandler(this.getAllStations);
+            this.txtStationFrom.Leave += new System.EventHandler(this.showDateAndTimeOption);
             // 
             // txtConnectionTime
             // 
@@ -133,48 +150,6 @@
             this.dpConnectionDate.TabIndex = 8;
             this.dpConnectionDate.Visible = false;
             // 
-            // txtStationTo
-            // 
-            this.txtStationTo.Location = new System.Drawing.Point(333, 89);
-            this.txtStationTo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtStationTo.Name = "txtStationTo";
-            this.txtStationTo.Size = new System.Drawing.Size(224, 26);
-            this.txtStationTo.TabIndex = 7;
-            this.txtStationTo.TextChanged += new System.EventHandler(this.getAllStations);
-            // 
-            // listAllStationsTo
-            // 
-            this.listAllStationsTo.FormattingEnabled = true;
-            this.listAllStationsTo.ItemHeight = 20;
-            this.listAllStationsTo.Location = new System.Drawing.Point(333, 114);
-            this.listAllStationsTo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.listAllStationsTo.Name = "listAllStationsTo";
-            this.listAllStationsTo.Size = new System.Drawing.Size(224, 64);
-            this.listAllStationsTo.TabIndex = 6;
-            this.listAllStationsTo.Visible = false;
-            this.listAllStationsTo.DoubleClick += new System.EventHandler(this.putToStation);
-            // 
-            // listAllStationsFrom
-            // 
-            this.listAllStationsFrom.FormattingEnabled = true;
-            this.listAllStationsFrom.ItemHeight = 20;
-            this.listAllStationsFrom.Location = new System.Drawing.Point(14, 114);
-            this.listAllStationsFrom.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.listAllStationsFrom.Name = "listAllStationsFrom";
-            this.listAllStationsFrom.Size = new System.Drawing.Size(224, 64);
-            this.listAllStationsFrom.TabIndex = 5;
-            this.listAllStationsFrom.Visible = false;
-            this.listAllStationsFrom.DoubleClick += new System.EventHandler(this.putToStation);
-            // 
-            // txtStationFrom
-            // 
-            this.txtStationFrom.Location = new System.Drawing.Point(14, 88);
-            this.txtStationFrom.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtStationFrom.Name = "txtStationFrom";
-            this.txtStationFrom.Size = new System.Drawing.Size(224, 26);
-            this.txtStationFrom.TabIndex = 4;
-            this.txtStationFrom.TextChanged += new System.EventHandler(this.getAllStations);
-            // 
             // btnSearch
             // 
             this.btnSearch.Location = new System.Drawing.Point(952, 89);
@@ -189,7 +164,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(328, 65);
+            this.label2.Location = new System.Drawing.Point(292, 65);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(46, 20);
@@ -359,9 +334,8 @@
             // 
             // depatureMonitorBox
             // 
-            this.depatureMonitorBox.Controls.Add(this.listDepature);
+            this.depatureMonitorBox.Controls.Add(this.txtDepatureFrom);
             this.depatureMonitorBox.Controls.Add(this.label4);
-            this.depatureMonitorBox.Controls.Add(this.txtDepature);
             this.depatureMonitorBox.Controls.Add(this.labelDepatureDate);
             this.depatureMonitorBox.Controls.Add(this.labelDepatureTime);
             this.depatureMonitorBox.Controls.Add(this.labelStationName);
@@ -374,17 +348,16 @@
             this.depatureMonitorBox.TabStop = false;
             this.depatureMonitorBox.Text = "Abfahrtmonitor";
             // 
-            // listDepature
+            // txtDepatureFrom
             // 
-            this.listDepature.FormattingEnabled = true;
-            this.listDepature.ItemHeight = 20;
-            this.listDepature.Location = new System.Drawing.Point(32, 112);
-            this.listDepature.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.listDepature.Name = "listDepature";
-            this.listDepature.Size = new System.Drawing.Size(200, 44);
-            this.listDepature.TabIndex = 6;
-            this.listDepature.Visible = false;
-            this.listDepature.DoubleClick += new System.EventHandler(this.putToStation);
+            this.txtDepatureFrom.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtDepatureFrom.Location = new System.Drawing.Point(31, 92);
+            this.txtDepatureFrom.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtDepatureFrom.Name = "txtDepatureFrom";
+            this.txtDepatureFrom.Size = new System.Drawing.Size(224, 26);
+            this.txtDepatureFrom.TabIndex = 14;
+            this.txtDepatureFrom.TextChanged += new System.EventHandler(this.getAllStations);
+            this.txtDepatureFrom.KeyDown += new System.Windows.Forms.KeyEventHandler(this.getDepatureConnections);
             // 
             // label4
             // 
@@ -395,15 +368,6 @@
             this.label4.Size = new System.Drawing.Size(62, 20);
             this.label4.TabIndex = 4;
             this.label4.Text = "Abfahrt";
-            // 
-            // txtDepature
-            // 
-            this.txtDepature.Location = new System.Drawing.Point(32, 88);
-            this.txtDepature.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtDepature.Name = "txtDepature";
-            this.txtDepature.Size = new System.Drawing.Size(200, 26);
-            this.txtDepature.TabIndex = 3;
-            this.txtDepature.TextChanged += new System.EventHandler(this.getAllStations);
             // 
             // labelDepatureDate
             // 
@@ -471,10 +435,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.DataGridView connectionsTable;
-        private System.Windows.Forms.ListBox listAllStationsFrom;
-        private System.Windows.Forms.TextBox txtStationFrom;
-        private System.Windows.Forms.ListBox listAllStationsTo;
-        private System.Windows.Forms.TextBox txtStationTo;
         private System.Windows.Forms.TabControl Start;
         private System.Windows.Forms.TabPage startPage;
         private System.Windows.Forms.Label label3;
@@ -488,8 +448,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn fromTo;
         private System.Windows.Forms.DataGridViewTextBoxColumn depature;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtDepature;
-        private System.Windows.Forms.ListBox listDepature;
         private System.Windows.Forms.Label labelConnectionDate;
         private System.Windows.Forms.DateTimePicker dpConnectionDate;
         private System.Windows.Forms.TextBox txtConnectionTime;
@@ -500,6 +458,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn endStation;
         private System.Windows.Forms.DataGridViewTextBoxColumn station;
         private System.Windows.Forms.DataGridViewTextBoxColumn duration;
+        private System.Windows.Forms.TextBox txtStationFrom;
+        private System.Windows.Forms.TextBox txtStationTo;
+        private System.Windows.Forms.TextBox txtDepatureFrom;
     }
 }
 

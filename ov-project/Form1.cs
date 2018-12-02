@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using SwissTransport;
@@ -50,81 +49,37 @@ namespace ov_project
             }
         }
 
-        // BUG Reset List after every keydown
-        // TODO: Catch-Errors
+        // TODO: BUG Fixing Speicher System.AccessViolationException"
         private void getAllStations(object sender, EventArgs e)
         {
+            // In String Collection integriert damit Bug "System.AccessViolationException" gefixt wird
+            AutoCompleteStringCollection stationsCollection = new AutoCompleteStringCollection();
+
             TextBox searchStation = (TextBox)sender;
-            Stations allStations = transport.GetStations(searchStation.Text);
+            var allStations = transport.GetStations(searchStation.Text).StationList;
 
-            foreach (var station in allStations.StationList)
-            {
-                if (searchStation.Name == "txtStationTo")  // TODO: Bessere Bedienungen
-                {
-                    listAllStationsTo.Items.Add(station.Name);
-                    listAllStationsTo.Visible = true;
-                }
-                else if(searchStation.Name == "txtStationFrom")
-                {
-                    listAllStationsFrom.Items.Add(station.Name);
-                    listAllStationsFrom.Visible = true;
-                } else
-                {
-                    listDepature.Items.Add(station.Name);
-                    listDepature.Visible = true;
-                }
-            }
-        }
+            stationsCollection.Clear();
 
-        // Code optimieren = Textbox anhängen
-        private void putToStation(object sender, EventArgs e)
-        {
-            ListBox selectedStation = (ListBox)sender;
-            // Falls txtStationForm leer, wird der angebene Text integriert
-            if (selectedStation.Name == "listAllStationsTo")  // TODO: Bessere Bedienungen
+            foreach (var station in allStations)
             {
-                txtStationTo.Text = selectedStation.SelectedItem.ToString();
-                listAllStationsTo.Visible = false;
-                showDepatureDateAndTimeOption();
+              stationsCollection.Add(station.Name);
             }
-            else if (selectedStation.Name == "listAllStationsFrom")
-            {
-                txtStationFrom.Text = selectedStation.SelectedItem.ToString();
-                listAllStationsFrom.Visible = false;
-                showDepatureDateAndTimeOption();
-            }
-            else
-            {
-                // Abfahrt-Monitor-Settings
-                txtDepature.Text = selectedStation.SelectedItem.ToString();
-                labelStationName.Text = txtDepature.Text;
-                labelStationName.Visible = true;
-                listDepature.Visible = false;
 
-                getDepatureConnections();
-            }
-        }
-
-        private void showDepatureDateAndTimeOption()
-        {
-            labelConnectionDate.Visible = true;
-            dpConnectionDate.Visible = true;
-            labelConnectionTime.Visible = true;
-            txtConnectionTime.Text = DateTime.Now.ToShortTimeString();
-            txtConnectionTime.Visible = true;
+            searchStation.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            searchStation.AutoCompleteCustomSource = stationsCollection;
         }
 
         // TODO: Try catch und Fehlerhandling
         private void btnSearchConnections_Click(object sender, EventArgs e)
         {
-            var allConnections = transport.GetConnections(listAllStationsFrom.SelectedItem.ToString(), listAllStationsTo.SelectedItem.ToString()).ConnectionList;
+            var allConnections = transport.GetConnections(txtStationFrom.Text, txtStationTo.Text).ConnectionList;
             var connectionDepatureDate = Convert.ToDateTime(Convert.ToDateTime(dpConnectionDate.Text).ToShortDateString());
             var connectionDepatureTime = Convert.ToDateTime(Convert.ToDateTime(txtConnectionTime.Text).ToShortTimeString());
 
             var filteredConnectionsByDateAndTime = allConnections
-            .Where(connection =>
-                Convert.ToDateTime(Convert.ToDateTime(connection.From.Departure).ToShortDateString()) >= connectionDepatureDate &&
-                Convert.ToDateTime(Convert.ToDateTime(connection.From.Departure).ToShortTimeString()) >= connectionDepatureTime
+            .Where(c =>
+                Convert.ToDateTime(Convert.ToDateTime(c.From.Departure).ToShortDateString()) >= connectionDepatureDate &&
+                Convert.ToDateTime(Convert.ToDateTime(c.From.Departure).ToShortTimeString()) >= connectionDepatureTime
              );
 
             counter++;
@@ -147,25 +102,39 @@ namespace ov_project
             }
         }
 
-        // TODO: Try catch und Fehlerhandling
-        private void getDepatureConnections()
+        private void getDepatureConnections(object sender, KeyEventArgs e)
         {
-            // Verbindungen zu depatureMonitorTable integrieren
-            var allDepatureConnections = transport.GetStationBoard(listDepature.SelectedItem.ToString()).Entries;
-
-            counter++;
-
-            // Verbindungen von depatureMonitor beim zweiten Click clearen
-            if (counter >= 2)
+            if (e.KeyCode == Keys.Enter)
             {
-                depatureMonitorTable.Rows.Clear();
-            }
+                // Verbindungen zu depatureMonitorTable integrieren
+                var allDepatureConnections = transport.GetStationBoard(txtDepatureFrom.Text).Entries;
 
-            foreach (var station in allDepatureConnections)
-            {
-                var depatureTime = station.Stop.Departure.ToShortTimeString();
-                depatureMonitorTable.Rows.Add(station.Name, station.To, depatureTime);
+                labelStationName.Text = txtDepatureFrom.Text;
+                labelStationName.Visible = true;
+
+                counter++;
+
+                // Verbindungen von depatureMonitor beim zweiten Click clearen
+                if (counter >= 2)
+                {
+                    depatureMonitorTable.Rows.Clear();
+                }
+
+                foreach (var station in allDepatureConnections)
+                {
+                    var depatureTime = station.Stop.Departure.ToShortTimeString();
+                    depatureMonitorTable.Rows.Add(station.Name, station.To, depatureTime);
+                }
             }
+        }
+
+        private void showDateAndTimeOption(object sender, EventArgs e)
+        {
+            labelConnectionDate.Visible = true;
+            dpConnectionDate.Visible = true;
+            labelConnectionTime.Visible = true;
+            txtConnectionTime.Text = DateTime.Now.ToShortTimeString();
+            txtConnectionTime.Visible = true;
         }
 
         private void showConnectionDetails(object sender, DataGridViewCellEventArgs e)
