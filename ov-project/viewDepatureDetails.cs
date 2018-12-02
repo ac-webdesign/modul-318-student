@@ -91,6 +91,12 @@ namespace ov_project
             var googleMapsLink = $"https://www.google.ch/maps/dir/{labelDepatureFrom.Text}/{labelDepatureTo.Text}";
             googleMapsChrome.Load(googleMapsLink);
 
+            // Vorhandene Map entfernen / clearen
+            if(wbGoogleMaps.Controls.Count == 1)
+            {
+                wbGoogleMaps.Controls.Clear();
+            }
+
             wbGoogleMaps.Controls.Add(googleMapsChrome);
         }
     }
