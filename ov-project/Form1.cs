@@ -1,7 +1,7 @@
 ﻿using System;
+using System.Windows.Forms;
 using System.Drawing;
 using System.Linq;
-using System.Windows.Forms;
 using SwissTransport;
 
 namespace ov_project
@@ -170,6 +170,8 @@ namespace ov_project
             detailForm.txtDepatureDate.Text = connectionsTable.CurrentRow.Cells[0].Value.ToString();
             detailForm.txtDepatureTime.Text = connectionsTable.CurrentRow.Cells[1].Value.ToString();
             detailForm.txtDepatureDuration.Text = connectionsTable.CurrentRow.Cells[5].Value.ToString();
+
+            // Falls Kein Gleis existiert, wird ein Wert zugeweisen, damit kein Error passiert
             if (String.IsNullOrEmpty(connectionsTable.CurrentRow.Cells[4].Value.ToString()))
             {
                 connectionsTable.CurrentRow.Cells[4].Value = "";

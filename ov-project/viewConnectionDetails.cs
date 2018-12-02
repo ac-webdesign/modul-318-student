@@ -1,5 +1,5 @@
 ﻿using System;
-using CefSharp.WinForms;
+using CefSharp.WinForms; /* Dokumentation: https://github.com/cefsharp/CefSharp/tree/cefsharp/57 */
 using System.Windows.Forms;
 
 namespace ov_project
@@ -29,11 +29,11 @@ namespace ov_project
                 txtDepaturePlattform.ReadOnly = true;
             }
 
-            // CefSharp Chrome Browser integrieren
+            // CefSharp Chrome Browser
             var googleMapsChrome = new ChromiumWebBrowser("www.google.com");
 
-            // Google-Maps erstellen
-            var googleMapsLink = "https://www.google.ch/maps/dir/Mein%20Standort/" + labelStationTo.Text;
+            // Google-Maps von Standort zu Panel hinzufügen
+            var googleMapsLink = $"https://www.google.ch/maps/dir/{labelStationFrom.Text}/{labelStationTo.Text}";
             googleMapsChrome.Load(googleMapsLink);
 
             wbGoogleMaps.Controls.Add(googleMapsChrome);
