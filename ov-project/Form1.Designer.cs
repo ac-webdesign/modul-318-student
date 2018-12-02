@@ -459,7 +459,6 @@
         private System.Windows.Forms.TabPage startPage;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TabPage depatureMonitorPage;
-        private System.Windows.Forms.DataGridView depatureMonitorTable;
         private System.Windows.Forms.GroupBox depatureMonitorBox;
         private System.Windows.Forms.DataGridViewTextBoxColumn line;
         private System.Windows.Forms.DataGridViewTextBoxColumn fromTo;
@@ -484,6 +483,7 @@
         public System.Windows.Forms.Label labelDepatureDate;
         public System.Windows.Forms.Label labelDepatureTime;
         public System.Windows.Forms.Label labelStationName;
+        public System.Windows.Forms.DataGridView depatureMonitorTable;
     }
 }
 

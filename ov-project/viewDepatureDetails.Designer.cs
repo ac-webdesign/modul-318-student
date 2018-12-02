@@ -39,15 +39,17 @@
             this.label3 = new System.Windows.Forms.Label();
             this.labelDepatureFrom = new System.Windows.Forms.Label();
             this.labelDepatureTo = new System.Windows.Forms.Label();
+            this.btnPrev = new System.Windows.Forms.Button();
+            this.btnNext = new System.Windows.Forms.Button();
             this.gbDepatureData.SuspendLayout();
             this.gbTitel.SuspendLayout();
             this.SuspendLayout();
             // 
             // wbGoogleMaps
             // 
-            this.wbGoogleMaps.Location = new System.Drawing.Point(291, 93);
+            this.wbGoogleMaps.Location = new System.Drawing.Point(292, 142);
             this.wbGoogleMaps.Name = "wbGoogleMaps";
-            this.wbGoogleMaps.Size = new System.Drawing.Size(1259, 670);
+            this.wbGoogleMaps.Size = new System.Drawing.Size(1259, 634);
             this.wbGoogleMaps.TabIndex = 14;
             // 
             // gbDepatureData
@@ -56,11 +58,11 @@
             this.gbDepatureData.Controls.Add(this.txtDepatureDate);
             this.gbDepatureData.Controls.Add(this.label2);
             this.gbDepatureData.Controls.Add(this.label1);
-            this.gbDepatureData.Location = new System.Drawing.Point(13, 93);
+            this.gbDepatureData.Location = new System.Drawing.Point(14, 142);
             this.gbDepatureData.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbDepatureData.Name = "gbDepatureData";
             this.gbDepatureData.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.gbDepatureData.Size = new System.Drawing.Size(271, 670);
+            this.gbDepatureData.Size = new System.Drawing.Size(271, 634);
             this.gbDepatureData.TabIndex = 13;
             this.gbDepatureData.TabStop = false;
             this.gbDepatureData.Text = "Abfahrtdaten";
@@ -118,7 +120,7 @@
             this.gbTitel.Controls.Add(this.labelDepatureFrom);
             this.gbTitel.Controls.Add(this.labelDepatureTo);
             this.gbTitel.Controls.Add(this.labelTransportLine);
-            this.gbTitel.Location = new System.Drawing.Point(13, 14);
+            this.gbTitel.Location = new System.Drawing.Point(14, 63);
             this.gbTitel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbTitel.Name = "gbTitel";
             this.gbTitel.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -159,11 +161,33 @@
             this.labelDepatureTo.TabIndex = 1;
             this.labelDepatureTo.Text = "labelDepatureTo";
             // 
+            // btnPrev
+            // 
+            this.btnPrev.Location = new System.Drawing.Point(14, 12);
+            this.btnPrev.Name = "btnPrev";
+            this.btnPrev.Size = new System.Drawing.Size(61, 32);
+            this.btnPrev.TabIndex = 16;
+            this.btnPrev.Text = "<-";
+            this.btnPrev.UseVisualStyleBackColor = true;
+            this.btnPrev.Click += new System.EventHandler(this.btnPrev_Click);
+            // 
+            // btnNext
+            // 
+            this.btnNext.Location = new System.Drawing.Point(1490, 12);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(61, 32);
+            this.btnNext.TabIndex = 15;
+            this.btnNext.Text = "->";
+            this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            // 
             // viewDepatureDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1563, 787);
+            this.Controls.Add(this.btnPrev);
+            this.Controls.Add(this.btnNext);
             this.Controls.Add(this.wbGoogleMaps);
             this.Controls.Add(this.gbDepatureData);
             this.Controls.Add(this.gbTitel);
@@ -192,5 +216,7 @@
         public System.Windows.Forms.Label labelDepatureTo;
         public System.Windows.Forms.Label labelDepatureFrom;
         public System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnPrev;
+        private System.Windows.Forms.Button btnNext;
     }
 }
