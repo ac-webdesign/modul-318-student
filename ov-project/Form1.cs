@@ -175,7 +175,7 @@ namespace ov_project
             detailForm.txtDepatureDuration.Text = connectionsTable.CurrentRow.Cells[5].Value.ToString();
 
             // Falls kein Gleis existiert, wird ein Wert zugeweisen, damit kein Error passiert
-            if (String.IsNullOrEmpty(connectionsTable.CurrentRow.Cells[4].Value.ToString()))
+            if (String.IsNullOrWhiteSpace(connectionsTable.CurrentRow.Cells[4].Value.ToString()))
             {
                 connectionsTable.CurrentRow.Cells[4].Value = "";
             }

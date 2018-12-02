@@ -455,16 +455,12 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.DataGridView connectionsTable;
         private System.Windows.Forms.TabControl Start;
         private System.Windows.Forms.TabPage startPage;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TabPage depatureMonitorPage;
         private System.Windows.Forms.DataGridView depatureMonitorTable;
         private System.Windows.Forms.GroupBox depatureMonitorBox;
-        private System.Windows.Forms.Label labelDepatureDate;
-        private System.Windows.Forms.Label labelDepatureTime;
-        private System.Windows.Forms.Label labelStationName;
         private System.Windows.Forms.DataGridViewTextBoxColumn line;
         private System.Windows.Forms.DataGridViewTextBoxColumn fromTo;
         private System.Windows.Forms.DataGridViewTextBoxColumn depature;
@@ -484,6 +480,10 @@
         private System.Windows.Forms.TextBox txtDepatureFrom;
         private System.Windows.Forms.ErrorProvider stationToIsEqualStationFrom;
         private System.Windows.Forms.TextBox txtConnectionTimeMinute;
+        public System.Windows.Forms.DataGridView connectionsTable;
+        public System.Windows.Forms.Label labelDepatureDate;
+        public System.Windows.Forms.Label labelDepatureTime;
+        public System.Windows.Forms.Label labelStationName;
     }
 }
 

@@ -42,6 +42,8 @@
             this.txtDepaturePlattform = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.wbGoogleMaps = new System.Windows.Forms.Panel();
+            this.btnNext = new System.Windows.Forms.Button();
+            this.btnPrev = new System.Windows.Forms.Button();
             this.gbTitel.SuspendLayout();
             this.gbConnectionData.SuspendLayout();
             this.SuspendLayout();
@@ -138,7 +140,7 @@
             this.gbTitel.Controls.Add(this.label4);
             this.gbTitel.Controls.Add(this.labelStationTo);
             this.gbTitel.Controls.Add(this.labelStationFrom);
-            this.gbTitel.Location = new System.Drawing.Point(18, 45);
+            this.gbTitel.Location = new System.Drawing.Point(23, 80);
             this.gbTitel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbTitel.Name = "gbTitel";
             this.gbTitel.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -156,7 +158,7 @@
             this.gbConnectionData.Controls.Add(this.label3);
             this.gbConnectionData.Controls.Add(this.label2);
             this.gbConnectionData.Controls.Add(this.label1);
-            this.gbConnectionData.Location = new System.Drawing.Point(18, 155);
+            this.gbConnectionData.Location = new System.Drawing.Point(23, 190);
             this.gbConnectionData.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbConnectionData.Name = "gbConnectionData";
             this.gbConnectionData.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -185,16 +187,38 @@
             // 
             // wbGoogleMaps
             // 
-            this.wbGoogleMaps.Location = new System.Drawing.Point(18, 326);
+            this.wbGoogleMaps.Location = new System.Drawing.Point(23, 361);
             this.wbGoogleMaps.Name = "wbGoogleMaps";
             this.wbGoogleMaps.Size = new System.Drawing.Size(1164, 540);
             this.wbGoogleMaps.TabIndex = 11;
+            // 
+            // btnNext
+            // 
+            this.btnNext.Location = new System.Drawing.Point(1126, 29);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(61, 32);
+            this.btnNext.TabIndex = 12;
+            this.btnNext.Text = "->";
+            this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            // 
+            // btnPrev
+            // 
+            this.btnPrev.Location = new System.Drawing.Point(23, 29);
+            this.btnPrev.Name = "btnPrev";
+            this.btnPrev.Size = new System.Drawing.Size(61, 32);
+            this.btnPrev.TabIndex = 13;
+            this.btnPrev.Text = "<-";
+            this.btnPrev.UseVisualStyleBackColor = true;
+            this.btnPrev.Click += new System.EventHandler(this.btnPrev_Click);
             // 
             // viewConnectionDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1218, 918);
+            this.Controls.Add(this.btnPrev);
+            this.Controls.Add(this.btnNext);
             this.Controls.Add(this.wbGoogleMaps);
             this.Controls.Add(this.gbConnectionData);
             this.Controls.Add(this.gbTitel);
@@ -226,5 +250,7 @@
         private System.Windows.Forms.Label label5;
         public System.Windows.Forms.TextBox txtDepaturePlattform;
         public System.Windows.Forms.Panel wbGoogleMaps;
+        private System.Windows.Forms.Button btnNext;
+        private System.Windows.Forms.Button btnPrev;
     }
 }
