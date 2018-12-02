@@ -8,12 +8,6 @@ namespace ov_project
 {
     public partial class ovForm : Form
     {
-        Transport transport = new Transport();
-
-        // Zähler damit Rows beim zweiten Mal gecleart werden
-        int counter = 0;
-
-
         public ovForm()
         {
             InitializeComponent();
@@ -62,7 +56,10 @@ namespace ov_project
             }
             else
             {
+                // Textbox-Farbe zurücksetzen
                 searchStation.BackColor = Color.White;
+
+                Transport transport = new Transport();
                 var allStations = transport.GetStations(searchStation.Text).StationList;
 
                 stationsCollection.Clear();
@@ -89,6 +86,7 @@ namespace ov_project
             } 
             else
             {
+                Transport transport = new Transport();
                 var allConnections = transport.GetConnections(txtStationFrom.Text, txtStationTo.Text).ConnectionList;
                 // Textboxen zu Datetime formatiert um diese filtern zu könen
                 var connectionDepatureDate = Convert.ToDateTime(Convert.ToDateTime(dpConnectionDate.Text).ToShortDateString());
@@ -106,11 +104,8 @@ namespace ov_project
                 }
                 else
                 {
-
-                    counter++;
-
-                    // Verbindungen von connectionTable beim zweiten Click clearen
-                    if (counter >= 2)
+                    // Falls Werte existieren, Tabelle zurücksetzen
+                    if (connectionsTable.Rows.Count != 0)
                     {
                         connectionsTable.Rows.Clear();
                     }
@@ -134,15 +129,14 @@ namespace ov_project
             if (e.KeyCode == Keys.Enter)
             {
                 // Verbindungen zu depatureMonitorTable integrieren
+                Transport transport = new Transport();
                 var allDepatureConnections = transport.GetStationBoard(txtDepatureFrom.Text).Entries;
 
                 labelStationName.Text = txtDepatureFrom.Text;
                 labelStationName.Visible = true;
 
-                counter++;
-
-                // Verbindungen von depatureMonitor beim zweiten Click clearen
-                if (counter >= 2)
+                // Falls Werte existieren, Tabelle zurücksetzen
+                if (depatureMonitorTable.Rows.Count != 0)
                 {
                     depatureMonitorTable.Rows.Clear();
                 }
