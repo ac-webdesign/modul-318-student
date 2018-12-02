@@ -18,7 +18,16 @@ namespace ov_project
             txtDepatureDate.ReadOnly = true;
             txtDepatureTime.ReadOnly = true;
             txtDepatureDuration.ReadOnly = true;
-            txtDepaturePlattform.ReadOnly = true;
+
+            // Falls keine Plattform existiert, wird diese unsichtbar
+            if (String.IsNullOrWhiteSpace(txtDepaturePlattform.Text))
+            {
+                txtDepaturePlattform.Visible = false;
+            }
+            else
+            {
+                txtDepaturePlattform.ReadOnly = true;
+            }
 
             // CefSharp Chrome Browser integrieren
             var googleMapsChrome = new ChromiumWebBrowser("www.google.com");

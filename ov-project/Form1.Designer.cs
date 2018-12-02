@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.searchBox = new System.Windows.Forms.GroupBox();
             this.txtStationTo = new System.Windows.Forms.TextBox();
             this.txtStationFrom = new System.Windows.Forms.TextBox();
@@ -59,6 +60,7 @@
             this.labelDepatureDate = new System.Windows.Forms.Label();
             this.labelDepatureTime = new System.Windows.Forms.Label();
             this.labelStationName = new System.Windows.Forms.Label();
+            this.valueIsEqual = new System.Windows.Forms.ErrorProvider(this.components);
             this.searchBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.connectionsTable)).BeginInit();
             this.Start.SuspendLayout();
@@ -66,6 +68,7 @@
             this.depatureMonitorPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.depatureMonitorTable)).BeginInit();
             this.depatureMonitorBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.valueIsEqual)).BeginInit();
             this.SuspendLayout();
             // 
             // searchBox
@@ -403,6 +406,10 @@
             this.labelStationName.Text = "Stationsname";
             this.labelStationName.Visible = false;
             // 
+            // valueIsEqual
+            // 
+            this.valueIsEqual.ContainerControl = this;
+            // 
             // ovForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -424,6 +431,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.depatureMonitorTable)).EndInit();
             this.depatureMonitorBox.ResumeLayout(false);
             this.depatureMonitorBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.valueIsEqual)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -461,6 +469,7 @@
         private System.Windows.Forms.TextBox txtStationFrom;
         private System.Windows.Forms.TextBox txtStationTo;
         private System.Windows.Forms.TextBox txtDepatureFrom;
+        private System.Windows.Forms.ErrorProvider valueIsEqual;
     }
 }
 

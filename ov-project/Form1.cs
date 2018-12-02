@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using SwissTransport;
@@ -30,7 +31,6 @@ namespace ov_project
             connectionsTable.Columns[3].Width = 302;
         }
 
-        // TODO: Catch-Errors
         private void setDepatureMonitorSettings(object sender, EventArgs e)
         {
             TabControl page = (TabControl)sender;
@@ -56,49 +56,67 @@ namespace ov_project
             AutoCompleteStringCollection stationsCollection = new AutoCompleteStringCollection();
 
             TextBox searchStation = (TextBox)sender;
-            var allStations = transport.GetStations(searchStation.Text).StationList;
 
-            stationsCollection.Clear();
-
-            foreach (var station in allStations)
-            {
-              stationsCollection.Add(station.Name);
+            if (String.IsNullOrEmpty(searchStation.Text)) {
+                searchStation.BackColor = Color.Red;
             }
+            else
+            {
+                searchStation.BackColor = Color.White;
+                var allStations = transport.GetStations(searchStation.Text).StationList;
 
-            searchStation.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            searchStation.AutoCompleteCustomSource = stationsCollection;
+                stationsCollection.Clear();
+
+                foreach (var station in allStations)
+                {
+                    stationsCollection.Add(station.Name);
+                }
+
+                searchStation.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                searchStation.AutoCompleteCustomSource = stationsCollection;
+            }
         }
 
-        // TODO: Try catch und Fehlerhandling
         private void btnSearchConnections_Click(object sender, EventArgs e)
         {
-            var allConnections = transport.GetConnections(txtStationFrom.Text, txtStationTo.Text).ConnectionList;
-            var connectionDepatureDate = Convert.ToDateTime(Convert.ToDateTime(dpConnectionDate.Text).ToShortDateString());
-            var connectionDepatureTime = Convert.ToDateTime(Convert.ToDateTime(txtConnectionTime.Text).ToShortTimeString());
-
-            var filteredConnectionsByDateAndTime = allConnections
-            .Where(c =>
-                Convert.ToDateTime(Convert.ToDateTime(c.From.Departure).ToShortDateString()) >= connectionDepatureDate &&
-                Convert.ToDateTime(Convert.ToDateTime(c.From.Departure).ToShortTimeString()) >= connectionDepatureTime
-             );
-
-            counter++;
-
-            // Verbindungen von connectionTable beim zweiten Click clearen
-            if (counter >= 2)
+            if (String.IsNullOrEmpty(txtStationFrom.Text) || String.IsNullOrEmpty(txtStationTo.Text))
             {
-                connectionsTable.Rows.Clear();
-            }
-
-            // Verbindungen zu connectionTable integrieren
-            foreach (var connection in filteredConnectionsByDateAndTime)
+                txtStationFrom.BackColor = Color.Red;
+                txtStationTo.BackColor = Color.Red;
+            } else if (txtStationFrom.Text == txtStationTo.Text)
             {
-                var stationFormName = connection.From.Station.Name;
-                var stationToName = connection.To.Station.Name;
-                var depatureDate = Convert.ToDateTime(connection.From.Departure).ToShortDateString();
-                var depatureTime = Convert.ToDateTime(connection.From.Departure).ToShortTimeString();
-                var durationTime = connection.Duration.Replace('d', ' '); // Zeit noch formatieren
-                connectionsTable.Rows.Add(depatureDate, depatureTime, stationFormName, stationToName, connection.From.Platform, durationTime);
+                valueIsEqual.SetError(txtStationTo, "Gleiche Endstation ausgewählt");
+            } 
+            else
+            {
+                var allConnections = transport.GetConnections(txtStationFrom.Text, txtStationTo.Text).ConnectionList;
+                var connectionDepatureDate = Convert.ToDateTime(Convert.ToDateTime(dpConnectionDate.Text).ToShortDateString());
+                var connectionDepatureTime = Convert.ToDateTime(Convert.ToDateTime(txtConnectionTime.Text).ToShortTimeString());
+
+                var filteredConnectionsByDateAndTime = allConnections
+                .Where(c =>
+                    Convert.ToDateTime(Convert.ToDateTime(c.From.Departure).ToShortDateString()) >= connectionDepatureDate &&
+                    Convert.ToDateTime(Convert.ToDateTime(c.From.Departure).ToShortTimeString()) >= connectionDepatureTime
+                 );
+
+                counter++;
+
+                // Verbindungen von connectionTable beim zweiten Click clearen
+                if (counter >= 2)
+                {
+                    connectionsTable.Rows.Clear();
+                }
+
+                // Verbindungen zu connectionTable integrieren
+                foreach (var connection in filteredConnectionsByDateAndTime)
+                {
+                    var stationFormName = connection.From.Station.Name;
+                    var stationToName = connection.To.Station.Name;
+                    var depatureDate = Convert.ToDateTime(connection.From.Departure).ToShortDateString();
+                    var depatureTime = Convert.ToDateTime(connection.From.Departure).ToShortTimeString();
+                    var durationTime = connection.Duration.Replace('d', ' '); // Zeit noch formatieren
+                    connectionsTable.Rows.Add(depatureDate, depatureTime, stationFormName, stationToName, connection.From.Platform, durationTime);
+                }
             }
         }
 
@@ -147,6 +165,10 @@ namespace ov_project
             detailForm.txtDepatureDate.Text = connectionsTable.CurrentRow.Cells[0].Value.ToString();
             detailForm.txtDepatureTime.Text = connectionsTable.CurrentRow.Cells[1].Value.ToString();
             detailForm.txtDepatureDuration.Text = connectionsTable.CurrentRow.Cells[5].Value.ToString();
+            if (String.IsNullOrEmpty(connectionsTable.CurrentRow.Cells[4].Value.ToString()))
+            {
+                connectionsTable.CurrentRow.Cells[4].Value = "";
+            }
             detailForm.txtDepaturePlattform.Text = connectionsTable.CurrentRow.Cells[4].Value.ToString();
 
             detailForm.ShowDialog();
