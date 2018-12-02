@@ -32,7 +32,7 @@
             this.searchBox = new System.Windows.Forms.GroupBox();
             this.txtStationTo = new System.Windows.Forms.TextBox();
             this.txtStationFrom = new System.Windows.Forms.TextBox();
-            this.txtConnectionTime = new System.Windows.Forms.TextBox();
+            this.txtConnectionTimeHour = new System.Windows.Forms.TextBox();
             this.labelConnectionTime = new System.Windows.Forms.Label();
             this.labelConnectionDate = new System.Windows.Forms.Label();
             this.dpConnectionDate = new System.Windows.Forms.DateTimePicker();
@@ -61,6 +61,7 @@
             this.labelDepatureTime = new System.Windows.Forms.Label();
             this.labelStationName = new System.Windows.Forms.Label();
             this.valueIsEqual = new System.Windows.Forms.ErrorProvider(this.components);
+            this.txtConnectionTimeMinute = new System.Windows.Forms.TextBox();
             this.searchBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.connectionsTable)).BeginInit();
             this.Start.SuspendLayout();
@@ -73,9 +74,10 @@
             // 
             // searchBox
             // 
+            this.searchBox.Controls.Add(this.txtConnectionTimeMinute);
             this.searchBox.Controls.Add(this.txtStationTo);
             this.searchBox.Controls.Add(this.txtStationFrom);
-            this.searchBox.Controls.Add(this.txtConnectionTime);
+            this.searchBox.Controls.Add(this.txtConnectionTimeHour);
             this.searchBox.Controls.Add(this.labelConnectionTime);
             this.searchBox.Controls.Add(this.labelConnectionDate);
             this.searchBox.Controls.Add(this.dpConnectionDate);
@@ -113,19 +115,20 @@
             this.txtStationFrom.TextChanged += new System.EventHandler(this.getAllStations);
             this.txtStationFrom.Leave += new System.EventHandler(this.showDateAndTimeOption);
             // 
-            // txtConnectionTime
+            // txtConnectionTimeHour
             // 
-            this.txtConnectionTime.Location = new System.Drawing.Point(762, 146);
-            this.txtConnectionTime.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtConnectionTime.Name = "txtConnectionTime";
-            this.txtConnectionTime.Size = new System.Drawing.Size(60, 26);
-            this.txtConnectionTime.TabIndex = 11;
-            this.txtConnectionTime.Visible = false;
+            this.txtConnectionTimeHour.Location = new System.Drawing.Point(734, 146);
+            this.txtConnectionTimeHour.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtConnectionTimeHour.MaxLength = 2;
+            this.txtConnectionTimeHour.Name = "txtConnectionTimeHour";
+            this.txtConnectionTimeHour.Size = new System.Drawing.Size(60, 26);
+            this.txtConnectionTimeHour.TabIndex = 11;
+            this.txtConnectionTimeHour.Visible = false;
             // 
             // labelConnectionTime
             // 
             this.labelConnectionTime.AutoSize = true;
-            this.labelConnectionTime.Location = new System.Drawing.Point(758, 125);
+            this.labelConnectionTime.Location = new System.Drawing.Point(730, 120);
             this.labelConnectionTime.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelConnectionTime.Name = "labelConnectionTime";
             this.labelConnectionTime.Size = new System.Drawing.Size(36, 20);
@@ -410,6 +413,16 @@
             // 
             this.valueIsEqual.ContainerControl = this;
             // 
+            // txtConnectionTimeMinute
+            // 
+            this.txtConnectionTimeMinute.Location = new System.Drawing.Point(802, 146);
+            this.txtConnectionTimeMinute.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtConnectionTimeMinute.MaxLength = 2;
+            this.txtConnectionTimeMinute.Name = "txtConnectionTimeMinute";
+            this.txtConnectionTimeMinute.Size = new System.Drawing.Size(60, 26);
+            this.txtConnectionTimeMinute.TabIndex = 14;
+            this.txtConnectionTimeMinute.Visible = false;
+            // 
             // ovForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -458,7 +471,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label labelConnectionDate;
         private System.Windows.Forms.DateTimePicker dpConnectionDate;
-        private System.Windows.Forms.TextBox txtConnectionTime;
+        private System.Windows.Forms.TextBox txtConnectionTimeHour;
         private System.Windows.Forms.Label labelConnectionTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn date;
         private System.Windows.Forms.DataGridViewTextBoxColumn time;
@@ -470,6 +483,7 @@
         private System.Windows.Forms.TextBox txtStationTo;
         private System.Windows.Forms.TextBox txtDepatureFrom;
         private System.Windows.Forms.ErrorProvider valueIsEqual;
+        private System.Windows.Forms.TextBox txtConnectionTimeMinute;
     }
 }
 

@@ -90,8 +90,9 @@ namespace ov_project
             else
             {
                 var allConnections = transport.GetConnections(txtStationFrom.Text, txtStationTo.Text).ConnectionList;
+                // Textboxen zu Datetime formatiert um diese filtern zu könen
                 var connectionDepatureDate = Convert.ToDateTime(Convert.ToDateTime(dpConnectionDate.Text).ToShortDateString());
-                var connectionDepatureTime = Convert.ToDateTime(Convert.ToDateTime(txtConnectionTime.Text).ToShortTimeString());
+                var connectionDepatureTime = Convert.ToDateTime(Convert.ToDateTime(txtConnectionTimeHour.Text + ":" + txtConnectionTimeMinute.Text).ToShortTimeString());
 
                 var filteredConnectionsByDateAndTime = allConnections
                 .Where(c =>
@@ -159,8 +160,10 @@ namespace ov_project
             labelConnectionDate.Visible = true;
             dpConnectionDate.Visible = true;
             labelConnectionTime.Visible = true;
-            txtConnectionTime.Text = DateTime.Now.ToShortTimeString();
-            txtConnectionTime.Visible = true;
+            txtConnectionTimeHour.Text = DateTime.Now.Hour.ToString();
+            txtConnectionTimeMinute.Text = DateTime.Now.Minute.ToString();
+            txtConnectionTimeHour.Visible = true;
+            txtConnectionTimeMinute.Visible = true;
         }
 
         private void showConnectionDetails(object sender, DataGridViewCellEventArgs e)
