@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.searchBox = new System.Windows.Forms.GroupBox();
+            this.txtConnectionTimeMinute = new System.Windows.Forms.TextBox();
             this.txtStationTo = new System.Windows.Forms.TextBox();
             this.txtStationFrom = new System.Windows.Forms.TextBox();
             this.txtConnectionTimeHour = new System.Windows.Forms.TextBox();
@@ -60,8 +61,7 @@
             this.labelDepatureDate = new System.Windows.Forms.Label();
             this.labelDepatureTime = new System.Windows.Forms.Label();
             this.labelStationName = new System.Windows.Forms.Label();
-            this.valueIsEqual = new System.Windows.Forms.ErrorProvider(this.components);
-            this.txtConnectionTimeMinute = new System.Windows.Forms.TextBox();
+            this.stationToIsEqualStationFrom = new System.Windows.Forms.ErrorProvider(this.components);
             this.searchBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.connectionsTable)).BeginInit();
             this.Start.SuspendLayout();
@@ -69,7 +69,7 @@
             this.depatureMonitorPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.depatureMonitorTable)).BeginInit();
             this.depatureMonitorBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.valueIsEqual)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stationToIsEqualStationFrom)).BeginInit();
             this.SuspendLayout();
             // 
             // searchBox
@@ -92,6 +92,16 @@
             this.searchBox.TabIndex = 0;
             this.searchBox.TabStop = false;
             this.searchBox.Text = "Verbindungen suchen";
+            // 
+            // txtConnectionTimeMinute
+            // 
+            this.txtConnectionTimeMinute.Location = new System.Drawing.Point(802, 146);
+            this.txtConnectionTimeMinute.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtConnectionTimeMinute.MaxLength = 2;
+            this.txtConnectionTimeMinute.Name = "txtConnectionTimeMinute";
+            this.txtConnectionTimeMinute.Size = new System.Drawing.Size(60, 26);
+            this.txtConnectionTimeMinute.TabIndex = 14;
+            this.txtConnectionTimeMinute.Visible = false;
             // 
             // txtStationTo
             // 
@@ -409,19 +419,9 @@
             this.labelStationName.Text = "Stationsname";
             this.labelStationName.Visible = false;
             // 
-            // valueIsEqual
+            // stationToIsEqualStationFrom
             // 
-            this.valueIsEqual.ContainerControl = this;
-            // 
-            // txtConnectionTimeMinute
-            // 
-            this.txtConnectionTimeMinute.Location = new System.Drawing.Point(802, 146);
-            this.txtConnectionTimeMinute.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtConnectionTimeMinute.MaxLength = 2;
-            this.txtConnectionTimeMinute.Name = "txtConnectionTimeMinute";
-            this.txtConnectionTimeMinute.Size = new System.Drawing.Size(60, 26);
-            this.txtConnectionTimeMinute.TabIndex = 14;
-            this.txtConnectionTimeMinute.Visible = false;
+            this.stationToIsEqualStationFrom.ContainerControl = this;
             // 
             // ovForm
             // 
@@ -444,7 +444,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.depatureMonitorTable)).EndInit();
             this.depatureMonitorBox.ResumeLayout(false);
             this.depatureMonitorBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.valueIsEqual)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stationToIsEqualStationFrom)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -482,7 +482,7 @@
         private System.Windows.Forms.TextBox txtStationFrom;
         private System.Windows.Forms.TextBox txtStationTo;
         private System.Windows.Forms.TextBox txtDepatureFrom;
-        private System.Windows.Forms.ErrorProvider valueIsEqual;
+        private System.Windows.Forms.ErrorProvider stationToIsEqualStationFrom;
         private System.Windows.Forms.TextBox txtConnectionTimeMinute;
     }
 }

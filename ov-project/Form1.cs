@@ -38,7 +38,7 @@ namespace ov_project
                 depatureMonitorTable.Columns[2].Width = 300;
 
                 // Abfahrtmonitor Zeit und Datum eintragen
-                labelDepatureTime.Text = DateTime.Now.ToShortTimeString(); // TODO: Refresh every Time
+                labelDepatureTime.Text = DateTime.Now.ToShortTimeString();
                 labelDepatureDate.Text = DateTime.Now.ToShortDateString();
             }
         }
@@ -47,30 +47,30 @@ namespace ov_project
         private void getAllStations(object sender, EventArgs e)
         {
             // In String Collection integriert damit Bug "System.AccessViolationException" gefixt wird
-            AutoCompleteStringCollection stationsCollection = new AutoCompleteStringCollection();
+            AutoCompleteStringCollection stationsStringCollection = new AutoCompleteStringCollection();
 
-            TextBox searchStation = (TextBox)sender;
+            TextBox txtSearchedStation = (TextBox)sender;
 
-            if (String.IsNullOrEmpty(searchStation.Text)) {
-                searchStation.BackColor = Color.Red;
+            if (String.IsNullOrEmpty(txtSearchedStation.Text)) {
+                txtSearchedStation.BackColor = Color.Red;
             }
             else
             {
                 // Textbox-Farbe zurücksetzen
-                searchStation.BackColor = Color.White;
+                txtSearchedStation.BackColor = Color.White;
 
                 Transport transport = new Transport();
-                var allStations = transport.GetStations(searchStation.Text).StationList;
+                var allStationConnections = transport.GetStations(txtSearchedStation.Text).StationList;
 
-                stationsCollection.Clear();
+                stationsStringCollection.Clear();
 
-                foreach (var station in allStations)
+                foreach (var station in allStationConnections)
                 {
-                    stationsCollection.Add(station.Name);
+                    stationsStringCollection.Add(station.Name);
                 }
 
-                searchStation.AutoCompleteSource = AutoCompleteSource.CustomSource;
-                searchStation.AutoCompleteCustomSource = stationsCollection;
+                txtSearchedStation.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                txtSearchedStation.AutoCompleteCustomSource = stationsStringCollection;
             }
         }
 
@@ -82,13 +82,14 @@ namespace ov_project
                 txtStationTo.BackColor = Color.Red;
             } else if (txtStationFrom.Text == txtStationTo.Text)
             {
-                valueIsEqual.SetError(txtStationTo, "Gleiche Endstation ausgewählt");
+                stationToIsEqualStationFrom.SetError(txtStationTo, "Gleiche Station ausgewählt");
             } 
             else
             {
                 Transport transport = new Transport();
                 var allConnections = transport.GetConnections(txtStationFrom.Text, txtStationTo.Text).ConnectionList;
-                // Textboxen zu Datetime formatiert um diese filtern zu könen
+
+                // Textboxen zu Datetime formatiert um diese filtern zu können
                 var connectionDepatureDate = Convert.ToDateTime(Convert.ToDateTime(dpConnectionDate.Text).ToShortDateString());
                 var connectionDepatureTime = Convert.ToDateTime(Convert.ToDateTime(txtConnectionTimeHour.Text + ":" + txtConnectionTimeMinute.Text).ToShortTimeString());
 
@@ -98,6 +99,7 @@ namespace ov_project
                     Convert.ToDateTime(Convert.ToDateTime(c.From.Departure).ToShortTimeString()) >= connectionDepatureTime
                  );
 
+                // Falls keinen Verbindung gefunden. Warnung anzeigen
                 if (filteredConnectionsByDateAndTime.ToList().Count == 0)
                 {
                     MessageBox.Show("Bitte wählen Sie einen anderen Zeitpunkt", "Keine Verbindung gefunden", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -117,7 +119,7 @@ namespace ov_project
                         var stationToName = connection.To.Station.Name;
                         var depatureDate = Convert.ToDateTime(connection.From.Departure).ToShortDateString();
                         var depatureTime = Convert.ToDateTime(connection.From.Departure).ToShortTimeString();
-                        var durationTime = connection.Duration.Replace('d', ' '); // Zeit noch formatieren
+                        var durationTime = connection.Duration.Replace('d', ' '); // TODO: Zeit besser formatieren
                         connectionsTable.Rows.Add(depatureDate, depatureTime, stationFormName, stationToName, connection.From.Platform, durationTime);
                     }
                 }
@@ -128,10 +130,10 @@ namespace ov_project
         {
             if (e.KeyCode == Keys.Enter)
             {
-                // Verbindungen zu depatureMonitorTable integrieren
                 Transport transport = new Transport();
                 var allDepatureConnections = transport.GetStationBoard(txtDepatureFrom.Text).Entries;
 
+                // Label-Stationnsame anzeigen
                 labelStationName.Text = txtDepatureFrom.Text;
                 labelStationName.Visible = true;
 
@@ -141,6 +143,7 @@ namespace ov_project
                     depatureMonitorTable.Rows.Clear();
                 }
 
+                // Verbindungen zu depatureMonitorTable integrieren
                 foreach (var station in allDepatureConnections)
                 {
                     var depatureTime = station.Stop.Departure.ToShortTimeString();
@@ -155,7 +158,7 @@ namespace ov_project
             dpConnectionDate.Visible = true;
             labelConnectionTime.Visible = true;
             txtConnectionTimeHour.Text = DateTime.Now.Hour.ToString();
-            txtConnectionTimeMinute.Text = DateTime.Now.Minute.ToString();
+            txtConnectionTimeMinute.Text = Convert.ToDateTime(DateTime.Now.ToShortTimeString()).Minute.ToString();
             txtConnectionTimeHour.Visible = true;
             txtConnectionTimeMinute.Visible = true;
         }
@@ -164,14 +167,14 @@ namespace ov_project
         {
             viewConnectionDetails detailForm = new viewConnectionDetails();
 
-            // Daten von Column zu ConnectionDetailForm hinzugefügt
+            // Daten von Row zu ConnectionDetailForm übertragen
             detailForm.labelStationFrom.Text = connectionsTable.CurrentRow.Cells[2].Value.ToString();
             detailForm.labelStationTo.Text = connectionsTable.CurrentRow.Cells[3].Value.ToString();
             detailForm.txtDepatureDate.Text = connectionsTable.CurrentRow.Cells[0].Value.ToString();
             detailForm.txtDepatureTime.Text = connectionsTable.CurrentRow.Cells[1].Value.ToString();
             detailForm.txtDepatureDuration.Text = connectionsTable.CurrentRow.Cells[5].Value.ToString();
 
-            // Falls Kein Gleis existiert, wird ein Wert zugeweisen, damit kein Error passiert
+            // Falls kein Gleis existiert, wird ein Wert zugeweisen, damit kein Error passiert
             if (String.IsNullOrEmpty(connectionsTable.CurrentRow.Cells[4].Value.ToString()))
             {
                 connectionsTable.CurrentRow.Cells[4].Value = "";
@@ -185,7 +188,7 @@ namespace ov_project
         {
             viewDepatureDetails detailForm = new viewDepatureDetails();
 
-            // Daten von Column zu DepatureDetailsForm hinzugefügt
+            // Daten von Row zu DepatureDetailsForm übertragen
             detailForm.labelTransportLine.Text = depatureMonitorTable.CurrentRow.Cells[0].Value.ToString();
             detailForm.labelDepatureFrom.Text = labelStationName.Text;
             detailForm.labelDepatureTo.Text = depatureMonitorTable.CurrentRow.Cells[1].Value.ToString();
