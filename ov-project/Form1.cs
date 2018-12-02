@@ -99,23 +99,31 @@ namespace ov_project
                     Convert.ToDateTime(Convert.ToDateTime(c.From.Departure).ToShortTimeString()) >= connectionDepatureTime
                  );
 
-                counter++;
-
-                // Verbindungen von connectionTable beim zweiten Click clearen
-                if (counter >= 2)
+                if (filteredConnectionsByDateAndTime.ToList().Count == 0)
                 {
-                    connectionsTable.Rows.Clear();
+                    MessageBox.Show("Bitte wählen Sie einen anderen Zeitpunkt", "Keine Verbindung gefunden", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-
-                // Verbindungen zu connectionTable integrieren
-                foreach (var connection in filteredConnectionsByDateAndTime)
+                else
                 {
-                    var stationFormName = connection.From.Station.Name;
-                    var stationToName = connection.To.Station.Name;
-                    var depatureDate = Convert.ToDateTime(connection.From.Departure).ToShortDateString();
-                    var depatureTime = Convert.ToDateTime(connection.From.Departure).ToShortTimeString();
-                    var durationTime = connection.Duration.Replace('d', ' '); // Zeit noch formatieren
-                    connectionsTable.Rows.Add(depatureDate, depatureTime, stationFormName, stationToName, connection.From.Platform, durationTime);
+
+                    counter++;
+
+                    // Verbindungen von connectionTable beim zweiten Click clearen
+                    if (counter >= 2)
+                    {
+                        connectionsTable.Rows.Clear();
+                    }
+
+                    // Verbindungen zu connectionTable integrieren
+                    foreach (var connection in filteredConnectionsByDateAndTime)
+                    {
+                        var stationFormName = connection.From.Station.Name;
+                        var stationToName = connection.To.Station.Name;
+                        var depatureDate = Convert.ToDateTime(connection.From.Departure).ToShortDateString();
+                        var depatureTime = Convert.ToDateTime(connection.From.Departure).ToShortTimeString();
+                        var durationTime = connection.Duration.Replace('d', ' '); // Zeit noch formatieren
+                        connectionsTable.Rows.Add(depatureDate, depatureTime, stationFormName, stationToName, connection.From.Platform, durationTime);
+                    }
                 }
             }
         }
