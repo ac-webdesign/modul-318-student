@@ -400,7 +400,7 @@
             // 
             this.stationToIsEqualStationFrom.ContainerControl = this;
             // 
-            // errorProvider1
+            // falseFromatProvider
             // 
             this.falseFromatProvider.ContainerControl = this;
             // 

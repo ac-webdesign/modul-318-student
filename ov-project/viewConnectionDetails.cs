@@ -28,8 +28,9 @@ namespace ov_project
 
 
             // Falls keine Plattform existiert, wird diese unsichtbar
-            if (String.IsNullOrWhiteSpace(txtDepaturePlattform.Text))
+            if (txtDepaturePlattform.Text == "Kein Gleis gefunden")
             {
+                labelDepaturePlattform.Visible = false;
                 txtDepaturePlattform.Visible = false;
             }
             else
@@ -69,12 +70,14 @@ namespace ov_project
             txtDepatureDuration.Text = ovForm.connectionsTable.Rows[index].Cells[5].Value.ToString();
 
             // Falls kein Gleis existiert, wird ein Wert zugeweisen, damit kein Error passiert
-            if (String.IsNullOrEmpty(ovForm.connectionsTable.Rows[index].Cells[4].Value.ToString()))
+            if (txtDepaturePlattform.Text == "Kein Gleis gefunden")
             {
+                labelDepaturePlattform.Visible = false;
                 txtDepaturePlattform.Visible = false;
             }
             else
             {
+                labelDepaturePlattform.Visible = true;
                 txtDepaturePlattform.Text = ovForm.connectionsTable.Rows[index].Cells[4].Value.ToString();
             }
         } 

@@ -40,7 +40,7 @@
             this.gbTitel = new System.Windows.Forms.GroupBox();
             this.gbConnectionData = new System.Windows.Forms.GroupBox();
             this.txtDepaturePlattform = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.labelDepaturePlattform = new System.Windows.Forms.Label();
             this.wbGoogleMaps = new System.Windows.Forms.Panel();
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPrev = new System.Windows.Forms.Button();
@@ -140,7 +140,7 @@
             // gbConnectionData
             // 
             this.gbConnectionData.Controls.Add(this.txtDepaturePlattform);
-            this.gbConnectionData.Controls.Add(this.label5);
+            this.gbConnectionData.Controls.Add(this.labelDepaturePlattform);
             this.gbConnectionData.Controls.Add(this.txtDepatureDuration);
             this.gbConnectionData.Controls.Add(this.txtDepatureTime);
             this.gbConnectionData.Controls.Add(this.txtDepatureDate);
@@ -161,19 +161,19 @@
             this.txtDepaturePlattform.Size = new System.Drawing.Size(100, 20);
             this.txtDepaturePlattform.TabIndex = 9;
             // 
-            // label5
+            // labelDepaturePlattform
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(295, 74);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(33, 13);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Gleis:";
+            this.labelDepaturePlattform.AutoSize = true;
+            this.labelDepaturePlattform.Location = new System.Drawing.Point(295, 74);
+            this.labelDepaturePlattform.Name = "labelDepaturePlattform";
+            this.labelDepaturePlattform.Size = new System.Drawing.Size(33, 13);
+            this.labelDepaturePlattform.TabIndex = 8;
+            this.labelDepaturePlattform.Text = "Gleis:";
             // 
             // wbGoogleMaps
             // 
             this.wbGoogleMaps.Location = new System.Drawing.Point(15, 235);
-            this.wbGoogleMaps.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.wbGoogleMaps.Margin = new System.Windows.Forms.Padding(2);
             this.wbGoogleMaps.Name = "wbGoogleMaps";
             this.wbGoogleMaps.Size = new System.Drawing.Size(776, 351);
             this.wbGoogleMaps.TabIndex = 11;
@@ -181,7 +181,7 @@
             // btnNext
             // 
             this.btnNext.Location = new System.Drawing.Point(751, 19);
-            this.btnNext.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnNext.Margin = new System.Windows.Forms.Padding(2);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(41, 21);
             this.btnNext.TabIndex = 12;
@@ -192,7 +192,7 @@
             // btnPrev
             // 
             this.btnPrev.Location = new System.Drawing.Point(15, 19);
-            this.btnPrev.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnPrev.Margin = new System.Windows.Forms.Padding(2);
             this.btnPrev.Name = "btnPrev";
             this.btnPrev.Size = new System.Drawing.Size(41, 21);
             this.btnPrev.TabIndex = 13;
@@ -236,7 +236,7 @@
         public System.Windows.Forms.TextBox txtDepatureDate;
         public System.Windows.Forms.TextBox txtDepatureTime;
         public System.Windows.Forms.TextBox txtDepatureDuration;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label labelDepaturePlattform;
         public System.Windows.Forms.TextBox txtDepaturePlattform;
         public System.Windows.Forms.Panel wbGoogleMaps;
         private System.Windows.Forms.Button btnNext;

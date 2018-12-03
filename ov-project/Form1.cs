@@ -21,8 +21,8 @@ namespace ov_project
             form.Height = 600;
 
             // Standardbreite für Spalten setzen
-            connectionsTable.Columns[2].Width = 300;
-            connectionsTable.Columns[3].Width = 302;
+            connectionsTable.Columns[2].Width = 251;
+            connectionsTable.Columns[3].Width = 251;
         }
 
         private void setDepatureMonitorSettings(object sender, EventArgs e)
@@ -52,7 +52,6 @@ namespace ov_project
             //BUG Fixing Speicher-Zugriff, Error: "System.AccessViolationException"
             if (txtSearchedStation.Text.Length == 3)
             {
-
                 if (String.IsNullOrEmpty(txtSearchedStation.Text))
                 {
                     txtSearchedStation.BackColor = Color.Red;
@@ -64,8 +63,6 @@ namespace ov_project
 
                     Transport transport = new Transport();
                     var allStationConnections = transport.GetStations(txtSearchedStation.Text).StationList;
-
-                    stationsStringCollection.Clear();
 
                     foreach (var station in allStationConnections)
                     {
@@ -124,6 +121,10 @@ namespace ov_project
                             var depatureDate = Convert.ToDateTime(connection.From.Departure).ToShortDateString();
                             var depatureTime = Convert.ToDateTime(connection.From.Departure).ToShortTimeString();
                             var durationTime = connection.Duration.Replace('d', ' '); // TODO: Zeit besser formatieren
+                            if (String.IsNullOrEmpty(connection.From.Platform))
+                            {
+                                connection.From.Platform = "Kein Gleis gefunden";
+                            }
                             connectionsTable.Rows.Add(depatureDate, depatureTime, stationFormName, stationToName, connection.From.Platform, durationTime);
                         }
                     }
@@ -139,23 +140,23 @@ namespace ov_project
         {
             if (e.KeyCode == Keys.Enter)
             {
-                Transport transport = new Transport();
-                var allDepatureConnections = transport.GetStationBoard(txtDepatureFrom.Text).Entries;
+                    Transport transport = new Transport();
+                    var allDepatureConnections = transport.GetStationBoard(txtDepatureFrom.Text).Entries;
 
-                // Label-Stationnsame anzeigen
-                labelStationName.Text = txtDepatureFrom.Text;
-                labelStationName.Visible = true;
+                    // Label-Stationnsame anzeigen
+                    labelStationName.Text = txtDepatureFrom.Text;
+                    labelStationName.Visible = true;
 
-                depatureMonitorTable.Rows.Clear();
+                    depatureMonitorTable.Rows.Clear();
 
-                // Verbindungen zu depatureMonitorTable integrieren
-                foreach (var station in allDepatureConnections)
-                {
-                    var depatureTime = station.Stop.Departure.ToShortTimeString();
-                    depatureMonitorTable.Rows.Add(station.Name, station.To, depatureTime);
+                    // Verbindungen zu depatureMonitorTable integrieren
+                    foreach (var station in allDepatureConnections)
+                    {
+                        var depatureTime = station.Stop.Departure.ToShortTimeString();
+                        depatureMonitorTable.Rows.Add(station.Name, station.To, depatureTime);
+                    }
                 }
             }
-        }
 
         private void showDateAndTimeOption(object sender, EventArgs e)
         {
@@ -178,12 +179,6 @@ namespace ov_project
             detailForm.txtDepatureDate.Text = connectionsTable.CurrentRow.Cells[0].Value.ToString();
             detailForm.txtDepatureTime.Text = connectionsTable.CurrentRow.Cells[1].Value.ToString();
             detailForm.txtDepatureDuration.Text = connectionsTable.CurrentRow.Cells[5].Value.ToString();
-
-            // Falls kein Gleis existiert, wird ein Wert zugeweisen, damit kein Error passiert
-            if (String.IsNullOrWhiteSpace(connectionsTable.CurrentRow.Cells[4].Value.ToString()))
-            {
-                connectionsTable.CurrentRow.Cells[4].Value = "";
-            }
             detailForm.txtDepaturePlattform.Text = connectionsTable.CurrentRow.Cells[4].Value.ToString();
 
             detailForm.ShowDialog();
