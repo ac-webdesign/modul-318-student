@@ -45,34 +45,67 @@ namespace ov_project
 
         private void getAllStations(object sender, EventArgs e)
         {
-            AutoCompleteStringCollection stationsStringCollection = new AutoCompleteStringCollection();
-
             TextBox txtSearchedStation = (TextBox)sender;
-
-            //BUG Fixing Speicher-Zugriff, Error: "System.AccessViolationException"
-            if (txtSearchedStation.Text.Length >= 3)
+            if (txtSearchedStation.Name == "txtStationFrom")
             {
-                if (String.IsNullOrEmpty(txtSearchedStation.Text))
+                getStationsByCorrectTextbox(txtSearchedStation, listStationFrom);
+            }
+            if (txtSearchedStation.Name == "txtStationTo")
+            {
+                getStationsByCorrectTextbox(txtSearchedStation, listStationTo);
+            }
+            if (txtSearchedStation.Name == "txtDepatureFrom")
+            {
+                getStationsByCorrectTextbox(txtSearchedStation, listDepatureFrom);
+            }
+        }
+
+        private void getStationsByCorrectTextbox(TextBox txtStationInput, ListBox list)
+        {
+            if (String.IsNullOrEmpty(txtStationInput.Text))
+            {
+                txtStationInput.BackColor = Color.Red;
+            }
+            else
+            {
+                list.Items.Clear();
+
+                // Textbox-Farbe zurücksetzen & Liste auf visible setzen
+                txtStationInput.BackColor = Color.White;
+                list.Visible = true;
+
+                Transport transport = new Transport();
+                var allStationConnections = transport.GetStations(txtStationInput.Text).StationList;
+
+                foreach (var station in allStationConnections)
                 {
-                    txtSearchedStation.BackColor = Color.Red;
-                }
-                else
-                {
-                    // Textbox-Farbe zurücksetzen
-                    txtSearchedStation.BackColor = Color.White;
-
-                    Transport transport = new Transport();
-                    var allStationConnections = transport.GetStations(txtSearchedStation.Text).StationList;
-
-                    foreach (var station in allStationConnections)
-                    {
-                        stationsStringCollection.Add(station.Name);
-                    }
-
-                    txtSearchedStation.AutoCompleteSource = AutoCompleteSource.CustomSource;
-                    txtSearchedStation.AutoCompleteCustomSource = stationsStringCollection;
+                    list.Items.Add(station.Name);
                 }
             }
+        }
+
+        private void putStationToCorrectTextbox(object sender, EventArgs e)
+        {
+            ListBox selectedListBox = (ListBox)sender;
+            if (selectedListBox.Name == "listStationFrom")
+            {
+                putToTextbox(txtStationFrom, selectedListBox);
+            }
+            if (selectedListBox.Name == "listStationTo")
+            {
+                putToTextbox(txtStationTo, selectedListBox);
+            }
+            if (selectedListBox.Name == "listDepatureFrom")
+            {
+                putToTextbox(txtDepatureFrom, selectedListBox);
+                getDepatureConnections();
+            }
+        }
+
+        private void putToTextbox(TextBox textBox, ListBox selectedListBox)
+        {
+            textBox.Text = selectedListBox.SelectedItem.ToString();
+            selectedListBox.Visible = false;
         }
 
         private void btnSearchConnections_Click(object sender, EventArgs e)
@@ -140,27 +173,24 @@ namespace ov_project
             }
         }
 
-        private void getDepatureConnections(object sender, KeyEventArgs e)
+        private void getDepatureConnections()
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                    Transport transport = new Transport();
-                    var allDepatureConnections = transport.GetStationBoard(txtDepatureFrom.Text).Entries;
+           Transport transport = new Transport();
+           var allDepatureConnections = transport.GetStationBoard(txtDepatureFrom.Text).Entries;
 
-                    // Label-Stationnsame anzeigen
-                    labelStationName.Text = txtDepatureFrom.Text;
-                    labelStationName.Visible = true;
+           // Label-Stationnsame anzeigen
+           labelStationName.Text = txtDepatureFrom.Text;
+           labelStationName.Visible = true;
 
-                    depatureMonitorTable.Rows.Clear();
+           depatureMonitorTable.Rows.Clear();
 
-                    // Verbindungen zu depatureMonitorTable integrieren
-                    foreach (var depatureLine in allDepatureConnections)
-                    {
-                        var depatureTime = depatureLine.Stop.Departure.ToShortTimeString();
-                        depatureMonitorTable.Rows.Add(depatureLine.Name, depatureLine.To, depatureTime);
-                    }
-                }
-            }
+           // Verbindungen zu depatureMonitorTable integrieren
+           foreach (var depatureLine in allDepatureConnections)
+           {
+                var depatureTime = depatureLine.Stop.Departure.ToShortTimeString();
+                depatureMonitorTable.Rows.Add(depatureLine.Name, depatureLine.To, depatureTime);
+           }
+        }
 
         private void showDateAndTimeOption(object sender, EventArgs e)
         {

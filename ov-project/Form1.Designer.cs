@@ -63,6 +63,9 @@
             this.labelStationName = new System.Windows.Forms.Label();
             this.stationToIsEqualStationFrom = new System.Windows.Forms.ErrorProvider(this.components);
             this.falseFromatProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.listStationFrom = new System.Windows.Forms.ListBox();
+            this.listStationTo = new System.Windows.Forms.ListBox();
+            this.listDepatureFrom = new System.Windows.Forms.ListBox();
             this.searchBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.connectionsTable)).BeginInit();
             this.Start.SuspendLayout();
@@ -76,6 +79,8 @@
             // 
             // searchBox
             // 
+            this.searchBox.Controls.Add(this.listStationTo);
+            this.searchBox.Controls.Add(this.listStationFrom);
             this.searchBox.Controls.Add(this.txtConnectionTimeMinute);
             this.searchBox.Controls.Add(this.txtStationTo);
             this.searchBox.Controls.Add(this.txtStationFrom);
@@ -104,7 +109,6 @@
             // 
             // txtStationTo
             // 
-            this.txtStationTo.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.txtStationTo.Location = new System.Drawing.Point(197, 55);
             this.txtStationTo.Name = "txtStationTo";
             this.txtStationTo.Size = new System.Drawing.Size(151, 20);
@@ -114,7 +118,6 @@
             // 
             // txtStationFrom
             // 
-            this.txtStationFrom.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.txtStationFrom.Location = new System.Drawing.Point(9, 55);
             this.txtStationFrom.Name = "txtStationFrom";
             this.txtStationFrom.Size = new System.Drawing.Size(151, 20);
@@ -307,10 +310,10 @@
             this.line,
             this.fromTo,
             this.depature});
-            this.depatureMonitorTable.Location = new System.Drawing.Point(0, 121);
+            this.depatureMonitorTable.Location = new System.Drawing.Point(0, 134);
             this.depatureMonitorTable.Name = "depatureMonitorTable";
             this.depatureMonitorTable.ReadOnly = true;
-            this.depatureMonitorTable.Size = new System.Drawing.Size(947, 398);
+            this.depatureMonitorTable.Size = new System.Drawing.Size(947, 385);
             this.depatureMonitorTable.TabIndex = 5;
             this.depatureMonitorTable.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.showDepatureDetails);
             // 
@@ -334,6 +337,7 @@
             // 
             // depatureMonitorBox
             // 
+            this.depatureMonitorBox.Controls.Add(this.listDepatureFrom);
             this.depatureMonitorBox.Controls.Add(this.txtDepatureFrom);
             this.depatureMonitorBox.Controls.Add(this.label4);
             this.depatureMonitorBox.Controls.Add(this.labelDepatureDate);
@@ -341,7 +345,7 @@
             this.depatureMonitorBox.Controls.Add(this.labelStationName);
             this.depatureMonitorBox.Location = new System.Drawing.Point(0, 6);
             this.depatureMonitorBox.Name = "depatureMonitorBox";
-            this.depatureMonitorBox.Size = new System.Drawing.Size(947, 109);
+            this.depatureMonitorBox.Size = new System.Drawing.Size(947, 131);
             this.depatureMonitorBox.TabIndex = 4;
             this.depatureMonitorBox.TabStop = false;
             this.depatureMonitorBox.Text = "Abfahrtmonitor";
@@ -349,17 +353,16 @@
             // txtDepatureFrom
             // 
             this.txtDepatureFrom.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.txtDepatureFrom.Location = new System.Drawing.Point(21, 60);
+            this.txtDepatureFrom.Location = new System.Drawing.Point(21, 49);
             this.txtDepatureFrom.Name = "txtDepatureFrom";
             this.txtDepatureFrom.Size = new System.Drawing.Size(151, 20);
             this.txtDepatureFrom.TabIndex = 14;
             this.txtDepatureFrom.TextChanged += new System.EventHandler(this.getAllStations);
-            this.txtDepatureFrom.KeyDown += new System.Windows.Forms.KeyEventHandler(this.getDepatureConnections);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(18, 41);
+            this.label4.Location = new System.Drawing.Point(18, 31);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(41, 13);
             this.label4.TabIndex = 4;
@@ -369,7 +372,7 @@
             // 
             this.labelDepatureDate.AutoSize = true;
             this.labelDepatureDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDepatureDate.Location = new System.Drawing.Point(823, 59);
+            this.labelDepatureDate.Location = new System.Drawing.Point(823, 55);
             this.labelDepatureDate.Name = "labelDepatureDate";
             this.labelDepatureDate.Size = new System.Drawing.Size(80, 16);
             this.labelDepatureDate.TabIndex = 2;
@@ -379,7 +382,7 @@
             // 
             this.labelDepatureTime.AutoSize = true;
             this.labelDepatureTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDepatureTime.Location = new System.Drawing.Point(570, 59);
+            this.labelDepatureTime.Location = new System.Drawing.Point(570, 55);
             this.labelDepatureTime.Name = "labelDepatureTime";
             this.labelDepatureTime.Size = new System.Drawing.Size(44, 16);
             this.labelDepatureTime.TabIndex = 1;
@@ -389,7 +392,7 @@
             // 
             this.labelStationName.AutoSize = true;
             this.labelStationName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelStationName.Location = new System.Drawing.Point(230, 53);
+            this.labelStationName.Location = new System.Drawing.Point(235, 49);
             this.labelStationName.Name = "labelStationName";
             this.labelStationName.Size = new System.Drawing.Size(135, 24);
             this.labelStationName.TabIndex = 0;
@@ -403,6 +406,36 @@
             // falseFromatProvider
             // 
             this.falseFromatProvider.ContainerControl = this;
+            // 
+            // listStationFrom
+            // 
+            this.listStationFrom.FormattingEnabled = true;
+            this.listStationFrom.Location = new System.Drawing.Point(9, 74);
+            this.listStationFrom.Name = "listStationFrom";
+            this.listStationFrom.Size = new System.Drawing.Size(151, 43);
+            this.listStationFrom.TabIndex = 15;
+            this.listStationFrom.Visible = false;
+            this.listStationFrom.DoubleClick += new System.EventHandler(this.putStationToCorrectTextbox);
+            // 
+            // listStationTo
+            // 
+            this.listStationTo.FormattingEnabled = true;
+            this.listStationTo.Location = new System.Drawing.Point(197, 74);
+            this.listStationTo.Name = "listStationTo";
+            this.listStationTo.Size = new System.Drawing.Size(151, 43);
+            this.listStationTo.TabIndex = 16;
+            this.listStationTo.Visible = false;
+            this.listStationTo.DoubleClick += new System.EventHandler(this.putStationToCorrectTextbox);
+            // 
+            // listDepatureFrom
+            // 
+            this.listDepatureFrom.FormattingEnabled = true;
+            this.listDepatureFrom.Location = new System.Drawing.Point(21, 66);
+            this.listDepatureFrom.Name = "listDepatureFrom";
+            this.listDepatureFrom.Size = new System.Drawing.Size(151, 56);
+            this.listDepatureFrom.TabIndex = 16;
+            this.listDepatureFrom.Visible = false;
+            this.listDepatureFrom.DoubleClick += new System.EventHandler(this.putStationToCorrectTextbox);
             // 
             // ovForm
             // 
@@ -469,6 +502,9 @@
         public System.Windows.Forms.Label labelStationName;
         public System.Windows.Forms.DataGridView depatureMonitorTable;
         private System.Windows.Forms.ErrorProvider falseFromatProvider;
+        private System.Windows.Forms.ListBox listStationTo;
+        private System.Windows.Forms.ListBox listStationFrom;
+        private System.Windows.Forms.ListBox listDepatureFrom;
     }
 }
 
