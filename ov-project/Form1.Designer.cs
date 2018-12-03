@@ -487,6 +487,7 @@
             this.ClientSize = new System.Drawing.Size(984, 561);
             this.Controls.Add(this.Start);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(1000, 600);
             this.MinimumSize = new System.Drawing.Size(1000, 600);
             this.Name = "ovForm";
