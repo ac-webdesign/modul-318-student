@@ -107,6 +107,8 @@ namespace ov_project
 
         private void createGoogleChromeMap()
         {
+            wbGoogleMaps.Controls.Clear();
+
             // CefSharp Chrome Browser
             var googleMapsChrome = new ChromiumWebBrowser("www.google.com");
 

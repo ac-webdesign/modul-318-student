@@ -84,18 +84,14 @@ namespace ov_project
 
         private void createGoogleChromeMap()
         {
+            wbGoogleMaps.Controls.Clear();
+
             // CefSharp Chrome Browser
             var googleMapsChrome = new ChromiumWebBrowser("www.google.com");
 
             // Google-Maps von Standort zu Panel hinzufügen
             var googleMapsLink = $"https://www.google.ch/maps/dir/{labelDepatureFrom.Text}/{labelDepatureTo.Text}";
             googleMapsChrome.Load(googleMapsLink);
-
-            // Vorhandene Map entfernen / clearen
-            if(wbGoogleMaps.Controls.Count == 1)
-            {
-                wbGoogleMaps.Controls.Clear();
-            }
 
             wbGoogleMaps.Controls.Add(googleMapsChrome);
         }
