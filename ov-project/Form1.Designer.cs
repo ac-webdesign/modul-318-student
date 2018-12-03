@@ -70,7 +70,6 @@
             this.labelStationName = new System.Windows.Forms.Label();
             this.stationToIsEqualStationFrom = new System.Windows.Forms.ErrorProvider(this.components);
             this.falseFromatProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.searchBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.connectionsTable)).BeginInit();
             this.Start.SuspendLayout();
@@ -474,12 +473,6 @@
             // 
             this.falseFromatProvider.ContainerControl = this;
             // 
-            // imageList1
-            // 
-            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            // 
             // ovForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -552,7 +545,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn endStation;
         private System.Windows.Forms.DataGridViewTextBoxColumn station;
         private System.Windows.Forms.DataGridViewTextBoxColumn duration;
-        private System.Windows.Forms.ImageList imageList1;
     }
 }
 
