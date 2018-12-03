@@ -140,7 +140,7 @@ namespace ov_project
                             var stationToName = connection.To.Station.Name;
                             var depatureDate = Convert.ToDateTime(connection.From.Departure).ToShortDateString();
                             var depatureTime = Convert.ToDateTime(connection.From.Departure).ToShortTimeString();
-                            var durationTime = connection.Duration.Replace("d", ""); // BUG-Fix: Damit Zeit nicht mit komischen "dd" angezeigt werden
+                            var durationTime = connection.Duration.Replace("d", "").Replace("0", ""); // BUG-Fix: Damit Zeit nicht mit komischen "dd" angezeigt werden
                             if (String.IsNullOrEmpty(connection.From.Platform)) // Wert wird dem leeren Gleisen zugewiesen
                             {
                                 connection.From.Platform = "Kein Gleis gefunden";
