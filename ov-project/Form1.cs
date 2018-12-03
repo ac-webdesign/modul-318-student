@@ -150,10 +150,10 @@ namespace ov_project
                     depatureMonitorTable.Rows.Clear();
 
                     // Verbindungen zu depatureMonitorTable integrieren
-                    foreach (var station in allDepatureConnections)
+                    foreach (var depatureLine in allDepatureConnections)
                     {
-                        var depatureTime = station.Stop.Departure.ToShortTimeString();
-                        depatureMonitorTable.Rows.Add(station.Name, station.To, depatureTime);
+                        var depatureTime = depatureLine.Stop.Departure.ToShortTimeString();
+                        depatureMonitorTable.Rows.Add(depatureLine.Name, depatureLine.To, depatureTime);
                     }
                 }
             }
