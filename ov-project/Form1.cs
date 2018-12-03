@@ -122,27 +122,23 @@ namespace ov_project
                 MessageBox.Show("Bitte wählen Sie existierende Station/en", "Station existieren nicht", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else {
-                Transport transport = new Transport();
-                var allConnections = transport.GetConnections(txtStationFrom.Text, txtStationTo.Text).ConnectionList;
 
                 // Clear Providers
                 stationToIsEqualStationFrom.Clear();
                 falseFromatProvider.Clear();
 
-                try {
-                    // Textboxen zu Datetime formatiert um diese filtern zu können
-                    var connectionDepatureDate = Convert.ToDateTime(Convert.ToDateTime(dpConnectionDate.Text).ToShortDateString());
-                    var connectionDepatureTime = Convert.ToDateTime(Convert.ToDateTime(txtConnectionTimeHour.Text + ":" + txtConnectionTimeMinute.Text).ToShortTimeString());
+                try
+                {
+                    // Zeit und Datum formatieren
+                    var connectionDepatureDate = Convert.ToDateTime(dpConnectionDate.Text).ToShortDateString();
+                    var connectionDepatureTime = Convert.ToDateTime(txtConnectionTimeHour.Text + ":" + txtConnectionTimeMinute.Text).ToShortTimeString();
 
-
-                    var filteredConnectionsByDateAndTime = allConnections
-                    .Where(c =>
-                        Convert.ToDateTime(Convert.ToDateTime(c.From.Departure).ToShortDateString()) >= connectionDepatureDate &&
-                        Convert.ToDateTime(Convert.ToDateTime(c.From.Departure).ToShortTimeString()) >= connectionDepatureTime
-                    );
+                   // Verbindung mit bestimmter Zeit und Datum ausgeben
+                    Transport transport = new Transport();
+                    var allConnections = transport.GetConnections(txtStationFrom.Text, txtStationTo.Text, connectionDepatureDate, connectionDepatureTime).ConnectionList;
 
                     // Falls keinen Verbindung gefunden. Warnung anzeigen
-                    if (filteredConnectionsByDateAndTime.ToList().Count == 0)
+                    if (allConnections.ToList().Count == 0)
                     {
                         MessageBox.Show("Bitte wählen Sie einen anderen Zeitpunkt", "Keine Verbindung gefunden", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
@@ -151,7 +147,7 @@ namespace ov_project
                         connectionsTable.Rows.Clear();
 
                         // Verbindungen zu connectionTable integrieren
-                        foreach (var connection in filteredConnectionsByDateAndTime)
+                        foreach (var connection in allConnections)
                         {
                             var stationFormName = connection.From.Station.Name;
                             var stationToName = connection.To.Station.Name;
