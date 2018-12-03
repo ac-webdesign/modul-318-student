@@ -15,11 +15,6 @@ namespace ov_project
 
         private void setFormSettings(object sender, EventArgs e)
         {
-            // Standardbreite von Formular setzen
-            ovForm form = (ovForm)sender;
-            form.Width = 1000;
-            form.Height = 600;
-
             // Standardbreite für Spalten setzen
             connectionsTable.Columns[2].Width = 252;
             connectionsTable.Columns[3].Width = 252;
