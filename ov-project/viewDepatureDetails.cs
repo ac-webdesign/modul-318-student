@@ -9,8 +9,8 @@ namespace ov_project
 {
     public partial class viewDepatureDetails : Form
     {
-        ovForm ovForm = Application.OpenForms.OfType<ovForm>().ElementAt<ovForm>(0);
-        int nextRowIndex = 0;
+        ovForm ovForm = Application.OpenForms.OfType<ovForm>().ElementAt<ovForm>(0); // Aktuelles offenes Formular
+        int nextRowIndex = 0; // Index der Rows auf 0 gesetzt
 
         public viewDepatureDetails()
         {
@@ -19,10 +19,6 @@ namespace ov_project
 
         private void setDepatureDetailsSettings(object sender, EventArgs e)
         {
-            // Textboxen Readonly gemacht
-            txtDepatureDate.ReadOnly = true;
-            txtDepatureTime.ReadOnly = true;
-
             // Aktueller Index des connections-Table row
             nextRowIndex = ovForm.depatureMonitorTable.CurrentCell.RowIndex;
             isLastRowOrFirstRow(nextRowIndex);

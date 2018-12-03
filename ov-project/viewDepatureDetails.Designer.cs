@@ -76,6 +76,7 @@
             // 
             this.txtDepatureTime.Location = new System.Drawing.Point(61, 62);
             this.txtDepatureTime.Name = "txtDepatureTime";
+            this.txtDepatureTime.ReadOnly = true;
             this.txtDepatureTime.Size = new System.Drawing.Size(100, 20);
             this.txtDepatureTime.TabIndex = 6;
             // 
@@ -83,6 +84,7 @@
             // 
             this.txtDepatureDate.Location = new System.Drawing.Point(61, 27);
             this.txtDepatureDate.Name = "txtDepatureDate";
+            this.txtDepatureDate.ReadOnly = true;
             this.txtDepatureDate.Size = new System.Drawing.Size(100, 20);
             this.txtDepatureDate.TabIndex = 5;
             // 

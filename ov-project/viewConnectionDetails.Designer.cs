@@ -105,6 +105,7 @@
             // 
             this.txtDepatureDate.Location = new System.Drawing.Point(155, 45);
             this.txtDepatureDate.Name = "txtDepatureDate";
+            this.txtDepatureDate.ReadOnly = true;
             this.txtDepatureDate.Size = new System.Drawing.Size(100, 20);
             this.txtDepatureDate.TabIndex = 5;
             // 
@@ -112,6 +113,7 @@
             // 
             this.txtDepatureTime.Location = new System.Drawing.Point(347, 45);
             this.txtDepatureTime.Name = "txtDepatureTime";
+            this.txtDepatureTime.ReadOnly = true;
             this.txtDepatureTime.Size = new System.Drawing.Size(100, 20);
             this.txtDepatureTime.TabIndex = 6;
             // 
@@ -119,6 +121,7 @@
             // 
             this.txtDepatureDuration.Location = new System.Drawing.Point(555, 45);
             this.txtDepatureDuration.Name = "txtDepatureDuration";
+            this.txtDepatureDuration.ReadOnly = true;
             this.txtDepatureDuration.Size = new System.Drawing.Size(100, 20);
             this.txtDepatureDuration.TabIndex = 7;
             // 
@@ -164,6 +167,7 @@
             // 
             this.txtDepaturePlattform.Location = new System.Drawing.Point(347, 71);
             this.txtDepaturePlattform.Name = "txtDepaturePlattform";
+            this.txtDepaturePlattform.ReadOnly = true;
             this.txtDepaturePlattform.Size = new System.Drawing.Size(100, 20);
             this.txtDepaturePlattform.TabIndex = 9;
             // 

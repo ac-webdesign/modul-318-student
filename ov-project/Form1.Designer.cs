@@ -142,7 +142,7 @@
             this.listStationTo.Size = new System.Drawing.Size(151, 43);
             this.listStationTo.TabIndex = 16;
             this.listStationTo.Visible = false;
-            this.listStationTo.DoubleClick += new System.EventHandler(this.putStationToCorrectTextbox);
+            this.listStationTo.DoubleClick += new System.EventHandler(this.putSelectedStationToCorrectTextbox);
             // 
             // listStationFrom
             // 
@@ -152,7 +152,7 @@
             this.listStationFrom.Size = new System.Drawing.Size(151, 43);
             this.listStationFrom.TabIndex = 15;
             this.listStationFrom.Visible = false;
-            this.listStationFrom.DoubleClick += new System.EventHandler(this.putStationToCorrectTextbox);
+            this.listStationFrom.DoubleClick += new System.EventHandler(this.putSelectedStationToCorrectTextbox);
             // 
             // txtConnectionTimeMinute
             // 
@@ -398,7 +398,7 @@
             this.listDepatureFrom.Size = new System.Drawing.Size(151, 56);
             this.listDepatureFrom.TabIndex = 16;
             this.listDepatureFrom.Visible = false;
-            this.listDepatureFrom.DoubleClick += new System.EventHandler(this.putStationToCorrectTextbox);
+            this.listDepatureFrom.DoubleClick += new System.EventHandler(this.putSelectedStationToCorrectTextbox);
             // 
             // txtDepatureFrom
             // 

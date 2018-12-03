@@ -51,15 +51,16 @@ namespace ov_project
             }
             else
             {
-                Transport transport = new Transport();
-                var allStationConnections = transport.GetStations(txtStationInput.Text).StationList;
-
                 // Liste anzeigen und cleearen
                 list.Visible = true;
                 list.Items.Clear();
 
                 // Textbox-Farbe zurücksetzen
                 txtStationInput.BackColor = Color.White;
+
+                // Stationen anzeigen
+                Transport transport = new Transport();
+                var allStationConnections = transport.GetStations(txtStationInput.Text).StationList;
 
                 foreach (var station in allStationConnections)
                 {
@@ -68,7 +69,7 @@ namespace ov_project
             }
         }
 
-        private void putStationToCorrectTextbox(object sender, EventArgs e)
+        private void putSelectedStationToCorrectTextbox(object sender, EventArgs e)
         {
             ListBox selectedListBox = (ListBox)sender;
             if (selectedListBox.Name == listStationFrom.Name)
@@ -119,7 +120,7 @@ namespace ov_project
                     var connectionDepatureDate = Convert.ToDateTime(dpConnectionDate.Text).ToShortDateString();
                     var connectionDepatureTime = Convert.ToDateTime(txtConnectionTimeHour.Text + ":" + txtConnectionTimeMinute.Text).ToShortTimeString();
 
-                   // Verbindung mit bestimmter Zeit und Datum ausgeben
+                   // Verbindung mit bestimmter Zeit und Datum 
                     Transport transport = new Transport();
                     var allConnections = transport.GetConnections(txtStationFrom.Text, txtStationTo.Text, connectionDepatureDate, connectionDepatureTime).ConnectionList;
 
@@ -139,8 +140,8 @@ namespace ov_project
                             var stationToName = connection.To.Station.Name;
                             var depatureDate = Convert.ToDateTime(connection.From.Departure).ToShortDateString();
                             var depatureTime = Convert.ToDateTime(connection.From.Departure).ToShortTimeString();
-                            var durationTime = connection.Duration.Replace('d', ' '); // TODO: Zeit besser formatieren
-                            if (String.IsNullOrEmpty(connection.From.Platform))
+                            var durationTime = connection.Duration.Replace("d", ""); // BUG-Fix: Damit Zeit nicht mit komischen "dd" angezeigt werden
+                            if (String.IsNullOrEmpty(connection.From.Platform)) // Wert wird dem leeren Gleisen zugewiesen
                             {
                                 connection.From.Platform = "Kein Gleis gefunden";
                             }
@@ -157,17 +158,18 @@ namespace ov_project
 
         private void getDepatureConnections()
         {
-           Transport transport = new Transport();
-           var allDepatureConnections = transport.GetStationBoard(txtDepatureFrom.Text).Entries;
+           // Tabelle cleearen
+           depatureMonitorTable.Rows.Clear();
 
            // Label-Stationnsame anzeigen
            labelStationName.Text = txtDepatureFrom.Text;
            labelStationName.Visible = true;
 
-           depatureMonitorTable.Rows.Clear();
+            Transport transport = new Transport();
+            var allDepatureConnections = transport.GetStationBoard(txtDepatureFrom.Text).Entries;
 
-           // Verbindungen zu depatureMonitorTable integrieren
-           foreach (var depatureLine in allDepatureConnections)
+            // Verbindungen zu depatureMonitorTable integrieren
+            foreach (var depatureLine in allDepatureConnections)
            {
                 var depatureTime = depatureLine.Stop.Departure.ToShortTimeString();
                 depatureMonitorTable.Rows.Add(depatureLine.Name, depatureLine.To, depatureTime);
@@ -180,7 +182,7 @@ namespace ov_project
             dpConnectionDate.Visible = true;
             labelConnectionTime.Visible = true;
             txtConnectionTimeHour.Text = DateTime.Now.Hour.ToString();
-            txtConnectionTimeMinute.Text = Convert.ToDateTime(DateTime.Now.ToShortTimeString()).Minute.ToString();
+            txtConnectionTimeMinute.Text = DateTime.Now.Minute.ToString();
             txtConnectionTimeHour.Visible = true;
             txtConnectionTimeMinute.Visible = true;
         }
@@ -197,6 +199,7 @@ namespace ov_project
             detailForm.txtDepatureDuration.Text = connectionsTable.CurrentRow.Cells[5].Value.ToString();
             detailForm.txtDepaturePlattform.Text = connectionsTable.CurrentRow.Cells[4].Value.ToString();
 
+            // Formular anzeigen
             detailForm.ShowDialog();
         }
 
@@ -211,6 +214,7 @@ namespace ov_project
             detailForm.txtDepatureDate.Text = labelDepatureDate.Text;
             detailForm.txtDepatureTime.Text = depatureMonitorTable.CurrentRow.Cells[2].Value.ToString();
 
+            // Formular anzeigen
             detailForm.ShowDialog();
         }
 

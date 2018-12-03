@@ -9,8 +9,8 @@ namespace ov_project
 {
     public partial class viewConnectionDetails : Form
     {
-        ovForm ovForm = Application.OpenForms.OfType<ovForm>().ElementAt<ovForm>(0);
-        int nextRowIndex = 0;
+        ovForm ovForm = Application.OpenForms.OfType<ovForm>().ElementAt<ovForm>(0); // Aktuelles offenes Formular
+        int nextRowIndex = 0; // Index der Rows auf 0 gesetzt
 
         public viewConnectionDetails()
         {
@@ -19,11 +19,6 @@ namespace ov_project
 
         private void setFormSettings(object sender, EventArgs e)
         {
-            // Textboxen Readonly
-            txtDepatureDate.ReadOnly = true;
-            txtDepatureTime.ReadOnly = true;
-            txtDepatureDuration.ReadOnly = true;
-
             // Aktueller Index des connections-Table row
             nextRowIndex = ovForm.connectionsTable.CurrentCell.RowIndex;
             isLastRowOrFirstRow(nextRowIndex);
@@ -34,10 +29,6 @@ namespace ov_project
             {
                 labelDepaturePlattform.Visible = false;
                 txtDepaturePlattform.Visible = false;
-            }
-            else
-            {
-                txtDepaturePlattform.ReadOnly = true;
             }
 
             createGoogleChromeMap();
