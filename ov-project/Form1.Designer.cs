@@ -58,9 +58,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.depatureMonitorPage = new System.Windows.Forms.TabPage();
             this.depatureMonitorTable = new System.Windows.Forms.DataGridView();
-            this.line = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fromTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.depature = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.depatureMonitorBox = new System.Windows.Forms.GroupBox();
             this.listDepatureFrom = new System.Windows.Forms.ListBox();
             this.txtDepatureFrom = new System.Windows.Forms.TextBox();
@@ -70,6 +67,9 @@
             this.labelStationName = new System.Windows.Forms.Label();
             this.stationToIsEqualStationFrom = new System.Windows.Forms.ErrorProvider(this.components);
             this.falseFromatProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.line = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fromTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.depature = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.searchBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.connectionsTable)).BeginInit();
             this.Start.SuspendLayout();
@@ -287,12 +287,14 @@
             this.connection.HeaderText = "Start";
             this.connection.Name = "connection";
             this.connection.ReadOnly = true;
+            this.connection.Width = 252;
             // 
             // endStation
             // 
             this.endStation.HeaderText = "Ziel";
             this.endStation.Name = "endStation";
             this.endStation.ReadOnly = true;
+            this.endStation.Width = 252;
             // 
             // station
             // 
@@ -372,24 +374,6 @@
             this.depatureMonitorTable.Size = new System.Drawing.Size(947, 385);
             this.depatureMonitorTable.TabIndex = 5;
             this.depatureMonitorTable.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.showDepatureDetails);
-            // 
-            // line
-            // 
-            this.line.HeaderText = "Linie";
-            this.line.Name = "line";
-            this.line.ReadOnly = true;
-            // 
-            // fromTo
-            // 
-            this.fromTo.HeaderText = "Ziel";
-            this.fromTo.Name = "fromTo";
-            this.fromTo.ReadOnly = true;
-            // 
-            // depature
-            // 
-            this.depature.HeaderText = "Abfahrt";
-            this.depature.Name = "depature";
-            this.depature.ReadOnly = true;
             // 
             // depatureMonitorBox
             // 
@@ -473,6 +457,27 @@
             // 
             this.falseFromatProvider.ContainerControl = this;
             // 
+            // line
+            // 
+            this.line.HeaderText = "Linie";
+            this.line.Name = "line";
+            this.line.ReadOnly = true;
+            this.line.Width = 300;
+            // 
+            // fromTo
+            // 
+            this.fromTo.HeaderText = "Ziel";
+            this.fromTo.Name = "fromTo";
+            this.fromTo.ReadOnly = true;
+            this.fromTo.Width = 302;
+            // 
+            // depature
+            // 
+            this.depature.HeaderText = "Abfahrt";
+            this.depature.Name = "depature";
+            this.depature.ReadOnly = true;
+            this.depature.Width = 302;
+            // 
             // ovForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -486,7 +491,6 @@
             this.Name = "ovForm";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Text = "OV-App";
-            this.Load += new System.EventHandler(this.setFormSettings);
             this.searchBox.ResumeLayout(false);
             this.searchBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.connectionsTable)).EndInit();
@@ -514,9 +518,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TabPage depatureMonitorPage;
         private System.Windows.Forms.GroupBox depatureMonitorBox;
-        private System.Windows.Forms.DataGridViewTextBoxColumn line;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fromTo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn depature;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label labelConnectionDate;
         private System.Windows.Forms.DateTimePicker dpConnectionDate;
@@ -545,6 +546,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn endStation;
         private System.Windows.Forms.DataGridViewTextBoxColumn station;
         private System.Windows.Forms.DataGridViewTextBoxColumn duration;
+        private System.Windows.Forms.DataGridViewTextBoxColumn line;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fromTo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn depature;
     }
 }
 

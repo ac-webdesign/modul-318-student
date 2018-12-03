@@ -13,13 +13,6 @@ namespace ov_project
             InitializeComponent();
         }
 
-        private void setFormSettings(object sender, EventArgs e)
-        {
-            // Standardbreite für Spalten setzen
-            connectionsTable.Columns[2].Width = 252;
-            connectionsTable.Columns[3].Width = 252;
-        }
-
         private void setDepatureMonitorSettings(object sender, EventArgs e)
         {
             TabControl page = (TabControl)sender;
@@ -27,11 +20,6 @@ namespace ov_project
             // Abfrage, ob richtige Page ausgewählt worden ist
             if (page.SelectedTab.Name != "Start")
             {
-                // Standardbreite für Spalten setzen
-                depatureMonitorTable.Columns[0].Width = 300;
-                depatureMonitorTable.Columns[1].Width = 300;
-                depatureMonitorTable.Columns[2].Width = 300;
-
                 // Abfahrtmonitor Zeit und Datum eintragen
                 labelDepatureTime.Text = DateTime.Now.ToShortTimeString();
                 labelDepatureDate.Text = DateTime.Now.ToShortDateString();
