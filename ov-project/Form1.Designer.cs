@@ -134,9 +134,9 @@
             this.labelConnectionTime.AutoSize = true;
             this.labelConnectionTime.Location = new System.Drawing.Point(487, 78);
             this.labelConnectionTime.Name = "labelConnectionTime";
-            this.labelConnectionTime.Size = new System.Drawing.Size(25, 13);
+            this.labelConnectionTime.Size = new System.Drawing.Size(65, 13);
             this.labelConnectionTime.TabIndex = 10;
-            this.labelConnectionTime.Text = "Zeit";
+            this.labelConnectionTime.Text = "Zeit (hh:mm)";
             this.labelConnectionTime.Visible = false;
             // 
             // labelConnectionDate
