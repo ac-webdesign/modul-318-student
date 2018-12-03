@@ -91,11 +91,11 @@ namespace ov_project
             {
                 putToTextbox(txtStationFrom, selectedListBox);
             }
-            if (selectedListBox.Name == "listStationTo")
+            else if (selectedListBox.Name == "listStationTo")
             {
                 putToTextbox(txtStationTo, selectedListBox);
             }
-            if (selectedListBox.Name == "listDepatureFrom")
+            else if (selectedListBox.Name == "listDepatureFrom")
             {
                 putToTextbox(txtDepatureFrom, selectedListBox);
                 getDepatureConnections();
