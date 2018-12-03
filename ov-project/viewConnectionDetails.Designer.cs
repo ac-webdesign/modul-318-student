@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(viewConnectionDetails));
             this.labelStationFrom = new System.Windows.Forms.Label();
             this.labelStationTo = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -44,8 +46,12 @@
             this.wbGoogleMaps = new System.Windows.Forms.Panel();
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPrev = new System.Windows.Forms.Button();
+            this.btnSendToMail = new System.Windows.Forms.Button();
+            this.btnToMailIcon = new System.Windows.Forms.ImageList(this.components);
+            this.gbNavigation = new System.Windows.Forms.GroupBox();
             this.gbTitel.SuspendLayout();
             this.gbConnectionData.SuspendLayout();
+            this.gbNavigation.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelStationFrom
@@ -131,7 +137,7 @@
             this.gbTitel.Controls.Add(this.label4);
             this.gbTitel.Controls.Add(this.labelStationTo);
             this.gbTitel.Controls.Add(this.labelStationFrom);
-            this.gbTitel.Location = new System.Drawing.Point(15, 52);
+            this.gbTitel.Location = new System.Drawing.Point(24, 52);
             this.gbTitel.Name = "gbTitel";
             this.gbTitel.Size = new System.Drawing.Size(776, 43);
             this.gbTitel.TabIndex = 9;
@@ -147,7 +153,7 @@
             this.gbConnectionData.Controls.Add(this.label3);
             this.gbConnectionData.Controls.Add(this.label2);
             this.gbConnectionData.Controls.Add(this.label1);
-            this.gbConnectionData.Location = new System.Drawing.Point(15, 123);
+            this.gbConnectionData.Location = new System.Drawing.Point(24, 123);
             this.gbConnectionData.Name = "gbConnectionData";
             this.gbConnectionData.Size = new System.Drawing.Size(776, 106);
             this.gbConnectionData.TabIndex = 10;
@@ -172,15 +178,15 @@
             // 
             // wbGoogleMaps
             // 
-            this.wbGoogleMaps.Location = new System.Drawing.Point(15, 235);
+            this.wbGoogleMaps.Location = new System.Drawing.Point(24, 235);
             this.wbGoogleMaps.Margin = new System.Windows.Forms.Padding(2);
             this.wbGoogleMaps.Name = "wbGoogleMaps";
-            this.wbGoogleMaps.Size = new System.Drawing.Size(776, 351);
+            this.wbGoogleMaps.Size = new System.Drawing.Size(776, 415);
             this.wbGoogleMaps.TabIndex = 11;
             // 
             // btnNext
             // 
-            this.btnNext.Location = new System.Drawing.Point(751, 19);
+            this.btnNext.Location = new System.Drawing.Point(708, 12);
             this.btnNext.Margin = new System.Windows.Forms.Padding(2);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(41, 21);
@@ -191,7 +197,7 @@
             // 
             // btnPrev
             // 
-            this.btnPrev.Location = new System.Drawing.Point(15, 19);
+            this.btnPrev.Location = new System.Drawing.Point(64, 12);
             this.btnPrev.Margin = new System.Windows.Forms.Padding(2);
             this.btnPrev.Name = "btnPrev";
             this.btnPrev.Size = new System.Drawing.Size(41, 21);
@@ -200,13 +206,41 @@
             this.btnPrev.UseVisualStyleBackColor = true;
             this.btnPrev.Click += new System.EventHandler(this.btnPrev_Click);
             // 
+            // btnSendToMail
+            // 
+            this.btnSendToMail.ImageIndex = 0;
+            this.btnSendToMail.ImageList = this.btnToMailIcon;
+            this.btnSendToMail.Location = new System.Drawing.Point(357, 12);
+            this.btnSendToMail.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSendToMail.Name = "btnSendToMail";
+            this.btnSendToMail.Size = new System.Drawing.Size(48, 21);
+            this.btnSendToMail.TabIndex = 14;
+            this.btnSendToMail.UseVisualStyleBackColor = true;
+            // 
+            // btnToMailIcon
+            // 
+            this.btnToMailIcon.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("btnToMailIcon.ImageStream")));
+            this.btnToMailIcon.TransparentColor = System.Drawing.Color.Transparent;
+            this.btnToMailIcon.Images.SetKeyName(0, "mail-icon.ico");
+            // 
+            // gbNavigation
+            // 
+            this.gbNavigation.Controls.Add(this.btnSendToMail);
+            this.gbNavigation.Controls.Add(this.btnPrev);
+            this.gbNavigation.Controls.Add(this.btnNext);
+            this.gbNavigation.Location = new System.Drawing.Point(24, 12);
+            this.gbNavigation.Name = "gbNavigation";
+            this.gbNavigation.Size = new System.Drawing.Size(776, 38);
+            this.gbNavigation.TabIndex = 15;
+            this.gbNavigation.TabStop = false;
+            this.gbNavigation.Text = "Navigation";
+            // 
             // viewConnectionDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(834, 661);
-            this.Controls.Add(this.btnPrev);
-            this.Controls.Add(this.btnNext);
+            this.Controls.Add(this.gbNavigation);
             this.Controls.Add(this.wbGoogleMaps);
             this.Controls.Add(this.gbConnectionData);
             this.Controls.Add(this.gbTitel);
@@ -220,6 +254,7 @@
             this.gbTitel.PerformLayout();
             this.gbConnectionData.ResumeLayout(false);
             this.gbConnectionData.PerformLayout();
+            this.gbNavigation.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -241,5 +276,8 @@
         public System.Windows.Forms.Panel wbGoogleMaps;
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Button btnPrev;
+        private System.Windows.Forms.Button btnSendToMail;
+        private System.Windows.Forms.ImageList btnToMailIcon;
+        private System.Windows.Forms.GroupBox gbNavigation;
     }
 }
