@@ -50,7 +50,7 @@ namespace ov_project
             TextBox txtSearchedStation = (TextBox)sender;
 
             //BUG Fixing Speicher-Zugriff, Error: "System.AccessViolationException"
-            if (txtSearchedStation.Text.Length == 3)
+            if (txtSearchedStation.Text.Length >= 3)
             {
                 if (String.IsNullOrEmpty(txtSearchedStation.Text))
                 {
@@ -84,7 +84,11 @@ namespace ov_project
             } else if (txtStationFrom.Text == txtStationTo.Text)
             {
                 stationToIsEqualStationFrom.SetError(txtStationTo, "Gleiche Station ausgewählt");
-            } else { 
+            } else if (txtStationFrom.Text.Length <= 2 || txtStationFrom.Text.Length <= 1)
+            {
+                MessageBox.Show("Bitte wählen Sie existierende Station/en", "Station existieren nicht", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else {
                 Transport transport = new Transport();
                 var allConnections = transport.GetConnections(txtStationFrom.Text, txtStationTo.Text).ConnectionList;
 
@@ -96,7 +100,7 @@ namespace ov_project
                     // Textboxen zu Datetime formatiert um diese filtern zu können
                     var connectionDepatureDate = Convert.ToDateTime(Convert.ToDateTime(dpConnectionDate.Text).ToShortDateString());
                     var connectionDepatureTime = Convert.ToDateTime(Convert.ToDateTime(txtConnectionTimeHour.Text + ":" + txtConnectionTimeMinute.Text).ToShortTimeString());
-            
+
 
                     var filteredConnectionsByDateAndTime = allConnections
                     .Where(c =>
