@@ -246,6 +246,7 @@
             this.Controls.Add(this.gbConnectionData);
             this.Controls.Add(this.gbTitel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(850, 700);
             this.MinimumSize = new System.Drawing.Size(850, 700);
             this.Name = "viewConnectionDetails";

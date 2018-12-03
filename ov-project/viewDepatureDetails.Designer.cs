@@ -43,9 +43,9 @@
             this.labelDepatureTo = new System.Windows.Forms.Label();
             this.gbNavigation = new System.Windows.Forms.GroupBox();
             this.btnSendToMail = new System.Windows.Forms.Button();
+            this.btnToMailIcon = new System.Windows.Forms.ImageList(this.components);
             this.btnPrev = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
-            this.btnToMailIcon = new System.Windows.Forms.ImageList(this.components);
             this.gbDepatureData.SuspendLayout();
             this.gbTitel.SuspendLayout();
             this.gbNavigation.SuspendLayout();
@@ -180,6 +180,12 @@
             this.btnSendToMail.UseVisualStyleBackColor = true;
             this.btnSendToMail.Click += new System.EventHandler(this.btnSendToMail_Click);
             // 
+            // btnToMailIcon
+            // 
+            this.btnToMailIcon.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("btnToMailIcon.ImageStream")));
+            this.btnToMailIcon.TransparentColor = System.Drawing.Color.Transparent;
+            this.btnToMailIcon.Images.SetKeyName(0, "mail-icon.ico");
+            // 
             // btnPrev
             // 
             this.btnPrev.Location = new System.Drawing.Point(87, 12);
@@ -202,12 +208,6 @@
             this.btnNext.UseVisualStyleBackColor = true;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
-            // btnToMailIcon
-            // 
-            this.btnToMailIcon.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("btnToMailIcon.ImageStream")));
-            this.btnToMailIcon.TransparentColor = System.Drawing.Color.Transparent;
-            this.btnToMailIcon.Images.SetKeyName(0, "mail-icon.ico");
-            // 
             // viewDepatureDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -218,6 +218,7 @@
             this.Controls.Add(this.gbDepatureData);
             this.Controls.Add(this.gbTitel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximumSize = new System.Drawing.Size(1058, 551);
             this.MinimumSize = new System.Drawing.Size(1058, 551);
