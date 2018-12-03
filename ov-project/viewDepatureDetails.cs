@@ -2,6 +2,8 @@
 using CefSharp.WinForms; /* Dokumentation: https://github.com/cefsharp/CefSharp/tree/cefsharp/57 */
 using System.Windows.Forms;
 using System.Linq;
+using System.Net.Mail;
+using System.Diagnostics;
 
 namespace ov_project
 {
@@ -81,6 +83,50 @@ namespace ov_project
                 btnPrev.Visible = true;
             }
         }
+
+        private void btnSendToMail_Click(object sender, EventArgs e)
+        {
+            // Daten per Email versenden/öffnen
+            createAndOpenMail();
+        }
+
+        private void createAndOpenMail()
+        {
+            var formData = getFormData();
+
+            // Mail erstellen
+            var mailMessage = new MailMessage();
+            mailMessage.Subject = "Ihr Betreff";
+
+            var newLine = "%0D%0A";
+
+            mailMessage.Body =
+                "Linie: " + formData[0] + newLine +
+                 "Start: " + formData[1] + newLine +
+                "Ziel: " + formData[2] + newLine +
+                "Datum: " + formData[3] + newLine +
+                "Abfahrt: " + formData[4] + newLine +
+                "Link zu Google-Map: " + formData[5];
+
+            // Mail öffnen
+            Process.Start(@"mailto:?subject=" + mailMessage.Subject + "&body=" + mailMessage.Body);
+        }
+
+        private string[] getFormData()
+        {
+            // Formular-Daten abrufen
+            String[] formData = new String[] {
+                labelTransportLine.Text,
+                labelDepatureFrom.Text,
+                labelDepatureTo.Text,
+                txtDepatureDate.Text,
+                txtDepatureTime.Text,
+                $"https://www.google.ch/maps/dir/{labelDepatureFrom.Text}/{labelDepatureTo.Text}"
+            };
+
+            return formData;
+        }
+
 
         private void createGoogleChromeMap()
         {

@@ -107,20 +107,6 @@ namespace ov_project
             }
         }
 
-        private void createGoogleChromeMap()
-        {
-            wbGoogleMaps.Controls.Clear();
-
-            // CefSharp Chrome Browser
-            var googleMapsChrome = new ChromiumWebBrowser("www.google.com");
-
-            // Google-Maps von Standort zu Panel hinzufügen
-            var googleMapsLink = $"https://www.google.ch/maps/dir/{labelStationFrom.Text}/{labelStationTo.Text}";
-            googleMapsChrome.Load(googleMapsLink);
-
-            wbGoogleMaps.Controls.Add(googleMapsChrome);
-        }
-
         private void btnSendToMail_Click(object sender, EventArgs e)
         {
             // Daten per Email versenden/öffnen
@@ -164,6 +150,20 @@ namespace ov_project
             };
 
             return formData;
+        }
+
+        private void createGoogleChromeMap()
+        {
+            wbGoogleMaps.Controls.Clear();
+
+            // CefSharp Chrome Browser
+            var googleMapsChrome = new ChromiumWebBrowser("www.google.com");
+
+            // Google-Maps von Standort zu Panel hinzufügen
+            var googleMapsLink = $"https://www.google.ch/maps/dir/{labelStationFrom.Text}/{labelStationTo.Text}";
+            googleMapsChrome.Load(googleMapsLink);
+
+            wbGoogleMaps.Controls.Add(googleMapsChrome);
         }
     }
 }

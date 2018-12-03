@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(viewDepatureDetails));
             this.wbGoogleMaps = new System.Windows.Forms.Panel();
             this.gbDepatureData = new System.Windows.Forms.GroupBox();
             this.txtDepatureTime = new System.Windows.Forms.TextBox();
@@ -39,10 +41,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.labelDepatureFrom = new System.Windows.Forms.Label();
             this.labelDepatureTo = new System.Windows.Forms.Label();
+            this.gbNavigation = new System.Windows.Forms.GroupBox();
+            this.btnSendToMail = new System.Windows.Forms.Button();
             this.btnPrev = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
+            this.btnToMailIcon = new System.Windows.Forms.ImageList(this.components);
             this.gbDepatureData.SuspendLayout();
             this.gbTitel.SuspendLayout();
+            this.gbNavigation.SuspendLayout();
             this.SuspendLayout();
             // 
             // wbGoogleMaps
@@ -150,35 +156,64 @@
             this.labelDepatureTo.TabIndex = 1;
             this.labelDepatureTo.Text = "labelDepatureTo";
             // 
+            // gbNavigation
+            // 
+            this.gbNavigation.Controls.Add(this.btnSendToMail);
+            this.gbNavigation.Controls.Add(this.btnPrev);
+            this.gbNavigation.Controls.Add(this.btnNext);
+            this.gbNavigation.Location = new System.Drawing.Point(9, 8);
+            this.gbNavigation.Name = "gbNavigation";
+            this.gbNavigation.Size = new System.Drawing.Size(1025, 38);
+            this.gbNavigation.TabIndex = 17;
+            this.gbNavigation.TabStop = false;
+            this.gbNavigation.Text = "Navigation";
+            // 
+            // btnSendToMail
+            // 
+            this.btnSendToMail.ImageIndex = 0;
+            this.btnSendToMail.ImageList = this.btnToMailIcon;
+            this.btnSendToMail.Location = new System.Drawing.Point(476, 12);
+            this.btnSendToMail.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSendToMail.Name = "btnSendToMail";
+            this.btnSendToMail.Size = new System.Drawing.Size(48, 21);
+            this.btnSendToMail.TabIndex = 14;
+            this.btnSendToMail.UseVisualStyleBackColor = true;
+            this.btnSendToMail.Click += new System.EventHandler(this.btnSendToMail_Click);
+            // 
             // btnPrev
             // 
-            this.btnPrev.Location = new System.Drawing.Point(9, 8);
+            this.btnPrev.Location = new System.Drawing.Point(87, 12);
             this.btnPrev.Margin = new System.Windows.Forms.Padding(2);
             this.btnPrev.Name = "btnPrev";
             this.btnPrev.Size = new System.Drawing.Size(41, 21);
-            this.btnPrev.TabIndex = 16;
+            this.btnPrev.TabIndex = 13;
             this.btnPrev.Text = "<-";
             this.btnPrev.UseVisualStyleBackColor = true;
             this.btnPrev.Click += new System.EventHandler(this.btnPrev_Click);
             // 
             // btnNext
             // 
-            this.btnNext.Location = new System.Drawing.Point(993, 8);
+            this.btnNext.Location = new System.Drawing.Point(895, 12);
             this.btnNext.Margin = new System.Windows.Forms.Padding(2);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(41, 21);
-            this.btnNext.TabIndex = 15;
+            this.btnNext.TabIndex = 12;
             this.btnNext.Text = "->";
             this.btnNext.UseVisualStyleBackColor = true;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            // 
+            // btnToMailIcon
+            // 
+            this.btnToMailIcon.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("btnToMailIcon.ImageStream")));
+            this.btnToMailIcon.TransparentColor = System.Drawing.Color.Transparent;
+            this.btnToMailIcon.Images.SetKeyName(0, "mail-icon.ico");
             // 
             // viewDepatureDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1042, 512);
-            this.Controls.Add(this.btnPrev);
-            this.Controls.Add(this.btnNext);
+            this.Controls.Add(this.gbNavigation);
             this.Controls.Add(this.wbGoogleMaps);
             this.Controls.Add(this.gbDepatureData);
             this.Controls.Add(this.gbTitel);
@@ -193,6 +228,7 @@
             this.gbDepatureData.PerformLayout();
             this.gbTitel.ResumeLayout(false);
             this.gbTitel.PerformLayout();
+            this.gbNavigation.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -210,7 +246,10 @@
         public System.Windows.Forms.Label labelDepatureTo;
         public System.Windows.Forms.Label labelDepatureFrom;
         public System.Windows.Forms.Label label3;
+        private System.Windows.Forms.GroupBox gbNavigation;
+        private System.Windows.Forms.Button btnSendToMail;
         private System.Windows.Forms.Button btnPrev;
         private System.Windows.Forms.Button btnNext;
+        private System.Windows.Forms.ImageList btnToMailIcon;
     }
 }
