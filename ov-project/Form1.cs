@@ -43,34 +43,38 @@ namespace ov_project
             }
         }
 
-        // TODO: BUG Fixing Speicher System.AccessViolationException"
         private void getAllStations(object sender, EventArgs e)
         {
-            // In String Collection integriert damit Bug "System.AccessViolationException" gefixt wird
             AutoCompleteStringCollection stationsStringCollection = new AutoCompleteStringCollection();
 
             TextBox txtSearchedStation = (TextBox)sender;
 
-            if (String.IsNullOrEmpty(txtSearchedStation.Text)) {
-                txtSearchedStation.BackColor = Color.Red;
-            }
-            else
+            //BUG Fixing Speicher-Zugriff, Error: "System.AccessViolationException"
+            if (txtSearchedStation.Text.Length == 3)
             {
-                // Textbox-Farbe zurücksetzen
-                txtSearchedStation.BackColor = Color.White;
 
-                Transport transport = new Transport();
-                var allStationConnections = transport.GetStations(txtSearchedStation.Text).StationList;
-
-                stationsStringCollection.Clear();
-
-                foreach (var station in allStationConnections)
+                if (String.IsNullOrEmpty(txtSearchedStation.Text))
                 {
-                    stationsStringCollection.Add(station.Name);
+                    txtSearchedStation.BackColor = Color.Red;
                 }
+                else
+                {
+                    // Textbox-Farbe zurücksetzen
+                    txtSearchedStation.BackColor = Color.White;
 
-                txtSearchedStation.AutoCompleteSource = AutoCompleteSource.CustomSource;
-                txtSearchedStation.AutoCompleteCustomSource = stationsStringCollection;
+                    Transport transport = new Transport();
+                    var allStationConnections = transport.GetStations(txtSearchedStation.Text).StationList;
+
+                    stationsStringCollection.Clear();
+
+                    foreach (var station in allStationConnections)
+                    {
+                        stationsStringCollection.Add(station.Name);
+                    }
+
+                    txtSearchedStation.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                    txtSearchedStation.AutoCompleteCustomSource = stationsStringCollection;
+                }
             }
         }
 
@@ -83,45 +87,50 @@ namespace ov_project
             } else if (txtStationFrom.Text == txtStationTo.Text)
             {
                 stationToIsEqualStationFrom.SetError(txtStationTo, "Gleiche Station ausgewählt");
-            } 
-            else
-            {
+            } else { 
                 Transport transport = new Transport();
                 var allConnections = transport.GetConnections(txtStationFrom.Text, txtStationTo.Text).ConnectionList;
 
-                // Textboxen zu Datetime formatiert um diese filtern zu können
-                var connectionDepatureDate = Convert.ToDateTime(Convert.ToDateTime(dpConnectionDate.Text).ToShortDateString());
-                var connectionDepatureTime = Convert.ToDateTime(Convert.ToDateTime(txtConnectionTimeHour.Text + ":" + txtConnectionTimeMinute.Text).ToShortTimeString());
+                // Clear Providers
+                stationToIsEqualStationFrom.Clear();
+                falseFromatProvider.Clear();
 
-                var filteredConnectionsByDateAndTime = allConnections
-                .Where(c =>
-                    Convert.ToDateTime(Convert.ToDateTime(c.From.Departure).ToShortDateString()) >= connectionDepatureDate &&
-                    Convert.ToDateTime(Convert.ToDateTime(c.From.Departure).ToShortTimeString()) >= connectionDepatureTime
-                 );
+                try {
+                    // Textboxen zu Datetime formatiert um diese filtern zu können
+                    var connectionDepatureDate = Convert.ToDateTime(Convert.ToDateTime(dpConnectionDate.Text).ToShortDateString());
+                    var connectionDepatureTime = Convert.ToDateTime(Convert.ToDateTime(txtConnectionTimeHour.Text + ":" + txtConnectionTimeMinute.Text).ToShortTimeString());
+            
 
-                // Falls keinen Verbindung gefunden. Warnung anzeigen
-                if (filteredConnectionsByDateAndTime.ToList().Count == 0)
-                {
-                    MessageBox.Show("Bitte wählen Sie einen anderen Zeitpunkt", "Keine Verbindung gefunden", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else
-                {
-                    // Falls Werte existieren, Tabelle zurücksetzen
-                    if (connectionsTable.Rows.Count != 0)
+                    var filteredConnectionsByDateAndTime = allConnections
+                    .Where(c =>
+                        Convert.ToDateTime(Convert.ToDateTime(c.From.Departure).ToShortDateString()) >= connectionDepatureDate &&
+                        Convert.ToDateTime(Convert.ToDateTime(c.From.Departure).ToShortTimeString()) >= connectionDepatureTime
+                    );
+
+                    // Falls keinen Verbindung gefunden. Warnung anzeigen
+                    if (filteredConnectionsByDateAndTime.ToList().Count == 0)
+                    {
+                        MessageBox.Show("Bitte wählen Sie einen anderen Zeitpunkt", "Keine Verbindung gefunden", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
                     {
                         connectionsTable.Rows.Clear();
-                    }
 
-                    // Verbindungen zu connectionTable integrieren
-                    foreach (var connection in filteredConnectionsByDateAndTime)
-                    {
-                        var stationFormName = connection.From.Station.Name;
-                        var stationToName = connection.To.Station.Name;
-                        var depatureDate = Convert.ToDateTime(connection.From.Departure).ToShortDateString();
-                        var depatureTime = Convert.ToDateTime(connection.From.Departure).ToShortTimeString();
-                        var durationTime = connection.Duration.Replace('d', ' '); // TODO: Zeit besser formatieren
-                        connectionsTable.Rows.Add(depatureDate, depatureTime, stationFormName, stationToName, connection.From.Platform, durationTime);
+                        // Verbindungen zu connectionTable integrieren
+                        foreach (var connection in filteredConnectionsByDateAndTime)
+                        {
+                            var stationFormName = connection.From.Station.Name;
+                            var stationToName = connection.To.Station.Name;
+                            var depatureDate = Convert.ToDateTime(connection.From.Departure).ToShortDateString();
+                            var depatureTime = Convert.ToDateTime(connection.From.Departure).ToShortTimeString();
+                            var durationTime = connection.Duration.Replace('d', ' '); // TODO: Zeit besser formatieren
+                            connectionsTable.Rows.Add(depatureDate, depatureTime, stationFormName, stationToName, connection.From.Platform, durationTime);
+                        }
                     }
+                }
+                catch (FormatException)
+                {
+                    falseFromatProvider.SetError(labelConnectionTime, "Bitte nur Zahlen verwenden");
                 }
             }
         }
@@ -137,11 +146,7 @@ namespace ov_project
                 labelStationName.Text = txtDepatureFrom.Text;
                 labelStationName.Visible = true;
 
-                // Falls Werte existieren, Tabelle zurücksetzen
-                if (depatureMonitorTable.Rows.Count != 0)
-                {
-                    depatureMonitorTable.Rows.Clear();
-                }
+                depatureMonitorTable.Rows.Clear();
 
                 // Verbindungen zu depatureMonitorTable integrieren
                 foreach (var station in allDepatureConnections)

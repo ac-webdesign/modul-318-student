@@ -62,6 +62,7 @@
             this.labelDepatureTime = new System.Windows.Forms.Label();
             this.labelStationName = new System.Windows.Forms.Label();
             this.stationToIsEqualStationFrom = new System.Windows.Forms.ErrorProvider(this.components);
+            this.falseFromatProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.searchBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.connectionsTable)).BeginInit();
             this.Start.SuspendLayout();
@@ -70,6 +71,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.depatureMonitorTable)).BeginInit();
             this.depatureMonitorBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.stationToIsEqualStationFrom)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.falseFromatProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // searchBox
@@ -266,7 +268,7 @@
             this.startPage.Controls.Add(this.connectionsTable);
             this.startPage.Location = new System.Drawing.Point(4, 22);
             this.startPage.Name = "startPage";
-            this.startPage.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.startPage.Padding = new System.Windows.Forms.Padding(3);
             this.startPage.Size = new System.Drawing.Size(956, 511);
             this.startPage.TabIndex = 0;
             this.startPage.Text = "Start";
@@ -288,8 +290,8 @@
             this.depatureMonitorPage.Controls.Add(this.depatureMonitorBox);
             this.depatureMonitorPage.Location = new System.Drawing.Point(4, 22);
             this.depatureMonitorPage.Name = "depatureMonitorPage";
-            this.depatureMonitorPage.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.depatureMonitorPage.Size = new System.Drawing.Size(947, 525);
+            this.depatureMonitorPage.Padding = new System.Windows.Forms.Padding(3);
+            this.depatureMonitorPage.Size = new System.Drawing.Size(956, 511);
             this.depatureMonitorPage.TabIndex = 1;
             this.depatureMonitorPage.Text = "Abfahrtmonitor";
             this.depatureMonitorPage.UseVisualStyleBackColor = true;
@@ -398,6 +400,10 @@
             // 
             this.stationToIsEqualStationFrom.ContainerControl = this;
             // 
+            // errorProvider1
+            // 
+            this.falseFromatProvider.ContainerControl = this;
+            // 
             // ovForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -422,6 +428,7 @@
             this.depatureMonitorBox.ResumeLayout(false);
             this.depatureMonitorBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.stationToIsEqualStationFrom)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.falseFromatProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -461,6 +468,7 @@
         public System.Windows.Forms.Label labelDepatureTime;
         public System.Windows.Forms.Label labelStationName;
         public System.Windows.Forms.DataGridView depatureMonitorTable;
+        private System.Windows.Forms.ErrorProvider falseFromatProvider;
     }
 }
 
