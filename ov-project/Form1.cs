@@ -46,15 +46,15 @@ namespace ov_project
         private void getAllStations(object sender, EventArgs e)
         {
             TextBox txtSearchedStation = (TextBox)sender;
-            if (txtSearchedStation.Name == "txtStationFrom")
+            if (txtSearchedStation.Name == txtStationFrom.Name)
             {
                 getStationsByCorrectTextbox(txtSearchedStation, listStationFrom);
             }
-            if (txtSearchedStation.Name == "txtStationTo")
+            if (txtSearchedStation.Name == txtStationTo.Name)
             {
                 getStationsByCorrectTextbox(txtSearchedStation, listStationTo);
             }
-            if (txtSearchedStation.Name == "txtDepatureFrom")
+            if (txtSearchedStation.Name == txtDepatureFrom.Name)
             {
                 getStationsByCorrectTextbox(txtSearchedStation, listDepatureFrom);
             }
@@ -68,14 +68,15 @@ namespace ov_project
             }
             else
             {
-                list.Items.Clear();
-
-                // Textbox-Farbe zurücksetzen & Liste auf visible setzen
-                txtStationInput.BackColor = Color.White;
-                list.Visible = true;
-
                 Transport transport = new Transport();
                 var allStationConnections = transport.GetStations(txtStationInput.Text).StationList;
+
+                // Liste anzeigen und cleearen
+                list.Visible = true;
+                list.Items.Clear();
+
+                // Textbox-Farbe zurücksetzen
+                txtStationInput.BackColor = Color.White;
 
                 foreach (var station in allStationConnections)
                 {
@@ -87,15 +88,17 @@ namespace ov_project
         private void putStationToCorrectTextbox(object sender, EventArgs e)
         {
             ListBox selectedListBox = (ListBox)sender;
-            if (selectedListBox.Name == "listStationFrom")
+            if (selectedListBox.Name == listStationFrom.Name)
             {
                 putToTextbox(txtStationFrom, selectedListBox);
+                btnLocationOfStationFrom.Visible = true;
             }
-            else if (selectedListBox.Name == "listStationTo")
+            else if (selectedListBox.Name == listStationTo.Name)
             {
                 putToTextbox(txtStationTo, selectedListBox);
+                btnLocationOfStationTo.Visible = true;
             }
-            else if (selectedListBox.Name == "listDepatureFrom")
+            else
             {
                 putToTextbox(txtDepatureFrom, selectedListBox);
                 getDepatureConnections();
@@ -226,6 +229,25 @@ namespace ov_project
             detailForm.txtDepatureTime.Text = depatureMonitorTable.CurrentRow.Cells[2].Value.ToString();
 
             detailForm.ShowDialog();
+        }
+
+        private void btnLocationOfStation_Click(object sender, EventArgs e)
+        {
+            Button actuallyButton = (Button) sender;
+            if (actuallyButton.Name == btnLocationOfStationFrom.Name)
+            {
+                getLocationOfStation(actuallyButton, txtStationFrom);
+            } else
+            {
+                getLocationOfStation(actuallyButton, txtStationTo);
+            }
+        }
+
+        private void getLocationOfStation(Button button, TextBox station)
+        {
+            string googleMapsStationLocationLink = $"maps/dir/Mein%20Standort/{station.Text}";
+            System.Diagnostics.Process.Start($"http://google.com/{googleMapsStationLocationLink}/");
+            button.Visible = false;
         }
     }
 }

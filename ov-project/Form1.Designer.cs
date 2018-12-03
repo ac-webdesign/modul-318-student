@@ -31,6 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ovForm));
             this.searchBox = new System.Windows.Forms.GroupBox();
+            this.btnLocationOfStationFrom = new System.Windows.Forms.Button();
+            this.btnLocationImages = new System.Windows.Forms.ImageList(this.components);
+            this.btnLocationOfStationTo = new System.Windows.Forms.Button();
             this.listStationTo = new System.Windows.Forms.ListBox();
             this.listStationFrom = new System.Windows.Forms.ListBox();
             this.txtConnectionTimeMinute = new System.Windows.Forms.TextBox();
@@ -44,6 +47,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.connectionsTable = new System.Windows.Forms.DataGridView();
+            this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.connection = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.endStation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.station = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.duration = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Start = new System.Windows.Forms.TabControl();
             this.startPage = new System.Windows.Forms.TabPage();
             this.label3 = new System.Windows.Forms.Label();
@@ -61,15 +70,7 @@
             this.labelStationName = new System.Windows.Forms.Label();
             this.stationToIsEqualStationFrom = new System.Windows.Forms.ErrorProvider(this.components);
             this.falseFromatProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.btnLocationImages = new System.Windows.Forms.ImageList(this.components);
-            this.btnLocationOfStationTo = new System.Windows.Forms.Button();
-            this.btnLocationOfStationFrom = new System.Windows.Forms.Button();
-            this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.connection = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.endStation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.station = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.duration = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.searchBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.connectionsTable)).BeginInit();
             this.Start.SuspendLayout();
@@ -103,6 +104,36 @@
             this.searchBox.TabIndex = 0;
             this.searchBox.TabStop = false;
             this.searchBox.Text = "Verbindungen suchen";
+            // 
+            // btnLocationOfStationFrom
+            // 
+            this.btnLocationOfStationFrom.ImageIndex = 0;
+            this.btnLocationOfStationFrom.ImageList = this.btnLocationImages;
+            this.btnLocationOfStationFrom.Location = new System.Drawing.Point(166, 55);
+            this.btnLocationOfStationFrom.Name = "btnLocationOfStationFrom";
+            this.btnLocationOfStationFrom.Size = new System.Drawing.Size(30, 33);
+            this.btnLocationOfStationFrom.TabIndex = 19;
+            this.btnLocationOfStationFrom.UseVisualStyleBackColor = true;
+            this.btnLocationOfStationFrom.Visible = false;
+            this.btnLocationOfStationFrom.Click += new System.EventHandler(this.btnLocationOfStation_Click);
+            // 
+            // btnLocationImages
+            // 
+            this.btnLocationImages.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("btnLocationImages.ImageStream")));
+            this.btnLocationImages.TransparentColor = System.Drawing.Color.Transparent;
+            this.btnLocationImages.Images.SetKeyName(0, "google-location-icon-16.ico");
+            // 
+            // btnLocationOfStationTo
+            // 
+            this.btnLocationOfStationTo.ImageIndex = 0;
+            this.btnLocationOfStationTo.ImageList = this.btnLocationImages;
+            this.btnLocationOfStationTo.Location = new System.Drawing.Point(370, 55);
+            this.btnLocationOfStationTo.Name = "btnLocationOfStationTo";
+            this.btnLocationOfStationTo.Size = new System.Drawing.Size(30, 33);
+            this.btnLocationOfStationTo.TabIndex = 18;
+            this.btnLocationOfStationTo.UseVisualStyleBackColor = true;
+            this.btnLocationOfStationTo.Visible = false;
+            this.btnLocationOfStationTo.Click += new System.EventHandler(this.btnLocationOfStation_Click);
             // 
             // listStationTo
             // 
@@ -239,6 +270,42 @@
             this.connectionsTable.Size = new System.Drawing.Size(948, 317);
             this.connectionsTable.TabIndex = 1;
             this.connectionsTable.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.showConnectionDetails);
+            // 
+            // date
+            // 
+            this.date.HeaderText = "Datum";
+            this.date.Name = "date";
+            this.date.ReadOnly = true;
+            // 
+            // time
+            // 
+            this.time.HeaderText = "Uhrzeit";
+            this.time.Name = "time";
+            this.time.ReadOnly = true;
+            // 
+            // connection
+            // 
+            this.connection.HeaderText = "Start";
+            this.connection.Name = "connection";
+            this.connection.ReadOnly = true;
+            // 
+            // endStation
+            // 
+            this.endStation.HeaderText = "Ziel";
+            this.endStation.Name = "endStation";
+            this.endStation.ReadOnly = true;
+            // 
+            // station
+            // 
+            this.station.HeaderText = "Gleis";
+            this.station.Name = "station";
+            this.station.ReadOnly = true;
+            // 
+            // duration
+            // 
+            this.duration.HeaderText = "Reisedauer";
+            this.duration.Name = "duration";
+            this.duration.ReadOnly = true;
             // 
             // Start
             // 
@@ -407,69 +474,11 @@
             // 
             this.falseFromatProvider.ContainerControl = this;
             // 
-            // btnLocationImages
+            // imageList1
             // 
-            this.btnLocationImages.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("btnLocationImages.ImageStream")));
-            this.btnLocationImages.TransparentColor = System.Drawing.Color.Transparent;
-            this.btnLocationImages.Images.SetKeyName(0, "google-location-icon-16.ico");
-            // 
-            // btnLocationOfStationTo
-            // 
-            this.btnLocationOfStationTo.ImageIndex = 0;
-            this.btnLocationOfStationTo.ImageList = this.btnLocationImages;
-            this.btnLocationOfStationTo.Location = new System.Drawing.Point(370, 55);
-            this.btnLocationOfStationTo.Name = "btnLocationOfStationTo";
-            this.btnLocationOfStationTo.Size = new System.Drawing.Size(30, 33);
-            this.btnLocationOfStationTo.TabIndex = 18;
-            this.btnLocationOfStationTo.UseVisualStyleBackColor = true;
-            this.btnLocationOfStationTo.Visible = false;
-            // 
-            // btnLocationOfStationFrom
-            // 
-            this.btnLocationOfStationFrom.ImageIndex = 0;
-            this.btnLocationOfStationFrom.ImageList = this.btnLocationImages;
-            this.btnLocationOfStationFrom.Location = new System.Drawing.Point(166, 55);
-            this.btnLocationOfStationFrom.Name = "btnLocationOfStationFrom";
-            this.btnLocationOfStationFrom.Size = new System.Drawing.Size(30, 33);
-            this.btnLocationOfStationFrom.TabIndex = 19;
-            this.btnLocationOfStationFrom.UseVisualStyleBackColor = true;
-            this.btnLocationOfStationFrom.Visible = false;
-            // 
-            // date
-            // 
-            this.date.HeaderText = "Datum";
-            this.date.Name = "date";
-            this.date.ReadOnly = true;
-            // 
-            // time
-            // 
-            this.time.HeaderText = "Uhrzeit";
-            this.time.Name = "time";
-            this.time.ReadOnly = true;
-            // 
-            // connection
-            // 
-            this.connection.HeaderText = "Start";
-            this.connection.Name = "connection";
-            this.connection.ReadOnly = true;
-            // 
-            // endStation
-            // 
-            this.endStation.HeaderText = "Ziel";
-            this.endStation.Name = "endStation";
-            this.endStation.ReadOnly = true;
-            // 
-            // station
-            // 
-            this.station.HeaderText = "Gleis";
-            this.station.Name = "station";
-            this.station.ReadOnly = true;
-            // 
-            // duration
-            // 
-            this.duration.HeaderText = "Reisedauer";
-            this.duration.Name = "duration";
-            this.duration.ReadOnly = true;
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // ovForm
             // 
@@ -542,6 +551,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn endStation;
         private System.Windows.Forms.DataGridViewTextBoxColumn station;
         private System.Windows.Forms.DataGridViewTextBoxColumn duration;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }
 
