@@ -29,7 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ovForm));
             this.searchBox = new System.Windows.Forms.GroupBox();
+            this.listStationTo = new System.Windows.Forms.ListBox();
+            this.listStationFrom = new System.Windows.Forms.ListBox();
             this.txtConnectionTimeMinute = new System.Windows.Forms.TextBox();
             this.txtStationTo = new System.Windows.Forms.TextBox();
             this.txtStationFrom = new System.Windows.Forms.TextBox();
@@ -56,6 +59,7 @@
             this.fromTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.depature = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.depatureMonitorBox = new System.Windows.Forms.GroupBox();
+            this.listDepatureFrom = new System.Windows.Forms.ListBox();
             this.txtDepatureFrom = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.labelDepatureDate = new System.Windows.Forms.Label();
@@ -63,9 +67,9 @@
             this.labelStationName = new System.Windows.Forms.Label();
             this.stationToIsEqualStationFrom = new System.Windows.Forms.ErrorProvider(this.components);
             this.falseFromatProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.listStationFrom = new System.Windows.Forms.ListBox();
-            this.listStationTo = new System.Windows.Forms.ListBox();
-            this.listDepatureFrom = new System.Windows.Forms.ListBox();
+            this.btnLocationImages = new System.Windows.Forms.ImageList(this.components);
+            this.btnLocationOfStationTo = new System.Windows.Forms.Button();
+            this.btnLocationOfStationFrom = new System.Windows.Forms.Button();
             this.searchBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.connectionsTable)).BeginInit();
             this.Start.SuspendLayout();
@@ -79,6 +83,8 @@
             // 
             // searchBox
             // 
+            this.searchBox.Controls.Add(this.btnLocationOfStationFrom);
+            this.searchBox.Controls.Add(this.btnLocationOfStationTo);
             this.searchBox.Controls.Add(this.listStationTo);
             this.searchBox.Controls.Add(this.listStationFrom);
             this.searchBox.Controls.Add(this.txtConnectionTimeMinute);
@@ -98,9 +104,29 @@
             this.searchBox.TabStop = false;
             this.searchBox.Text = "Verbindungen suchen";
             // 
+            // listStationTo
+            // 
+            this.listStationTo.FormattingEnabled = true;
+            this.listStationTo.Location = new System.Drawing.Point(213, 74);
+            this.listStationTo.Name = "listStationTo";
+            this.listStationTo.Size = new System.Drawing.Size(151, 43);
+            this.listStationTo.TabIndex = 16;
+            this.listStationTo.Visible = false;
+            this.listStationTo.DoubleClick += new System.EventHandler(this.putStationToCorrectTextbox);
+            // 
+            // listStationFrom
+            // 
+            this.listStationFrom.FormattingEnabled = true;
+            this.listStationFrom.Location = new System.Drawing.Point(9, 74);
+            this.listStationFrom.Name = "listStationFrom";
+            this.listStationFrom.Size = new System.Drawing.Size(151, 43);
+            this.listStationFrom.TabIndex = 15;
+            this.listStationFrom.Visible = false;
+            this.listStationFrom.DoubleClick += new System.EventHandler(this.putStationToCorrectTextbox);
+            // 
             // txtConnectionTimeMinute
             // 
-            this.txtConnectionTimeMinute.Location = new System.Drawing.Point(535, 95);
+            this.txtConnectionTimeMinute.Location = new System.Drawing.Point(581, 92);
             this.txtConnectionTimeMinute.MaxLength = 2;
             this.txtConnectionTimeMinute.Name = "txtConnectionTimeMinute";
             this.txtConnectionTimeMinute.Size = new System.Drawing.Size(41, 20);
@@ -109,7 +135,7 @@
             // 
             // txtStationTo
             // 
-            this.txtStationTo.Location = new System.Drawing.Point(197, 55);
+            this.txtStationTo.Location = new System.Drawing.Point(213, 55);
             this.txtStationTo.Name = "txtStationTo";
             this.txtStationTo.Size = new System.Drawing.Size(151, 20);
             this.txtStationTo.TabIndex = 13;
@@ -127,7 +153,7 @@
             // 
             // txtConnectionTimeHour
             // 
-            this.txtConnectionTimeHour.Location = new System.Drawing.Point(489, 95);
+            this.txtConnectionTimeHour.Location = new System.Drawing.Point(535, 92);
             this.txtConnectionTimeHour.MaxLength = 2;
             this.txtConnectionTimeHour.Name = "txtConnectionTimeHour";
             this.txtConnectionTimeHour.Size = new System.Drawing.Size(41, 20);
@@ -137,7 +163,7 @@
             // labelConnectionTime
             // 
             this.labelConnectionTime.AutoSize = true;
-            this.labelConnectionTime.Location = new System.Drawing.Point(487, 78);
+            this.labelConnectionTime.Location = new System.Drawing.Point(533, 75);
             this.labelConnectionTime.Name = "labelConnectionTime";
             this.labelConnectionTime.Size = new System.Drawing.Size(65, 13);
             this.labelConnectionTime.TabIndex = 10;
@@ -147,7 +173,7 @@
             // labelConnectionDate
             // 
             this.labelConnectionDate.AutoSize = true;
-            this.labelConnectionDate.Location = new System.Drawing.Point(386, 42);
+            this.labelConnectionDate.Location = new System.Drawing.Point(432, 39);
             this.labelConnectionDate.Name = "labelConnectionDate";
             this.labelConnectionDate.Size = new System.Drawing.Size(38, 13);
             this.labelConnectionDate.TabIndex = 9;
@@ -156,7 +182,7 @@
             // 
             // dpConnectionDate
             // 
-            this.dpConnectionDate.Location = new System.Drawing.Point(389, 58);
+            this.dpConnectionDate.Location = new System.Drawing.Point(435, 55);
             this.dpConnectionDate.Name = "dpConnectionDate";
             this.dpConnectionDate.Size = new System.Drawing.Size(207, 20);
             this.dpConnectionDate.TabIndex = 8;
@@ -164,7 +190,7 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(635, 58);
+            this.btnSearch.Location = new System.Drawing.Point(681, 55);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(76, 20);
             this.btnSearch.TabIndex = 3;
@@ -175,7 +201,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(195, 42);
+            this.label2.Location = new System.Drawing.Point(210, 39);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(33, 13);
             this.label2.TabIndex = 2;
@@ -350,6 +376,16 @@
             this.depatureMonitorBox.TabStop = false;
             this.depatureMonitorBox.Text = "Abfahrtmonitor";
             // 
+            // listDepatureFrom
+            // 
+            this.listDepatureFrom.FormattingEnabled = true;
+            this.listDepatureFrom.Location = new System.Drawing.Point(21, 66);
+            this.listDepatureFrom.Name = "listDepatureFrom";
+            this.listDepatureFrom.Size = new System.Drawing.Size(151, 56);
+            this.listDepatureFrom.TabIndex = 16;
+            this.listDepatureFrom.Visible = false;
+            this.listDepatureFrom.DoubleClick += new System.EventHandler(this.putStationToCorrectTextbox);
+            // 
             // txtDepatureFrom
             // 
             this.txtDepatureFrom.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
@@ -407,35 +443,33 @@
             // 
             this.falseFromatProvider.ContainerControl = this;
             // 
-            // listStationFrom
+            // btnLocationImages
             // 
-            this.listStationFrom.FormattingEnabled = true;
-            this.listStationFrom.Location = new System.Drawing.Point(9, 74);
-            this.listStationFrom.Name = "listStationFrom";
-            this.listStationFrom.Size = new System.Drawing.Size(151, 43);
-            this.listStationFrom.TabIndex = 15;
-            this.listStationFrom.Visible = false;
-            this.listStationFrom.DoubleClick += new System.EventHandler(this.putStationToCorrectTextbox);
+            this.btnLocationImages.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("btnLocationImages.ImageStream")));
+            this.btnLocationImages.TransparentColor = System.Drawing.Color.Transparent;
+            this.btnLocationImages.Images.SetKeyName(0, "google-location-icon-16.ico");
             // 
-            // listStationTo
+            // btnLocationOfStationTo
             // 
-            this.listStationTo.FormattingEnabled = true;
-            this.listStationTo.Location = new System.Drawing.Point(197, 74);
-            this.listStationTo.Name = "listStationTo";
-            this.listStationTo.Size = new System.Drawing.Size(151, 43);
-            this.listStationTo.TabIndex = 16;
-            this.listStationTo.Visible = false;
-            this.listStationTo.DoubleClick += new System.EventHandler(this.putStationToCorrectTextbox);
+            this.btnLocationOfStationTo.ImageIndex = 0;
+            this.btnLocationOfStationTo.ImageList = this.btnLocationImages;
+            this.btnLocationOfStationTo.Location = new System.Drawing.Point(370, 55);
+            this.btnLocationOfStationTo.Name = "btnLocationOfStationTo";
+            this.btnLocationOfStationTo.Size = new System.Drawing.Size(30, 33);
+            this.btnLocationOfStationTo.TabIndex = 18;
+            this.btnLocationOfStationTo.UseVisualStyleBackColor = true;
+            this.btnLocationOfStationTo.Visible = false;
             // 
-            // listDepatureFrom
+            // btnLocationOfStationFrom
             // 
-            this.listDepatureFrom.FormattingEnabled = true;
-            this.listDepatureFrom.Location = new System.Drawing.Point(21, 66);
-            this.listDepatureFrom.Name = "listDepatureFrom";
-            this.listDepatureFrom.Size = new System.Drawing.Size(151, 56);
-            this.listDepatureFrom.TabIndex = 16;
-            this.listDepatureFrom.Visible = false;
-            this.listDepatureFrom.DoubleClick += new System.EventHandler(this.putStationToCorrectTextbox);
+            this.btnLocationOfStationFrom.ImageIndex = 0;
+            this.btnLocationOfStationFrom.ImageList = this.btnLocationImages;
+            this.btnLocationOfStationFrom.Location = new System.Drawing.Point(166, 55);
+            this.btnLocationOfStationFrom.Name = "btnLocationOfStationFrom";
+            this.btnLocationOfStationFrom.Size = new System.Drawing.Size(30, 33);
+            this.btnLocationOfStationFrom.TabIndex = 19;
+            this.btnLocationOfStationFrom.UseVisualStyleBackColor = true;
+            this.btnLocationOfStationFrom.Visible = false;
             // 
             // ovForm
             // 
@@ -505,6 +539,9 @@
         private System.Windows.Forms.ListBox listStationTo;
         private System.Windows.Forms.ListBox listStationFrom;
         private System.Windows.Forms.ListBox listDepatureFrom;
+        private System.Windows.Forms.ImageList btnLocationImages;
+        private System.Windows.Forms.Button btnLocationOfStationFrom;
+        private System.Windows.Forms.Button btnLocationOfStationTo;
     }
 }
 

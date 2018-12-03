@@ -21,8 +21,8 @@ namespace ov_project
             form.Height = 600;
 
             // Standardbreite für Spalten setzen
-            connectionsTable.Columns[2].Width = 251;
-            connectionsTable.Columns[3].Width = 251;
+            connectionsTable.Columns[2].Width = 252;
+            connectionsTable.Columns[3].Width = 252;
         }
 
         private void setDepatureMonitorSettings(object sender, EventArgs e)
