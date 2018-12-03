@@ -2,6 +2,8 @@
 using CefSharp.WinForms; /* Dokumentation: https://github.com/cefsharp/CefSharp/tree/cefsharp/57 */
 using System.Windows.Forms;
 using System.Linq;
+using System.Diagnostics;
+using System.Net.Mail;
 
 namespace ov_project
 {
@@ -119,5 +121,49 @@ namespace ov_project
             wbGoogleMaps.Controls.Add(googleMapsChrome);
         }
 
+        private void btnSendToMail_Click(object sender, EventArgs e)
+        {
+            // Daten per Email versenden/öffnen
+            createAndOpenMail();
+        }
+
+        private void createAndOpenMail()
+        {
+            var formData = getFormData();
+
+            // Mail erstellen
+            var mailMessage = new MailMessage();
+            mailMessage.Subject = "Ihr Betreff";
+
+            var newLine = "%0D%0A";
+
+            mailMessage.Body =
+                "Start: " + formData[0] + newLine +
+                 "Ziel: " + formData[1] + newLine +
+                "Datum: " + formData[2] + newLine +
+                "Abfahrt: " + formData[3] + newLine +
+                "Dauer: " + formData[4] + newLine +
+                "Gleis: " + formData[5] + newLine +
+                "Link zu Google-Map: " + formData[6];
+
+            // Mail öffnen
+            Process.Start(@"mailto:?subject=" + mailMessage.Subject + "&body=" + mailMessage.Body);
+        }
+
+        private string[] getFormData()
+        {
+            // Formular-Daten abrufen
+            String[] formData = new String[] {
+                labelStationFrom.Text,
+                labelStationTo.Text,
+                txtDepatureDate.Text,
+                txtDepatureTime.Text,
+                txtDepatureDuration.Text,
+                txtDepaturePlattform.Text,
+                $"https://www.google.ch/maps/dir/{labelStationFrom.Text}/{labelStationTo.Text}"
+            };
+
+            return formData;
+        }
     }
 }

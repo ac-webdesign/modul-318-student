@@ -216,6 +216,7 @@
             this.btnSendToMail.Size = new System.Drawing.Size(48, 21);
             this.btnSendToMail.TabIndex = 14;
             this.btnSendToMail.UseVisualStyleBackColor = true;
+            this.btnSendToMail.Click += new System.EventHandler(this.btnSendToMail_Click);
             // 
             // btnToMailIcon
             // 
