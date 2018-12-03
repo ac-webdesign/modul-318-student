@@ -245,8 +245,8 @@ namespace ov_project
 
         private void getLocationOfStation(Button button, TextBox station)
         {
-            string googleMapsStationLocationLink = $"maps/dir/Mein%20Standort/{station.Text}";
-            System.Diagnostics.Process.Start($"http://google.com/{googleMapsStationLocationLink}/");
+            string googleMapLocationOfStationLink = $"maps/dir/Mein%20Standort/{station.Text}";
+            System.Diagnostics.Process.Start($"http://google.com/{googleMapLocationOfStationLink}/");
             button.Visible = false;
         }
     }
