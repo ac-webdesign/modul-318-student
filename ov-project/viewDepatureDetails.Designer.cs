@@ -48,7 +48,7 @@
             // wbGoogleMaps
             // 
             this.wbGoogleMaps.Location = new System.Drawing.Point(195, 92);
-            this.wbGoogleMaps.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.wbGoogleMaps.Margin = new System.Windows.Forms.Padding(2);
             this.wbGoogleMaps.Name = "wbGoogleMaps";
             this.wbGoogleMaps.Size = new System.Drawing.Size(839, 412);
             this.wbGoogleMaps.TabIndex = 14;
@@ -124,7 +124,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(593, 14);
+            this.label3.Location = new System.Drawing.Point(585, 13);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(34, 26);
             this.label3.TabIndex = 4;
@@ -134,7 +134,7 @@
             // 
             this.labelDepatureFrom.AutoSize = true;
             this.labelDepatureFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDepatureFrom.Location = new System.Drawing.Point(354, 14);
+            this.labelDepatureFrom.Location = new System.Drawing.Point(309, 13);
             this.labelDepatureFrom.Name = "labelDepatureFrom";
             this.labelDepatureFrom.Size = new System.Drawing.Size(215, 26);
             this.labelDepatureFrom.TabIndex = 3;
@@ -144,7 +144,7 @@
             // 
             this.labelDepatureTo.AutoSize = true;
             this.labelDepatureTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDepatureTo.Location = new System.Drawing.Point(661, 14);
+            this.labelDepatureTo.Location = new System.Drawing.Point(674, 14);
             this.labelDepatureTo.Name = "labelDepatureTo";
             this.labelDepatureTo.Size = new System.Drawing.Size(186, 26);
             this.labelDepatureTo.TabIndex = 1;
@@ -153,7 +153,7 @@
             // btnPrev
             // 
             this.btnPrev.Location = new System.Drawing.Point(9, 8);
-            this.btnPrev.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnPrev.Margin = new System.Windows.Forms.Padding(2);
             this.btnPrev.Name = "btnPrev";
             this.btnPrev.Size = new System.Drawing.Size(41, 21);
             this.btnPrev.TabIndex = 16;
@@ -164,7 +164,7 @@
             // btnNext
             // 
             this.btnNext.Location = new System.Drawing.Point(993, 8);
-            this.btnNext.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnNext.Margin = new System.Windows.Forms.Padding(2);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(41, 21);
             this.btnNext.TabIndex = 15;
@@ -183,7 +183,7 @@
             this.Controls.Add(this.gbDepatureData);
             this.Controls.Add(this.gbTitel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximumSize = new System.Drawing.Size(1058, 551);
             this.MinimumSize = new System.Drawing.Size(1058, 551);
             this.Name = "viewDepatureDetails";
