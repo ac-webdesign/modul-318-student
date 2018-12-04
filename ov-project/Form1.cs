@@ -174,6 +174,12 @@ namespace ov_project
             Transport transport = new Transport();
             var allDepatureConnections = transport.GetStationBoard(txtDepatureFrom.Text).Entries;
 
+            // Falls keinen Verbindung gefunden. Warnung anzeigen
+            if (allDepatureConnections.ToList().Count == 0)
+            {
+                MessageBox.Show("Bitte wählen Sie einen andere Station", "Keine Abfahrten gefunden", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
             // Verbindungen zu depatureMonitorTable integrieren
             foreach (var depatureLine in allDepatureConnections)
            {
