@@ -29,6 +29,8 @@ namespace ov_project
         private void getAllStations(object sender, EventArgs e)
         {
             TextBox txtSearchedStation = (TextBox)sender;
+
+            // Abfrage zu welcher Listbox der selektierte Wert zugewiesen werden muss
             if (txtSearchedStation.Name == txtStationFrom.Name)
             {
                 getStationsByCorrectTextbox(txtSearchedStation, listStationFrom);
@@ -58,13 +60,20 @@ namespace ov_project
                 // Textbox-Farbe zurücksetzen
                 txtStationInput.BackColor = Color.White;
 
-                // Stationen anzeigen
-                Transport transport = new Transport();
-                var allStationConnections = transport.GetStations(txtStationInput.Text).StationList;
-
-                foreach (var station in allStationConnections)
+                try
                 {
-                    list.Items.Add(station.Name);
+                    // Stationen anzeigen
+                    Transport transport = new Transport();
+                    var allStationConnections = transport.GetStations(txtStationInput.Text).StationList;
+
+                    foreach (var station in allStationConnections)
+                    {
+                        list.Items.Add(station.Name);
+                    }
+                } catch (ArgumentNullException)
+                {
+                    //BUGFIX: Falls bei zu schneller Benutzeringabe wird der gleiche Wert zurückgegeben
+                    txtStationInput.Text = txtStationInput.Text;
                 }
             }
         }
@@ -72,6 +81,8 @@ namespace ov_project
         private void putSelectedStationToCorrectTextbox(object sender, EventArgs e)
         {
             ListBox selectedListBox = (ListBox)sender;
+
+            // Abfrage zu welcher Textbox der selektierte Wert zugewiesen werden muss
             if (selectedListBox.Name == listStationFrom.Name)
             {
                 putToTextbox(txtStationFrom, selectedListBox);
@@ -105,14 +116,15 @@ namespace ov_project
             {
                 txtStationFrom.BackColor = Color.Red;
                 txtStationTo.BackColor = Color.Red;
-            } else if (txtStationFrom.Text == txtStationTo.Text)
+            }
+            else if (txtStationFrom.Text == txtStationTo.Text)
             {
                 stationToIsEqualStationFrom.SetError(txtStationTo, "Gleiche Station ausgewählt");
-            } else if (listStationFrom.Visible == true || listStationTo.Visible == true)
+            }
+            else if (listStationFrom.Visible == true || listStationTo.Visible == true)
             {
                 MessageBox.Show("Bitte wählen Sie eine Station/en", "Keine Station/en ausgewählt", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else {
+            } else {
                 try
                 {
                     // Zeit und Datum formatieren
@@ -139,8 +151,11 @@ namespace ov_project
                             var stationToName = connection.To.Station.Name;
                             var depatureDate = Convert.ToDateTime(connection.From.Departure).ToShortDateString();
                             var depatureTime = Convert.ToDateTime(connection.From.Departure).ToShortTimeString();
-                            var durationTime = connection.Duration.Replace("d", "").Replace("0", ""); // BUG-Fix: Damit Zeit nicht mit komischen "dd" angezeigt werden
-                            if (String.IsNullOrEmpty(connection.From.Platform)) // Wert wird dem leeren Gleisen zugewiesen
+                            // Format-Fix: Damit Zeit nicht mit komischen "dd" angezeigt werden
+                            var durationTime = connection.Duration.Replace("d", "");
+
+                            // Falls From.Plattform Null or Empty ist, wird Wert zugewiesen
+                            if (String.IsNullOrEmpty(connection.From.Platform))
                             {
                                 connection.From.Platform = "Kein Gleis gefunden";
                             }
@@ -220,6 +235,8 @@ namespace ov_project
         private void btnLocationOfStation_Click(object sender, EventArgs e)
         {
             Button actuallyButton = (Button) sender;
+
+            // Abfrage welche Button geclickt wurde und diese anzeigen
             if (actuallyButton.Name == btnLocationOfStationFrom.Name)
             {
                 getLocationOfStation(actuallyButton, txtStationFrom);
@@ -233,7 +250,6 @@ namespace ov_project
         {
             string googleMapLocationOfStationLink = $"maps/dir/Mein%20Standort/{station.Text}";
             System.Diagnostics.Process.Start($"http://google.com/{googleMapLocationOfStationLink}/");
-            button.Visible = false;
         }
     }
 }

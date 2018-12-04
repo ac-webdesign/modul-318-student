@@ -9,8 +9,10 @@ namespace ov_project
 {
     public partial class viewConnectionDetails : Form
     {
-        ovForm ovForm = Application.OpenForms.OfType<ovForm>().ElementAt<ovForm>(0); // Aktuelles offenes Formular
-        int nextRowIndex = 0; // Index der Rows auf 0 gesetzt
+        // Aktuelles offenes Formular
+        ovForm ovForm = Application.OpenForms.OfType<ovForm>().ElementAt<ovForm>(0);
+    
+        int nextRowIndex = 0;
 
         public viewConnectionDetails()
         {
@@ -129,7 +131,6 @@ namespace ov_project
 
         private string[] getFormData()
         {
-            // Formular-Daten abrufen
             String[] formData = new String[] {
                 labelStationFrom.Text,
                 labelStationTo.Text,
