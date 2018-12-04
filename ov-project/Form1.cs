@@ -150,7 +150,7 @@ namespace ov_project
                         var depatureDate = Convert.ToDateTime(connection.From.Departure).ToShortDateString();
                         var depatureTime = Convert.ToDateTime(connection.From.Departure).ToShortTimeString();
                         // Format-Fix: Damit Zeit nicht mit komischen "dd" angezeigt werden
-                        var durationTime = connection.Duration.Replace("d", "");
+                        var durationTime = connection.Duration.Remove(0, 3).Remove(5, 3);
 
                         // Falls From.Plattform Null or Empty ist, wird Wert zugewiesen
                         if (String.IsNullOrEmpty(connection.From.Platform))
