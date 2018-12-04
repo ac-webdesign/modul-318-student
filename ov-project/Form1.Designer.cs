@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ovForm));
             this.searchBox = new System.Windows.Forms.GroupBox();
+            this.dpConnectionTime = new System.Windows.Forms.DateTimePicker();
             this.btnLocationOfStationFrom = new System.Windows.Forms.Button();
             this.btnLocationImages = new System.Windows.Forms.ImageList(this.components);
             this.btnLocationOfStationTo = new System.Windows.Forms.Button();
@@ -68,7 +69,6 @@
             this.labelStationName = new System.Windows.Forms.Label();
             this.stationToIsEqualStationFrom = new System.Windows.Forms.ErrorProvider(this.components);
             this.falseFromatProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.dpConnectionTime = new System.Windows.Forms.DateTimePicker();
             this.searchBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.connectionsTable)).BeginInit();
             this.Start.SuspendLayout();
@@ -101,6 +101,16 @@
             this.searchBox.TabIndex = 0;
             this.searchBox.TabStop = false;
             this.searchBox.Text = "Verbindungen suchen";
+            // 
+            // dpConnectionTime
+            // 
+            this.dpConnectionTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dpConnectionTime.Location = new System.Drawing.Point(536, 91);
+            this.dpConnectionTime.Name = "dpConnectionTime";
+            this.dpConnectionTime.ShowUpDown = true;
+            this.dpConnectionTime.Size = new System.Drawing.Size(106, 20);
+            this.dpConnectionTime.TabIndex = 20;
+            this.dpConnectionTime.Visible = false;
             // 
             // btnLocationOfStationFrom
             // 
@@ -433,7 +443,7 @@
             // 
             this.labelDepatureTime.AutoSize = true;
             this.labelDepatureTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDepatureTime.Location = new System.Drawing.Point(570, 55);
+            this.labelDepatureTime.Location = new System.Drawing.Point(645, 55);
             this.labelDepatureTime.Name = "labelDepatureTime";
             this.labelDepatureTime.Size = new System.Drawing.Size(44, 16);
             this.labelDepatureTime.TabIndex = 1;
@@ -443,7 +453,7 @@
             // 
             this.labelStationName.AutoSize = true;
             this.labelStationName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelStationName.Location = new System.Drawing.Point(235, 49);
+            this.labelStationName.Location = new System.Drawing.Point(202, 49);
             this.labelStationName.Name = "labelStationName";
             this.labelStationName.Size = new System.Drawing.Size(135, 24);
             this.labelStationName.TabIndex = 0;
@@ -457,16 +467,6 @@
             // falseFromatProvider
             // 
             this.falseFromatProvider.ContainerControl = this;
-            // 
-            // dpConnectionTime
-            // 
-            this.dpConnectionTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dpConnectionTime.Location = new System.Drawing.Point(536, 91);
-            this.dpConnectionTime.Name = "dpConnectionTime";
-            this.dpConnectionTime.ShowUpDown = true;
-            this.dpConnectionTime.Size = new System.Drawing.Size(106, 20);
-            this.dpConnectionTime.TabIndex = 20;
-            this.dpConnectionTime.Visible = false;
             // 
             // ovForm
             // 

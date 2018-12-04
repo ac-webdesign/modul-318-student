@@ -7,12 +7,6 @@ namespace SwissTransport
     {
         [JsonProperty("type")]
         public string Type { get; set; }
-
-        [JsonProperty("x")]
-        public double XCoordinate { get; set; }
-
-        [JsonProperty("y")]
-        public double YCoordinate { get; set; }
     }
 
     public class Station
