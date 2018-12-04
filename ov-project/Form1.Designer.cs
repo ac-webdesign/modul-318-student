@@ -36,10 +36,8 @@
             this.btnLocationOfStationTo = new System.Windows.Forms.Button();
             this.listStationTo = new System.Windows.Forms.ListBox();
             this.listStationFrom = new System.Windows.Forms.ListBox();
-            this.txtConnectionTimeMinute = new System.Windows.Forms.TextBox();
             this.txtStationTo = new System.Windows.Forms.TextBox();
             this.txtStationFrom = new System.Windows.Forms.TextBox();
-            this.txtConnectionTimeHour = new System.Windows.Forms.TextBox();
             this.labelConnectionTime = new System.Windows.Forms.Label();
             this.labelConnectionDate = new System.Windows.Forms.Label();
             this.dpConnectionDate = new System.Windows.Forms.DateTimePicker();
@@ -58,6 +56,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.depatureMonitorPage = new System.Windows.Forms.TabPage();
             this.depatureMonitorTable = new System.Windows.Forms.DataGridView();
+            this.line = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fromTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.depature = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.depatureMonitorBox = new System.Windows.Forms.GroupBox();
             this.listDepatureFrom = new System.Windows.Forms.ListBox();
             this.txtDepatureFrom = new System.Windows.Forms.TextBox();
@@ -67,9 +68,7 @@
             this.labelStationName = new System.Windows.Forms.Label();
             this.stationToIsEqualStationFrom = new System.Windows.Forms.ErrorProvider(this.components);
             this.falseFromatProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.line = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fromTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.depature = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dpConnectionTime = new System.Windows.Forms.DateTimePicker();
             this.searchBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.connectionsTable)).BeginInit();
             this.Start.SuspendLayout();
@@ -83,14 +82,13 @@
             // 
             // searchBox
             // 
+            this.searchBox.Controls.Add(this.dpConnectionTime);
             this.searchBox.Controls.Add(this.btnLocationOfStationFrom);
             this.searchBox.Controls.Add(this.btnLocationOfStationTo);
             this.searchBox.Controls.Add(this.listStationTo);
             this.searchBox.Controls.Add(this.listStationFrom);
-            this.searchBox.Controls.Add(this.txtConnectionTimeMinute);
             this.searchBox.Controls.Add(this.txtStationTo);
             this.searchBox.Controls.Add(this.txtStationFrom);
-            this.searchBox.Controls.Add(this.txtConnectionTimeHour);
             this.searchBox.Controls.Add(this.labelConnectionTime);
             this.searchBox.Controls.Add(this.labelConnectionDate);
             this.searchBox.Controls.Add(this.dpConnectionDate);
@@ -154,15 +152,6 @@
             this.listStationFrom.Visible = false;
             this.listStationFrom.DoubleClick += new System.EventHandler(this.putSelectedStationToCorrectTextbox);
             // 
-            // txtConnectionTimeMinute
-            // 
-            this.txtConnectionTimeMinute.Location = new System.Drawing.Point(581, 92);
-            this.txtConnectionTimeMinute.MaxLength = 2;
-            this.txtConnectionTimeMinute.Name = "txtConnectionTimeMinute";
-            this.txtConnectionTimeMinute.Size = new System.Drawing.Size(41, 20);
-            this.txtConnectionTimeMinute.TabIndex = 14;
-            this.txtConnectionTimeMinute.Visible = false;
-            // 
             // txtStationTo
             // 
             this.txtStationTo.Location = new System.Drawing.Point(213, 55);
@@ -180,15 +169,6 @@
             this.txtStationFrom.TabIndex = 12;
             this.txtStationFrom.TextChanged += new System.EventHandler(this.getAllStations);
             this.txtStationFrom.Leave += new System.EventHandler(this.showDateAndTimeOption);
-            // 
-            // txtConnectionTimeHour
-            // 
-            this.txtConnectionTimeHour.Location = new System.Drawing.Point(535, 92);
-            this.txtConnectionTimeHour.MaxLength = 2;
-            this.txtConnectionTimeHour.Name = "txtConnectionTimeHour";
-            this.txtConnectionTimeHour.Size = new System.Drawing.Size(41, 20);
-            this.txtConnectionTimeHour.TabIndex = 11;
-            this.txtConnectionTimeHour.Visible = false;
             // 
             // labelConnectionTime
             // 
@@ -375,6 +355,27 @@
             this.depatureMonitorTable.TabIndex = 5;
             this.depatureMonitorTable.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.showDepatureDetails);
             // 
+            // line
+            // 
+            this.line.HeaderText = "Linie";
+            this.line.Name = "line";
+            this.line.ReadOnly = true;
+            this.line.Width = 300;
+            // 
+            // fromTo
+            // 
+            this.fromTo.HeaderText = "Ziel";
+            this.fromTo.Name = "fromTo";
+            this.fromTo.ReadOnly = true;
+            this.fromTo.Width = 302;
+            // 
+            // depature
+            // 
+            this.depature.HeaderText = "Abfahrt";
+            this.depature.Name = "depature";
+            this.depature.ReadOnly = true;
+            this.depature.Width = 302;
+            // 
             // depatureMonitorBox
             // 
             this.depatureMonitorBox.Controls.Add(this.listDepatureFrom);
@@ -457,26 +458,15 @@
             // 
             this.falseFromatProvider.ContainerControl = this;
             // 
-            // line
+            // dpConnectionTime
             // 
-            this.line.HeaderText = "Linie";
-            this.line.Name = "line";
-            this.line.ReadOnly = true;
-            this.line.Width = 300;
-            // 
-            // fromTo
-            // 
-            this.fromTo.HeaderText = "Ziel";
-            this.fromTo.Name = "fromTo";
-            this.fromTo.ReadOnly = true;
-            this.fromTo.Width = 302;
-            // 
-            // depature
-            // 
-            this.depature.HeaderText = "Abfahrt";
-            this.depature.Name = "depature";
-            this.depature.ReadOnly = true;
-            this.depature.Width = 302;
+            this.dpConnectionTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dpConnectionTime.Location = new System.Drawing.Point(536, 91);
+            this.dpConnectionTime.Name = "dpConnectionTime";
+            this.dpConnectionTime.ShowUpDown = true;
+            this.dpConnectionTime.Size = new System.Drawing.Size(106, 20);
+            this.dpConnectionTime.TabIndex = 20;
+            this.dpConnectionTime.Visible = false;
             // 
             // ovForm
             // 
@@ -521,13 +511,11 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label labelConnectionDate;
         private System.Windows.Forms.DateTimePicker dpConnectionDate;
-        private System.Windows.Forms.TextBox txtConnectionTimeHour;
         private System.Windows.Forms.Label labelConnectionTime;
         private System.Windows.Forms.TextBox txtStationFrom;
         private System.Windows.Forms.TextBox txtStationTo;
         private System.Windows.Forms.TextBox txtDepatureFrom;
         private System.Windows.Forms.ErrorProvider stationToIsEqualStationFrom;
-        private System.Windows.Forms.TextBox txtConnectionTimeMinute;
         public System.Windows.Forms.DataGridView connectionsTable;
         public System.Windows.Forms.Label labelDepatureDate;
         public System.Windows.Forms.Label labelDepatureTime;
@@ -549,6 +537,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn line;
         private System.Windows.Forms.DataGridViewTextBoxColumn fromTo;
         private System.Windows.Forms.DataGridViewTextBoxColumn depature;
+        private System.Windows.Forms.DateTimePicker dpConnectionTime;
     }
 }
 

@@ -125,50 +125,43 @@ namespace ov_project
             {
                 MessageBox.Show("Bitte wählen Sie eine Station/en", "Keine Station/en ausgewählt", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             } else {
-                try
+                // Zeit und Datum formatieren
+                var connectionDepatureDate = Convert.ToDateTime(dpConnectionDate.Text).ToShortDateString();
+                var connectionDepatureTime = Convert.ToDateTime(dpConnectionTime.Text).ToShortTimeString();
+
+                // Verbindung mit bestimmter Zeit und Datum 
+                Transport transport = new Transport();
+                var allConnections = transport.GetConnections(txtStationFrom.Text, txtStationTo.Text, connectionDepatureDate, connectionDepatureTime).ConnectionList;
+
+                // Falls keinen Verbindung gefunden. Warnung anzeigen
+                if (allConnections.ToList().Count == 0)
                 {
-                    // Zeit und Datum formatieren
-                    var connectionDepatureDate = Convert.ToDateTime(dpConnectionDate.Text).ToShortDateString();
-                    var connectionDepatureTime = Convert.ToDateTime(txtConnectionTimeHour.Text + ":" + txtConnectionTimeMinute.Text).ToShortTimeString();
+                    MessageBox.Show("Bitte wählen Sie einen anderen Zeitpunkt", "Keine Verbindung gefunden", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                 {
+                    connectionsTable.Rows.Clear();
 
-                   // Verbindung mit bestimmter Zeit und Datum 
-                    Transport transport = new Transport();
-                    var allConnections = transport.GetConnections(txtStationFrom.Text, txtStationTo.Text, connectionDepatureDate, connectionDepatureTime).ConnectionList;
-
-                    // Falls keinen Verbindung gefunden. Warnung anzeigen
-                    if (allConnections.ToList().Count == 0)
+                    // Verbindungen zu connectionTable integrieren
+                    foreach (var connection in allConnections)
                     {
-                        MessageBox.Show("Bitte wählen Sie einen anderen Zeitpunkt", "Keine Verbindung gefunden", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                    else
-                    {
-                        connectionsTable.Rows.Clear();
+                        var stationFormName = connection.From.Station.Name;
+                        var stationToName = connection.To.Station.Name;
+                        var depatureDate = Convert.ToDateTime(connection.From.Departure).ToShortDateString();
+                        var depatureTime = Convert.ToDateTime(connection.From.Departure).ToShortTimeString();
+                        // Format-Fix: Damit Zeit nicht mit komischen "dd" angezeigt werden
+                        var durationTime = connection.Duration.Replace("d", "");
 
-                        // Verbindungen zu connectionTable integrieren
-                        foreach (var connection in allConnections)
+                        // Falls From.Plattform Null or Empty ist, wird Wert zugewiesen
+                        if (String.IsNullOrEmpty(connection.From.Platform))
                         {
-                            var stationFormName = connection.From.Station.Name;
-                            var stationToName = connection.To.Station.Name;
-                            var depatureDate = Convert.ToDateTime(connection.From.Departure).ToShortDateString();
-                            var depatureTime = Convert.ToDateTime(connection.From.Departure).ToShortTimeString();
-                            // Format-Fix: Damit Zeit nicht mit komischen "dd" angezeigt werden
-                            var durationTime = connection.Duration.Replace("d", "");
-
-                            // Falls From.Plattform Null or Empty ist, wird Wert zugewiesen
-                            if (String.IsNullOrEmpty(connection.From.Platform))
-                            {
-                                connection.From.Platform = "Kein Gleis gefunden";
-                            }
-                            connectionsTable.Rows.Add(depatureDate, depatureTime, stationFormName, stationToName, connection.From.Platform, durationTime);
+                            connection.From.Platform = "Kein Gleis gefunden";
+                        }
+                         connectionsTable.Rows.Add(depatureDate, depatureTime, stationFormName, stationToName, connection.From.Platform, durationTime);
                         }
                     }
                 }
-                catch (FormatException)
-                {
-                    falseFromatProvider.SetError(labelConnectionTime, "Bitte nur Zahlen verwenden");
-                }
             }
-        }
 
         private void getDepatureConnections()
         {
@@ -195,10 +188,8 @@ namespace ov_project
             labelConnectionDate.Visible = true;
             dpConnectionDate.Visible = true;
             labelConnectionTime.Visible = true;
-            txtConnectionTimeHour.Text = DateTime.Now.Hour.ToString();
-            txtConnectionTimeMinute.Text = DateTime.Now.Minute.ToString();
-            txtConnectionTimeHour.Visible = true;
-            txtConnectionTimeMinute.Visible = true;
+            dpConnectionTime.Visible = true;
+            dpConnectionTime.Text = DateTime.Now.ToShortTimeString();
         }
 
         private void showConnectionDetails(object sender, DataGridViewCellEventArgs e)
