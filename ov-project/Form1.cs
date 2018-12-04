@@ -124,7 +124,9 @@ namespace ov_project
             else if (listStationFrom.Visible == true || listStationTo.Visible == true)
             {
                 MessageBox.Show("Bitte wählen Sie eine Station/en", "Keine Station/en ausgewählt", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            } else {
+            }
+            else
+            {
                 // Zeit und Datum formatieren
                 var connectionDepatureDate = Convert.ToDateTime(dpConnectionDate.Text).ToShortDateString();
                 var connectionDepatureTime = Convert.ToDateTime(dpConnectionTime.Text).ToShortTimeString();
@@ -139,7 +141,7 @@ namespace ov_project
                     MessageBox.Show("Bitte wählen Sie einen anderen Zeitpunkt", "Keine Verbindung gefunden", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
-                 {
+                {
                     connectionsTable.Rows.Clear();
 
                     // Verbindungen zu connectionTable integrieren
@@ -152,16 +154,30 @@ namespace ov_project
                         // Format-Fix: Damit Zeit nicht mit komischen "dd" angezeigt werden
                         var durationTime = connection.Duration.Remove(0, 3).Remove(5, 3);
 
-                        // Falls From.Plattform Null or Empty ist, wird Wert zugewiesen
+                        // Falls From.Plattform Null or Empty ist, wird String zugewiesen
                         if (String.IsNullOrEmpty(connection.From.Platform))
                         {
                             connection.From.Platform = "Kein Gleis gefunden";
                         }
-                         connectionsTable.Rows.Add(depatureDate, depatureTime, stationFormName, stationToName, connection.From.Platform, durationTime);
+                        var stationFromCoordinateX = connection.From.Station.Coordinate.XCoordinate;
+                        var stationFromCoordinateY = connection.From.Station.Coordinate.YCoordinate;
+                        var stationToCoordinateX = connection.To.Station.Coordinate.XCoordinate;
+                        var stationToCoordinateY = connection.To.Station.Coordinate.YCoordinate;
+
+                        // Falls Koordinaten auf Null or Empty sind, wird Wert 0 zugeweisen
+                        if (String.IsNullOrEmpty(stationFromCoordinateX.ToString()) || String.IsNullOrEmpty(stationFromCoordinateY.ToString()) || String.IsNullOrEmpty(stationToCoordinateX.ToString()) || String.IsNullOrEmpty(stationToCoordinateY.ToString()))
+                        {
+                            stationFromCoordinateX = 0;
+                            stationFromCoordinateY = 0;
+                            stationToCoordinateX = 0;
+                            stationToCoordinateY = 0;
                         }
+
+                        connectionsTable.Rows.Add(depatureDate, depatureTime, stationFormName, stationToName, connection.From.Platform, durationTime);
                     }
                 }
             }
+        }
 
         private void getDepatureConnections()
         {
