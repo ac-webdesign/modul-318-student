@@ -97,6 +97,10 @@ namespace ov_project
 
         private void btnSearchConnections_Click(object sender, EventArgs e)
         {
+            // Clear Providers
+            stationToIsEqualStationFrom.Clear();
+            falseFromatProvider.Clear();
+
             if (String.IsNullOrEmpty(txtStationFrom.Text) || String.IsNullOrEmpty(txtStationTo.Text))
             {
                 txtStationFrom.BackColor = Color.Red;
@@ -104,16 +108,11 @@ namespace ov_project
             } else if (txtStationFrom.Text == txtStationTo.Text)
             {
                 stationToIsEqualStationFrom.SetError(txtStationTo, "Gleiche Station ausgewählt");
-            } else if (txtStationFrom.Text.Length <= 2 || txtStationFrom.Text.Length <= 1)
+            } else if (listStationFrom.Visible == true || listStationTo.Visible == true)
             {
-                MessageBox.Show("Bitte wählen Sie existierende Station/en", "Station existieren nicht", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Bitte wählen Sie eine Station/en", "Keine Station/en ausgewählt", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else {
-
-                // Clear Providers
-                stationToIsEqualStationFrom.Clear();
-                falseFromatProvider.Clear();
-
                 try
                 {
                     // Zeit und Datum formatieren
