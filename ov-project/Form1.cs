@@ -1,8 +1,8 @@
 ﻿using System;
+using SwissTransport;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Linq;
-using SwissTransport;
 
 namespace ov_project
 {
@@ -154,7 +154,11 @@ namespace ov_project
                         // Format-Fix: Damit Zeit nicht mit komischen "dd" angezeigt werden
                         var durationTime = connection.Duration.Remove(0, 3).Remove(5, 3);
 
-                        catchConnectionErrors(connection);
+                        // Falls From.Plattform Null or Empty ist, wird String zugewiesen
+                        if (String.IsNullOrEmpty(connection.From.Platform))
+                        {
+                            connection.From.Platform = "Kein Gleis gefunden";
+                        }
 
                         connectionsTable.Rows.Add(depatureDate, depatureTime, stationFormName, stationToName, connection.From.Platform, durationTime);
                     }
@@ -179,21 +183,14 @@ namespace ov_project
             {
                 MessageBox.Show("Bitte wählen Sie einen andere Station", "Keine Abfahrten gefunden", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
-            // Verbindungen zu depatureMonitorTable integrieren
-            foreach (var depatureLine in allDepatureConnections)
-           {
-                var depatureTime = depatureLine.Stop.Departure.ToShortTimeString();
-                depatureMonitorTable.Rows.Add(depatureLine.Name, depatureLine.To, depatureTime);
-           }
-        }
-
-        private void catchConnectionErrors(Connection connection)
-        {
-            // Falls From.Plattform Null or Empty ist, wird String zugewiesen
-            if (String.IsNullOrEmpty(connection.From.Platform))
+            else
             {
-                connection.From.Platform = "Kein Gleis gefunden";
+                // Verbindungen zu depatureMonitorTable integrieren
+                foreach (var depatureLine in allDepatureConnections)
+                {
+                    var depatureTime = depatureLine.Stop.Departure.ToShortTimeString();
+                    depatureMonitorTable.Rows.Add(depatureLine.Name, depatureLine.To, depatureTime);
+                }
             }
         }
 
