@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwissTransportTest", "tests
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ov-project", "ov-project\ov-project.csproj", "{635C4A0B-2398-425C-B1F6-453DF40D58C0}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ov-projectSetup", "ov-projectSetup\ov-projectSetup.vdproj", "{B07EC85C-E4E5-4A74-8DC1-27B54301C293}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,10 @@ Global
 		{635C4A0B-2398-425C-B1F6-453DF40D58C0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{635C4A0B-2398-425C-B1F6-453DF40D58C0}.Release|x86.ActiveCfg = Release|x86
 		{635C4A0B-2398-425C-B1F6-453DF40D58C0}.Release|x86.Build.0 = Release|x86
+		{B07EC85C-E4E5-4A74-8DC1-27B54301C293}.Debug|Any CPU.ActiveCfg = Debug
+		{B07EC85C-E4E5-4A74-8DC1-27B54301C293}.Debug|x86.ActiveCfg = Debug
+		{B07EC85C-E4E5-4A74-8DC1-27B54301C293}.Release|Any CPU.ActiveCfg = Release
+		{B07EC85C-E4E5-4A74-8DC1-27B54301C293}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
