@@ -154,24 +154,7 @@ namespace ov_project
                         // Format-Fix: Damit Zeit nicht mit komischen "dd" angezeigt werden
                         var durationTime = connection.Duration.Remove(0, 3).Remove(5, 3);
 
-                        // Falls From.Plattform Null or Empty ist, wird String zugewiesen
-                        if (String.IsNullOrEmpty(connection.From.Platform))
-                        {
-                            connection.From.Platform = "Kein Gleis gefunden";
-                        }
-                        var stationFromCoordinateX = connection.From.Station.Coordinate.XCoordinate;
-                        var stationFromCoordinateY = connection.From.Station.Coordinate.YCoordinate;
-                        var stationToCoordinateX = connection.To.Station.Coordinate.XCoordinate;
-                        var stationToCoordinateY = connection.To.Station.Coordinate.YCoordinate;
-
-                        // Falls Koordinaten auf Null or Empty sind, wird Wert 0 zugeweisen
-                        if (String.IsNullOrEmpty(stationFromCoordinateX.ToString()) || String.IsNullOrEmpty(stationFromCoordinateY.ToString()) || String.IsNullOrEmpty(stationToCoordinateX.ToString()) || String.IsNullOrEmpty(stationToCoordinateY.ToString()))
-                        {
-                            stationFromCoordinateX = 0;
-                            stationFromCoordinateY = 0;
-                            stationToCoordinateX = 0;
-                            stationToCoordinateY = 0;
-                        }
+                        catchConnectionErrors(connection);
 
                         connectionsTable.Rows.Add(depatureDate, depatureTime, stationFormName, stationToName, connection.From.Platform, durationTime);
                     }
@@ -197,6 +180,28 @@ namespace ov_project
                 var depatureTime = depatureLine.Stop.Departure.ToShortTimeString();
                 depatureMonitorTable.Rows.Add(depatureLine.Name, depatureLine.To, depatureTime);
            }
+        }
+
+        private void catchConnectionErrors(Connection connection)
+        {
+            // Falls From.Plattform Null or Empty ist, wird String zugewiesen
+            if (String.IsNullOrEmpty(connection.From.Platform))
+            {
+                connection.From.Platform = "Kein Gleis gefunden";
+            }
+            var stationFromCoordinateX = connection.From.Station.Coordinate.XCoordinate;
+            var stationFromCoordinateY = connection.From.Station.Coordinate.YCoordinate;
+            var stationToCoordinateX = connection.To.Station.Coordinate.XCoordinate;
+            var stationToCoordinateY = connection.To.Station.Coordinate.YCoordinate;
+
+            // Falls Koordinaten auf Null or Empty sind, wird Wert 0 zugeweisen
+            if (String.IsNullOrEmpty(stationFromCoordinateX.ToString()) || String.IsNullOrEmpty(stationFromCoordinateY.ToString()) || String.IsNullOrEmpty(stationToCoordinateX.ToString()) || String.IsNullOrEmpty(stationToCoordinateY.ToString()))
+            {
+                stationFromCoordinateX = 0;
+                stationFromCoordinateY = 0;
+                stationToCoordinateX = 0;
+                stationToCoordinateY = 0;
+            }
         }
 
         private void showDateAndTimeOption(object sender, EventArgs e)
